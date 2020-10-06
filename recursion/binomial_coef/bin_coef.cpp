@@ -3,17 +3,19 @@ using namespace std;
 
 typedef unsigned long long LLU;
 
-// By the Pascal's law, c(n, m) equals c(n - 1, m - 1) + c(n - 1, m).
+// By the Pascal's law, c(n, m) equals c(n - 1, m - 1) + c(n - 1, m), where n, m are
+// positive natural number, except for c(n, 0) = 1 where n >= 0 and c(0, m) = 0 where m >= 0
+
 // For instance, let's say we want to find the combination of picking 5 students out of 10,
 // It's equal to the combination of picking a particular student(No.3) then picking 4 out of 10,
 // plus the combination of not picking a particular student(No.3) then picking 5 out of 10.
-LLU bin_coef(int n, int m) {
-  if(n == 0)
-    return 0;
-  if(m == 0)
-    return 1;
 
-  // Applying Pascal's law
+// Applying Pascal's law
+LLU bin_coef(int n, int m) {
+  if(n == 0 && m != 0)
+    return 0;
+  else if(m == 0)
+    return 1;
   return bin_coef(n - 1, m - 1) + bin_coef(n - 1, m);
 }
 
