@@ -3,8 +3,8 @@ using namespace std;
 
 typedef unsigned long long LLU;
 
-#define SOL nREC
-#if(SOL == REC)
+#define REC = 1
+#if(REC = 1)
 
 LLU fibonacci(int n) {
   if(n == 0)
