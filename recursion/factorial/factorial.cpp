@@ -16,4 +16,5 @@ int main() {
   int n;
   while(cin >> n && n != -1)
     cout << factorial(n) << endl;
+  return 0;
 }
