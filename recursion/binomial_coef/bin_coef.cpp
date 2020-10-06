@@ -36,6 +36,7 @@ int main() {
   int n, m;
   while(cin >> n >> m && (n >= 0 && m >= 0))
     cout << bin_coef(n, m) << endl;
+  return 0;
 }
 
 #else
@@ -62,6 +63,7 @@ int main() {
     }
     cout << ans << endl;
   }
+  return 0;
 }
 
 #endif
