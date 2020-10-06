@@ -17,4 +17,5 @@ int main() {
 
   while(cin >> n && n >= 0)
     cout << series(n) << endl;
+  return 0;
 }
