@@ -42,7 +42,7 @@ int main() {
 #else
 
 int main() {
-  LLU n, m;
+  int n, m;
   while(cin >> n >> m && (n >= 0 && m >= 0)) {
     LLU ans = 1;
 
