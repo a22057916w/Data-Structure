@@ -13,7 +13,7 @@ using namespace std;
 
 typedef unsigned long long LLU;
 
-#define REC 1
+#define REC 0
 #if(REC == 1)
 
 // By the Pascal's law, c(n, m) equals c(n - 1, m - 1) + c(n - 1, m), where n, m are
