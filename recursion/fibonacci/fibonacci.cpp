@@ -36,6 +36,7 @@ int main() {
   int n;
   while(cin >> n && n >= 0)
     cout << fib[n] << endl;
+  return 0;
 }
 
 #endif
