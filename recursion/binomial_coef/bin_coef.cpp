@@ -12,13 +12,13 @@ LLU bin_coef(int n, int m) {
     return 0;
   if(m == 0)
     return 1;
-    
+
   // Applying Pascal's law
   return bin_coef(n - 1, m - 1) + bin_coef(n - 1, m);
 }
 
 int main() {
   int n, m;
-  while(cin >> n >> m && (n >= 0 && ｍ >= 0))
+  while(cin >> n >> m && (n >= 0 && m >= 0))
     cout << bin_coef(n, m) << endl;
 }
