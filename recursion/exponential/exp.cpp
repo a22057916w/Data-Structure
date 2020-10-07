@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-typedef unsigned long long LLU;
+typedef long long LL;
 
 // The method is applied if and only if y >= 0
-LLU exp(int x, int y) {
+LL exp(int x, int y) {
   if(y <= 0)
     return 1;
   else
