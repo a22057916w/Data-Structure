@@ -27,7 +27,7 @@ LLU gcd(int a, int b) {
 
 int main() {
   int a, b;
-  while(cin >> a >> b && (a >= 0 && b >= 0))
+  while(cin >> a >> b && (a > 0 && b > 0))
     cout << gcd(a, b) << endl;
   return 0;
 }
