@@ -7,6 +7,9 @@ typedef unsigned long long LLU;
 
 const string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
+// perm(a, b, c) = a + perm(b, c) -> perm(b,c) = b + perm(c)
+//                 b + perm(a, c)                c + perm(b)
+//                 c + perm(a, b)
 void perm(string s, int pos, int n, int len) {
   if(pos == n)
     cout << s.substr(0, len) << endl;
