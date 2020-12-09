@@ -1,3 +1,7 @@
+/*
+The concept is like top(last element n)->next(n-1)->next(n-2)->...->next(1)
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -14,7 +18,7 @@ public:
   StackNode(int x): data(x) {
     next = NULL;
   }
-  friend class MyStack;
+  friend class MyStack;     // grant the access for Mystack
 };
 
 class MyStack {
