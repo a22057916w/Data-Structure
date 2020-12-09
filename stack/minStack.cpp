@@ -2,6 +2,10 @@
 #include <stack>
 using namespace std;
 
+
+// For implementation of MinStack, we use two stack as containers.
+// One for data storage, the other for min-value storage in which the min-value,
+// is always at the top
 class MinStack {
 private:
     stack<int> dataStack;
