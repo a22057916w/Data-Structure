@@ -59,7 +59,7 @@ void MyStack::Pop() {
   else {
     StackNode *delNode = top;
     top = top->next;
-    delete delNode;
+    delete delNode;   // release the memory
     delNode = NULL;
     size--;
   }
