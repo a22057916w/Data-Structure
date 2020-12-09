@@ -14,6 +14,7 @@ private:
     bool isEmpty();
     int Top();
     int getSize();
+    int getMin();
 };
 
 void MinStack::Push(int x) {
@@ -55,6 +56,15 @@ int MinStack::getSize() {
     return dataStack.size();
 }
 
+int MinStack::getMin() {
+  if(isEmpty()) {
+    cout << "The stack is empty" << endl;
+    return -1;
+  }
+  else
+    return minStack.top();
+}
+
 int main() {
   MinStack s;
   s.Pop();
@@ -68,7 +78,7 @@ int main() {
   cout << "\ntop: " << s.Top() << "\nmin: " << s.getMin() << endl;
 
   s.Push(9);
-  cout << "\ntop: " << s.Top() << "\nmin: " << s.getMin() << sendl;
+  cout << "\ntop: " << s.Top() << "\nmin: " << s.getMin() << endl;
 
   s.Push(1);
   cout << "\ntop: " << s.Top() << "\nmin: " << s.getMin() << endl;
