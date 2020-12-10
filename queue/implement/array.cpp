@@ -82,6 +82,38 @@ int MyQueue::getCapacity() {
   return capacity;
 }
 
+void printQueue(MyQueue &queue) {
+  cout << "front: " << queue.getFront() << "    back: " << queue.getBack() << "\n"
+    << "capacity: " << queue.getCapacity() << "  size/number of elements: " << queue.getSize() << "\n\n";
+}
+
 int main() {
-  return 0;
+  MyQueue q;
+  if (q.isEmpty()) {
+    cout << "Queue is empty.\n\n";
+  }
+  q.push(24);
+  cout << "After push 24: \n";
+  printQueue(q);
+  q.push(8);
+  q.push(23);
+  cout << "After push 8, 23: \n";
+  printQueue(q);
+  q.pop();
+  cout << "After pop 24: \n";
+  printQueue(q);
+  q.push(13);
+  cout << "After push 13: \n";
+  printQueue(q);
+  q.pop();
+  cout << "After pop 8: \n";
+  printQueue(q);
+   q.push(35);
+   cout << "After push 35: \n";
+  printQueue(q);
+   q.push(9);
+   cout << "After push 9: \n";
+  printQueue(q);
+
+   return 0;
 }
