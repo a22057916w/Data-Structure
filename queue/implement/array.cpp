@@ -24,7 +24,7 @@ public:
 
 void MyQueue::DoubleCapacity() {
   capacity *= 2;
-  int newQueue = new int[capacity];
+  int *newQueue = new int[capacity];
 
   // re-initialize the queue by re-ping front and back
   for(int i = 0, j = front + 1; i < capacity / 2 && j <= back; i++, j++)
@@ -42,7 +42,7 @@ void MyQueue::push(int x) {
 }
 
 void MyQueue::pop() {
-  if(isEmpty)
+  if(isEmpty())
     cout << "The queue is empty" << endl;
   else
     front++;
