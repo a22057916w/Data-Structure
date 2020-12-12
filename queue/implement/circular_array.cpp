@@ -7,7 +7,7 @@ private:
   int *queue;
   void DoubleCapacity();
 public:
-  MyQueue(): capacity(1), front(-1), back(-1) {
+  MyQueue(): capacity(5), front(0), back(0) {
     queue = new int[capacity];
   };
 
@@ -38,14 +38,16 @@ void MyQueue::DoubleCapacity() {
 void MyQueue::push(int x) {
     if(isFull())
       DoubleCapacity();
-    queue[++back] = x;
+
+    back = (back + 1) % capacity;
+    queue[back] = x;
 }
 
 void MyQueue::pop() {
   if(isEmpty())
     cout << "The queue is empty" << endl;
   else
-    front++;
+    front = (front + 1) % capacity;
 }
 
 bool MyQueue::isEmpty() {
@@ -53,7 +55,7 @@ bool MyQueue::isEmpty() {
 }
 
 bool MyQueue::isFull() {
-  return back + 1 == capacity;
+  return (back + 1) % capacity == front;
 }
 
 int MyQueue::getFront() {
@@ -62,7 +64,7 @@ int MyQueue::getFront() {
     return -1;
   }
   else
-    return queue[front + 1];
+    return queue[(front + 1) % capacity];
 }
 
 int MyQueue::getBack() {
