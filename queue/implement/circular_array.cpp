@@ -23,14 +23,16 @@ public:
 };
 
 void MyQueue::DoubleCapacity() {
-  capacity *= 2;
-  int *newQueue = new int[capacity];
+  int *newQueue = new int[capacity * 2];
 
   // re-initialize the queue by re-ping front and back
-  for(int i = 0, j = front + 1; i < capacity / 2 && j <= back; i++, j++)
-    newQueue[i] = queue[j];
-  back = back - (front + 1);
-  front = -1;
+  for(int i = 1, j = front; i < capacity / 2 && j < this->getSize(); i++, j++)
+    newQueue[i] = queue[(j + 1) % capacity];
+
+  back = getSize();   // catch the back before the capacity is changed
+  front = 0;          // this operation must exec after catching back
+  capacity *= 2;
+
   delete[] queue;
   queue = newQueue;
 }
@@ -94,31 +96,43 @@ void printQueue(MyQueue &queue) {
 
 int main() {
   MyQueue q;
+
   if (q.isEmpty()) {
-    cout << "Queue is empty.\n\n";
+      cout << "Queue is empty.\n\n";
   }
+
   q.push(24);
-  cout << "After push 24: \n";
-  printQueue(q);
-  q.push(8);
-  q.push(23);
-  cout << "After push 8, 23: \n";
-  printQueue(q);
-  q.pop();
-  cout << "After pop 24: \n";
-  printQueue(q);
-  q.push(13);
-  cout << "After push 13: \n";
-  printQueue(q);
-  q.pop();
-  cout << "After pop 8: \n";
-  printQueue(q);
-   q.push(35);
-   cout << "After push 35: \n";
-  printQueue(q);
-   q.push(9);
-   cout << "After push 9: \n";
+  cout << "After push 24:\n";
   printQueue(q);
 
-   return 0;
+  q.push(8);
+  q.push(23);
+  cout << "After push 8, 23:\n";
+  printQueue(q);
+
+  q.pop();
+  cout << "After pop 24:\n";
+  printQueue(q);
+
+  q.push(13);
+  cout << "After push 13:\n";
+  printQueue(q);
+
+  q.pop();
+  cout << "After pop 8:\n";
+  printQueue(q);
+
+  q.push(35);
+  cout << "After push 35:\n";
+  printQueue(q);
+
+  q.push(9);
+  cout << "After push 9:\n";
+  printQueue(q);
+
+  q.push(64);
+  cout << "After push 64:\n";
+  printQueue(q);
+
+  return 0;
 }
