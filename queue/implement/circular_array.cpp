@@ -77,7 +77,10 @@ int MyQueue::getBack() {
 }
 
 int MyQueue::getSize() {
-  return back - front;
+  if(front <= back)
+    return back - front;
+  else
+    return capacity - (front - back);
 }
 
 int MyQueue::getCapacity() {
