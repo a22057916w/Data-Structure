@@ -78,3 +78,51 @@ int MyQueue::getBack() {
 int MyQueue::getSize() {
   return size;
 }
+
+int main() {
+  MyQueue q;
+  if (q.isEmpty()) {
+    cout << "Queue is empty.\n";
+  }
+  q.push(24);
+  cout << "\nAfter push 24: \n";
+  cout << "front: " << q.getFront() << "    back: " << q.getBack() << "\n";
+
+  q.push(8);
+  cout << "\nAfter push 8: \n";
+  cout << "front: " << q.getFront() << "    back: " << q.getBack() << "\n";
+
+  q.push(23);
+  cout << "\nAfter push 23: \n";
+  cout << "front: " << q.getFront() << "    back: " << q.getBack() << "\n";
+
+  q.push(13);
+  cout << "\nAfter push 13: \n";
+  cout << "front: " << q.getFront() << "    back: " << q.getBack() << "\n";
+
+  q.pop();
+  cout << "\nAfter pop the front element: \n";
+  cout << "front: " << q.getFront() << "     back: " << q.getBack() << "\n";
+
+  q.push(35);
+  cout << "\nAfter push 35: \n";
+  cout << "front: " << q.getFront() << "     back: " << q.getBack() << "\n";
+
+  q.pop();
+  cout << "\nAfter pop the front element: \n";
+  cout << "front: " << q.getFront() << "    back: " << q.getBack() << "\n";
+
+  q.pop();
+  cout << "\nAfter pop the front element: \n";
+  cout << "front: " << q.getFront() << "    back: " << q.getBack() << "\n";
+
+  q.pop();
+  cout << "\nAfter pop the front element: \n";
+  cout << "front: " << q.getFront() << "    back: " << q.getBack() << "\n";
+
+  q.pop();
+  cout << "\nAfter pop the front element: \n";
+  q.pop();
+
+  return 0;
+}
