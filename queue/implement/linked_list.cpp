@@ -122,6 +122,7 @@ int main() {
 
   q.pop();
   cout << "\nAfter pop the front element: \n";
+
   q.pop();
 
   return 0;
