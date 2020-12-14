@@ -7,7 +7,7 @@ private:
     QueueNode *prev, *next;
 public:
     QueueNode(): data(0), prev(NULL), next(NULL) {};
-    QueueNode(int x): data(0), prev(NULL), next(NULL) {};
+    QueueNode(int x): data(x), prev(NULL), next(NULL) {};
 
     friend class MyDeque;
 };
