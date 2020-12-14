@@ -41,12 +41,11 @@ void MyStack::pop() {
     cout << "The stack is empty" << endl;
     return;
   }
+  else {
+    data.pop();
+    size--;
+  }
 
-  int Top = this->top();
-  data.pop();
-  size--;
-
-  return Top;
 }
 
 bool MyStack::isEmpty() {
