@@ -122,3 +122,35 @@ int MyDeque::getBack() {
 int MyDeque::getSize() {
   return size;
 }
+
+int main() 
+{
+    MyDeque dq;
+    cout << "Insert element '5' at rear end\n";
+    dq.push_back(5);
+
+    cout << "Insert element '10' at rear end\n";
+    dq.push_back(10);
+
+    cout << "Rear end element: "
+        << dq.getBack() << endl;
+
+    dq.pop_back();
+    cout << "After deleting rear element new rear"
+        << " is: " << dq.getBack() << endl;
+
+    cout << "Inserting element '15' at front end \n";
+    dq.push_front(15);
+
+    cout << "Front end element: "
+        << dq.getFront() << endl;
+
+    cout << "Number of elements in Deque: "
+        << dq.size() << endl;
+
+    dq.pop_front();
+    cout << "After deleting front element new "
+        << "front is: " << dq.getFront() << endl;
+
+    return 0;
+}
