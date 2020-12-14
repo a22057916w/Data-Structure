@@ -6,8 +6,8 @@ private:
     int data;
     QueueNode *prev, *next;
 public:
-    ListNode(): data(0), prev(NULL), next(NULL) {};
-    ListNode(int x): data(0), prev(NULL), next(NULL) {};
+    QueueNode(): data(0), prev(NULL), next(NULL) {};
+    QueueNode(int x): data(0), prev(NULL), next(NULL) {};
 
     friend class MyDeque;
 };
@@ -59,7 +59,7 @@ void MyDeque::push_back(int x) {
   size++;
 }
 
-void NyDeque::pop_back() {
+void MyDeque::pop_back() {
   if(isEmpty())
     cout << "The queue is empty." << endl;
   else {
@@ -123,7 +123,7 @@ int MyDeque::getSize() {
   return size;
 }
 
-int main() 
+int main()
 {
     MyDeque dq;
     cout << "Insert element '5' at rear end\n";
@@ -146,7 +146,7 @@ int main()
         << dq.getFront() << endl;
 
     cout << "Number of elements in Deque: "
-        << dq.size() << endl;
+        << dq.getSize() << endl;
 
     dq.pop_front();
     cout << "After deleting front element new "
