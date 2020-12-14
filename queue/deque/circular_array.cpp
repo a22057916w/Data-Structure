@@ -17,6 +17,7 @@ public:
     bool isFull();
     int getFront();
     int getBack();
+    int getCapacity();
     int getSize();
 };
 
