@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-class ListNode {
+class QueueNode {
 private:
     int data;
-    ListNode *prev, *next;
+    QueueNode *prev, *next;
 public:
     ListNode(): data(0), prev(NULL), next(NULL) {};
     ListNode(int x): data(0), prev(NULL), next(NULL) {};
@@ -15,7 +15,7 @@ public:
 class MyDeque {
 private:
     int size;
-    ListNode *front, *back;
+    QueueNode *front, *back;
 public:
     MyDeque(): size(0), front(NULL), back(NULL) {};
 
@@ -28,3 +28,7 @@ public:
     int getBack();
     int getSize();
 };
+
+void MyDeque:push_front(int x) {
+
+}
