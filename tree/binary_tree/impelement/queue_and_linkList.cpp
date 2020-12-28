@@ -5,17 +5,14 @@ using namespace std;
 
 class BinaryTree;
 class TreeNode {
-/*private:
-  string str;
-  TreeNode *parent;
-  TreeNode *leftchild, *rightchild;*/
-public:
-  string str;
+private:
+  char data;
   TreeNode *parent;
   TreeNode *leftchild, *rightchild;
+public:
 
-  TreeNode(): parent(0), leftchild(0), rightchild(0), str("") {};
-  TreeNode(string s): parent(0), leftchild(0), rightchild(0), str(s) {};
+  TreeNode(): parent(0), leftchild(0), rightchild(0), data('') {};
+  TreeNode(char c): parent(0), leftchild(0), rightchild(0), data(c) {};
 
   friend class BinaryTree;
 };
@@ -49,7 +46,7 @@ void BinaryTree::preorder() {
 
 void BinaryTree::preorder(TreeNode *curr) {
   if(curr) {
-    cout << curr->str << " ";
+    cout << curr->data << " ";
     preorder(curr->leftchild);
     preorder(curr->rightchild);
   }
@@ -63,7 +60,7 @@ void BinaryTree::inorder() {
 void BinaryTree::inorder(TreeNode *curr) {
   if(curr) {
     preorder(curr->leftchild);
-    cout << curr->str << " ";
+    cout << curr->data << " ";
     preorder(curr->rightchild);
   }
 }
@@ -77,7 +74,7 @@ void BinaryTree::postorder(TreeNode *curr) {
   if(curr) {
     preorder(curr->leftchild);
     preorder(curr->rightchild);
-    cout << curr->str << " ";
+    cout << curr->data << " ";
   }
 }
 
@@ -88,7 +85,7 @@ void BinaryTree::levelorder() {
   while(!q.empty()) {
     TreeNode *curr = q.front();
     q.pop();
-    cout << curr->str << " ";
+    cout << curr->data << " ";
 
     if(curr->leftchild != NULL)
       q.push(curr->leftchild);
