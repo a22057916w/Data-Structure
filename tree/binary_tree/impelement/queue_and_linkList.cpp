@@ -136,6 +136,33 @@ void BinaryTree::levelorder() {
   }
 }
 
+// modifying functions implmentations
+void BinaryTree::insertLevelorder(char data) {
+  queue<TreeNode *> q;
+  TreeNode *curr = root;
+
+  while(curr) {
+    if(curr->leftchild != NULL)
+      q.push(curr->leftchild);
+    else {
+      TreeNode *newNode = new TreeNode(data);
+      newNode->parent = curr;
+      curr->leftchild = newNode;
+      break;
+    }
+
+    if(curr->rightchild != NULL)
+      q.push(curr->rightchild);
+    else {
+      TreeNode *newNode = new TreeNode(data);
+      newNode->parent = curr;
+      curr->rightchild = newNode;
+      break;
+    }
+    curr = q.front();
+    q.pop();
+  }
+}
 
 int main() {
   const char *a = "A B C D E F x x x G H x I";
