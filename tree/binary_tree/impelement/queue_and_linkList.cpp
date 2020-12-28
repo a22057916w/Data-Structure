@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <sstream>
 #include <queue>
 using namespace std;
 
@@ -99,28 +99,15 @@ void BinaryTree::levelorder() {
 
 
 int main() {
-  // TreeNode instantiation
-    TreeNode *nodeA = new TreeNode("A"); TreeNode *nodeB = new TreeNode("B");
-    TreeNode *nodeC = new TreeNode("C"); TreeNode *nodeD = new TreeNode("D");
-    TreeNode *nodeE = new TreeNode("E"); TreeNode *nodeF = new TreeNode("F");
-    TreeNode *nodeG = new TreeNode("G"); TreeNode *nodeH = new TreeNode("H");
-    TreeNode *nodeI = new TreeNode("I");
+  const char *a = "A B C D E F x x x G H x I";
+  BinaryTree T(a);                // 以level-order規則建立Binary Tree
+  T.inorder();      // 以inorder-traversal印出Binary Tree
 
-    // construct the Binary Tree
-    nodeA->leftchild = nodeB; nodeA->rightchild = nodeC;
-    nodeB->leftchild = nodeD; nodeB->rightchild = nodeE;
-    nodeE->leftchild = nodeG; nodeE->rightchild = nodeH;
-    nodeC->leftchild = nodeF; nodeF->rightchild = nodeI;
+  T.insertLevelorder('K');
+  T.insertLevelorder('L');
+  T.insertLevelorder('M');
+  T.insertLevelorder('N');
+  T.inorder();
 
-    BinaryTree T(nodeA);
-
-    T.preorder();
-    cout << endl;
-    T.inorder();
-    cout << endl;
-    T.postorder();
-    cout << endl;
-    T.levelorder();
-    cout << endl;
   return 0;
 }
