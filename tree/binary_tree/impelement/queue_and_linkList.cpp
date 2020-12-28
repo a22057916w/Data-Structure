@@ -76,5 +76,28 @@ void binaryTree::levelorder() {
 
 
 int main() {
+  // TreeNode instantiation
+    TreeNode *nodeA = new TreeNode("A"); TreeNode *nodeB = new TreeNode("B");
+    TreeNode *nodeC = new TreeNode("C"); TreeNode *nodeD = new TreeNode("D");
+    TreeNode *nodeE = new TreeNode("E"); TreeNode *nodeF = new TreeNode("F");
+    TreeNode *nodeG = new TreeNode("G"); TreeNode *nodeH = new TreeNode("H");
+    TreeNode *nodeI = new TreeNode("I");
+
+    // construct the Binary Tree
+    nodeA->leftchild = nodeB; nodeA->rightchild = nodeC;
+    nodeB->leftchild = nodeD; nodeB->rightchild = nodeE;
+    nodeE->leftchild = nodeG; nodeE->rightchild = nodeH;
+    nodeC->leftchild = nodeF; nodeF->rightchild = nodeI;
+
+    BinaryTree T(nodeA);
+
+    T.Preorder();
+    cout << endl;
+    T.Inorder();
+    cout << endl;
+    T.Postorder();
+    cout << endl;
+    T.Levelorder();
+    cout << endl;
   return 0;
 }
