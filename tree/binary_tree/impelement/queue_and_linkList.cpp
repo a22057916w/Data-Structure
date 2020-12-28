@@ -114,13 +114,13 @@ int main() {
 
     BinaryTree T(nodeA);
 
-    T.Preorder();
+    T.preorder();
     cout << endl;
-    T.Inorder();
+    T.inorder();
     cout << endl;
-    T.Postorder();
+    T.postorder();
     cout << endl;
-    T.Levelorder();
+    T.levelorder();
     cout << endl;
   return 0;
 }
