@@ -5,11 +5,15 @@ using namespace std;
 
 class BinaryTree;
 class TreeNode {
-private:
+/*private:
+  string str;
+  TreeNode *parent;
+  TreeNode *leftchild, *rightchild;*/
+public:
   string str;
   TreeNode *parent;
   TreeNode *leftchild, *rightchild;
-public:
+
   TreeNode(): parent(0), leftchild(0), rightchild(0), str("") {};
   TreeNode(string s): parent(0), leftchild(0), rightchild(0), str(s) {};
 
@@ -31,7 +35,7 @@ public:
   BinaryTree(TreeNode *node): root(node) {};
 
   // traversal functions
-  void preorder(TreeNode *curr);
+  void preorder();
   void inorder();
   void postorder();
   void levelorder();
@@ -77,7 +81,7 @@ void BinaryTree::postorder(TreeNode *curr) {
   }
 }
 
-void binaryTree::levelorder() {
+void BinaryTree::levelorder() {
   queue<TreeNode *> q;
   q.push(root);
 
