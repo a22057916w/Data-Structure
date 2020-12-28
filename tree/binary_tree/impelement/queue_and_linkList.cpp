@@ -10,10 +10,10 @@ private:
   TreeNode *parent;
   TreeNode *leftchild, *rightchild;
 public:
-  TreeNode(): parent(0), leftchild(0), rightchild(0), s("") {};
+  TreeNode(): parent(0), leftchild(0), rightchild(0), str("") {};
   TreeNode(string s): parent(0), leftchild(0), rightchild(0), str(s) {};
 
-  friend class TreeNode;
+  friend class BinaryTree;
 };
 
 class BinaryTree {
