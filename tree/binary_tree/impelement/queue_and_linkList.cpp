@@ -11,7 +11,7 @@ private:
   TreeNode *leftchild, *rightchild;
 public:
 
-  TreeNode(): parent(0), leftchild(0), rightchild(0), data('') {};
+  TreeNode(): parent(0), leftchild(0), rightchild(0), data('x') {};
   TreeNode(char c): parent(0), leftchild(0), rightchild(0), data(c) {};
 
   friend class BinaryTree;
@@ -28,7 +28,7 @@ private:
   void levelorder(TreeNode *curr);
 
   // consturctor fucntions
-  void levelOrderConsturct(stringstrean &ss);
+  void levelOrderConsturct(stringstream &ss);
 
 public:
   BinaryTree(): root(0) {};
@@ -55,7 +55,7 @@ public:
 };
 
 // consturctor functions implmentations
-void BinaryTree::levelOrderConsturct(stringstrean &ss) {
+void BinaryTree::levelOrderConsturct(stringstream &ss) {
   queue<TreeNode *> q;
   TreeNode *curr = root;
   char data = 'x';
@@ -101,21 +101,21 @@ void BinaryTree::inorder() {
 
 void BinaryTree::inorder(TreeNode *curr) {
   if(curr) {
-    preorder(curr->leftchild);
+    inorder(curr->leftchild);
     cout << curr->data << " ";
-    preorder(curr->rightchild);
+    inorder(curr->rightchild);
   }
 }
 
 void BinaryTree::postorder() {
-  inorder(root);
+  postorder(root);
   cout << "\n";
 }
 
 void BinaryTree::postorder(TreeNode *curr) {
   if(curr) {
-    preorder(curr->leftchild);
-    preorder(curr->rightchild);
+    postorder(curr->leftchild);
+    postorder(curr->rightchild);
     cout << curr->data << " ";
   }
 }
