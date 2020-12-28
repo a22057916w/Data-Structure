@@ -54,9 +54,33 @@ public:
 
 };
 
+// consturctor functions implmentations
+void BinaryTree::levelOrderConsturct(stringstrean &ss) {
+  queue<TreeNode *> q;
+  TreeNode *curr = root;
+  char data = 'x';
 
+  while(ss >> data) {
+    if(data != 'x') {
+      TreeNode *newNode = new TreeNode(data);
+      newNode->parent = curr;
+      curr->leftchild = newNode;
+      q.push(newNode);
+    }
+    if(!(ss >> data))
+      break;
+    if(data != 'x') {
+        TreeNode *newNode = new TreeNode(data);
+        newNode->parent = curr;
+        curr->rightchild = newNode;
+        q.push(newNode);
+    }
+    curr = q.front();
+    q.pop();
+  }
+}
 
-// traversal functions impelmentations
+// traversal functions implmentations
 void BinaryTree::preorder() {
   preorder(root);
   cout << "\n";
