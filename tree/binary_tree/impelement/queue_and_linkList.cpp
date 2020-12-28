@@ -27,18 +27,36 @@ private:
   void postorder(TreeNode *curr);
   void levelorder(TreeNode *curr);
 
+  // consturctor fucntions
+  void levelOrderConsturct(stringstrean &ss);
+
 public:
   BinaryTree(): root(0) {};
   BinaryTree(TreeNode *node): root(node) {};
+  BinaryTree(const char* str) {
+    stringstream ss;
+    ss << str;
+
+    root = new TreeNode();    // allocate memory for root
+    ss >> root->data;         // assign the firt character to root
+
+    levelOrderConsturct(ss);
+  }
 
   // traversal functions
   void preorder();
   void inorder();
   void postorder();
   void levelorder();
+
+  // modifying functions
+  void insertLevelorder(char data);
+
 };
 
-// traversal functions
+
+
+// traversal functions impelmentations
 void BinaryTree::preorder() {
   preorder(root);
   cout << "\n";
