@@ -19,12 +19,19 @@ public:
 class BinaryTree {
 private:
   TreeNode *root;
+
+  // traversal functions
+  void preorder(TreeNode *curr);
+  void inorder(TreeNode *curr);
+  void postorder(TreeNode *curr);
+  void levelorder(TreeNode *curr);
+
 public:
   BinaryTree(): root(0) {};
   BinaryTree(TreeNode *node): root(node) {};
 
   // traversal functions
-  void preorder();
+  void preorder(TreeNode *curr);
   void inorder();
   void postorder();
   void levelorder();
@@ -32,7 +39,11 @@ public:
 
 // traversal functions
 void BinaryTree::preorder() {
-  TreeNode *curr = root;
+  preorder(root);
+  cout << "\n";
+}
+
+void BinaryTree::preorder(TreeNode *curr) {
   if(curr) {
     cout << curr->str << " ";
     preorder(curr->leftchild);
@@ -41,7 +52,11 @@ void BinaryTree::preorder() {
 }
 
 void BinaryTree::inorder() {
-  TreeNode *curr = root;
+  inorder(root);
+  cout << "\n";
+}
+
+void BinaryTree::inorder(TreeNode *curr) {
   if(curr) {
     preorder(curr->leftchild);
     cout << curr->str << " ";
@@ -50,7 +65,11 @@ void BinaryTree::inorder() {
 }
 
 void BinaryTree::postorder() {
-  TreeNode *curr = root;
+  inorder(root);
+  cout << "\n";
+}
+
+void BinaryTree::postorder(TreeNode *curr) {
   if(curr) {
     preorder(curr->leftchild);
     preorder(curr->rightchild);
