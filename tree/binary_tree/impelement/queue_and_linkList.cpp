@@ -1,16 +1,17 @@
 #include <iostream>
 #include <string>
+#include <queue>
 using namespace std;
 
 class BinaryTree;
 class TreeNode {
 private:
-  string s;
+  string str;
   TreeNode *parent;
   TreeNode *leftchild, *rightchild;
 public:
   TreeNode(): parent(0), leftchild(0), rightchild(0), s("") {};
-  TreeNode(string str): parent(0), leftchild(0), rightchild(0), s(str) {};
+  TreeNode(string s): parent(0), leftchild(0), rightchild(0), str(s) {};
 
   friend class TreeNode;
 };
@@ -29,10 +30,11 @@ public:
   void levelorder();
 };
 
+// traversal functions
 void BinaryTree::preorder() {
   TreeNode *curr = root;
   if(curr) {
-    cout << curr->s << " ";
+    cout << curr->str << " ";
     preorder(curr->leftchild);
     preorder(curr->rightchild);
   }
@@ -42,7 +44,7 @@ void BinaryTree::inorder() {
   TreeNode *curr = root;
   if(curr) {
     preorder(curr->leftchild);
-    cout << curr->s << " ";
+    cout << curr->str << " ";
     preorder(curr->rightchild);
   }
 }
@@ -52,11 +54,25 @@ void BinaryTree::postorder() {
   if(curr) {
     preorder(curr->leftchild);
     preorder(curr->rightchild);
-    cout << curr->s << " ";
+    cout << curr->str << " ";
   }
 }
 
+void binaryTree::levelorder() {
+  queue<TreeNode *> q;
+  q.push(root);
 
+  while(!q.empty()) {
+    TreeNode *curr = q.front();
+    q.pop();
+    cout << curr->str << " ";
+
+    if(curr->leftchild != NULL)
+      q.push(curr->leftchild);
+    if(curr->rightchild != NULL)
+      q.push(curr->rightchild);
+  }
+}
 
 
 int main() {
