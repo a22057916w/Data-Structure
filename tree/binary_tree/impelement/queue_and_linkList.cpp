@@ -56,6 +56,9 @@ public:
 
 // consturctor functions implmentations
 void BinaryTree::levelOrderConsturct(stringstream &ss) {
+
+  // using queue to record the nodes in level order
+  // that is, in compelete binary tree rules
   queue<TreeNode *> q;
   TreeNode *curr = root;
   char data = 'x';
@@ -121,6 +124,9 @@ void BinaryTree::postorder(TreeNode *curr) {
 }
 
 void BinaryTree::levelorder() {
+
+  // using queue to record the nodes in level order
+  // that is, in compelete binary tree rules
   queue<TreeNode *> q;
   q.push(root);
 
@@ -138,6 +144,9 @@ void BinaryTree::levelorder() {
 
 // modifying functions implmentations
 void BinaryTree::insertLevelorder(char data) {
+
+  // using queue to record the nodes in level order
+  // that is, in compelete binary tree rules
   queue<TreeNode *> q;
   TreeNode *curr = root;
 
@@ -166,8 +175,8 @@ void BinaryTree::insertLevelorder(char data) {
 
 int main() {
   const char *a = "A B C D E F x x x G H x I";
-  BinaryTree T(a);                // 以level-order規則建立Binary Tree
-  T.inorder();      // 以inorder-traversal印出Binary Tree
+  BinaryTree T(a);
+  T.inorder();
 
   T.insertLevelorder('K');
   T.insertLevelorder('L');
