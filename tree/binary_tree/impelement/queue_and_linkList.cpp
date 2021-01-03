@@ -178,6 +178,9 @@ void BinaryTree::insertLevelorder(char data) {
 
 // capacity functions implmentations
 int BinaryTree::getSize() {
+
+  // using queue to record the nodes in level order
+  // that is, in complete binary tree rules
   queue<TreeNode *> q;
   q.push(root);
 
