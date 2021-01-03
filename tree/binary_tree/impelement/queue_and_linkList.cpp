@@ -208,6 +208,9 @@ int BinaryTree::getDepth() {
 }
 
 int BinaryTree::getDepth(TreeNode *curr) {
+  // the idea is find the maxinum between left subtree and right subtree
+  // ,then plus the root itself
+
   if(curr == NULL)
     return 0;
   return max(getDepth(curr->leftchild), getDepth(curr->rightchild)) + 1;
