@@ -206,7 +206,7 @@ int main() {
   T.insertLevelorder('M');
   T.insertLevelorder('N');
   T.inorder();
-  T.getSize();
+  cout << T.getSize() << endl;;
 
   return 0;
 }
