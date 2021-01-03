@@ -179,20 +179,20 @@ void BinaryTree::insertLevelorder(char data) {
 // capacity functions implmentations
 int BinaryTree::getSize() {
   queue<TreeNode *> q;
-  TreeNode *curr = root;
-  int count = 0;
+  q.push(root);
 
-  while(curr) {
+  int count = 0;
+  while(!q.empty()) {
+    count++;
+
+    TreeNode *curr = q.front();
+    q.pop();
+
     if(curr->leftchild != NULL)
       q.push(curr->leftchild);
     if(curr->rightchild != NULL)
       q.push(curr->rightchild);
-
-    count++;
-    curr = q.front();
-    q.pop();
   }
-
   return count;
 }
 
