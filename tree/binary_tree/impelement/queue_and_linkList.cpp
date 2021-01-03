@@ -53,7 +53,7 @@ public:
   void insertLevelorder(char data);
 
   // capacity functions
-  int getSize();
+  int getSize();            // return the nodes of the tree
 
 };
 
