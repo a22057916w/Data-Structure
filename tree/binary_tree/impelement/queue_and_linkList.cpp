@@ -52,6 +52,9 @@ public:
   // modifying functions
   void insertLevelorder(char data);
 
+  // capacity functions
+  int getSize();
+
 };
 
 // consturctor functions implmentations
@@ -171,6 +174,11 @@ void BinaryTree::insertLevelorder(char data) {
     curr = q.front();
     q.pop();
   }
+}
+
+// capacity function implmentations
+int BinaryTree::getSize() {
+
 }
 
 int main() {
