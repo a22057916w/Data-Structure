@@ -30,6 +30,9 @@ private:
   // consturctor fucntions
   void levelOrderConsturct(stringstream &ss);
 
+  // capacity functions
+  int getDepth(TreeNode *curr);           // return the height of the tree
+
 public:
   BinaryTree(): root(0) {};
   BinaryTree(TreeNode *node): root(node) {};
@@ -54,6 +57,7 @@ public:
 
   // capacity functions
   int getSize();            // return the nodes of the tree
+  int getDepth();           // return the height of the tree
 
 };
 
@@ -199,6 +203,17 @@ int BinaryTree::getSize() {
   return count;
 }
 
+int BinaryTree::getDepth() {
+  return getDepth(root);
+}
+
+int BinaryTree::getDepth(TreeNode *curr) {
+  if(curr == NULL)
+    return 0;
+  return max(getDepth(curr->leftchild), getDepth(curr->rightchild)) + 1;
+}
+
+
 int main() {
   const char *a = "A B C D E F x x x G H x I";
   BinaryTree T(a);
@@ -209,7 +224,9 @@ int main() {
   T.insertLevelorder('M');
   T.insertLevelorder('N');
   T.inorder();
-  cout << T.getSize() << endl;;
+
+  cout << T.getSize() << endl;
+  cout << T.getDepth() << endl;
 
   return 0;
 }
