@@ -61,7 +61,7 @@ public:
 void BinaryTree::levelOrderConsturct(stringstream &ss) {
 
   // using queue to record the nodes in level order
-  // that is, in compelete binary tree rules
+  // that is, in complete binary tree rules
   queue<TreeNode *> q;
   TreeNode *curr = root;
   char data = 'x';
@@ -129,7 +129,7 @@ void BinaryTree::postorder(TreeNode *curr) {
 void BinaryTree::levelorder() {
 
   // using queue to record the nodes in level order
-  // that is, in compelete binary tree rules
+  // that is, in complete binary tree rules
   queue<TreeNode *> q;
   q.push(root);
 
@@ -149,7 +149,7 @@ void BinaryTree::levelorder() {
 void BinaryTree::insertLevelorder(char data) {
 
   // using queue to record the nodes in level order
-  // that is, in compelete binary tree rules
+  // that is, in complete binary tree rules
   queue<TreeNode *> q;
   TreeNode *curr = root;
 
@@ -206,6 +206,7 @@ int main() {
   T.insertLevelorder('M');
   T.insertLevelorder('N');
   T.inorder();
+  T.getSize();
 
   return 0;
 }
