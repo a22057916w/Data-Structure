@@ -187,6 +187,8 @@ void BinaryTree::insertLevelorder(char data) {
 void BinaryTree::deleteKey(char key) {
   if(root == NULL)
     return;
+  if(root->leftchild == NULL && root->rightchild == NULL && root->data == key)
+    root = NULL;
 
   queue<TreeNode *> q;
   q.push(root);
@@ -216,11 +218,14 @@ void BinaryTree::deleteKey(char key) {
 
 void BinaryTree::deleteDeepest(TreeNode *delNode) {
   TreeNode *father = delNode->parent;
-  
-  if(fatehr->leftchild == delNode)
-    father->leftchild == NULL;
+
+  if(father->rightchild == delNode)
+    father->rightchild = NULL;
   else
-    father->rightchild == NULL;
+    father->leftchild = NULL;
+
+  delNode = NULL;
+  delete delNode;
 }
 
 // capacity functions implmentations
