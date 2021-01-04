@@ -262,10 +262,14 @@ void BinaryTree::copy(TreeNode *curr, TreeNode *newNode) {
     return;
   else {
     newNode->data = curr->data;
-    if(curr->leftchild)
+    if(curr->leftchild) {
       newNode->leftchild = new TreeNode();
-    if(curr->rightchild)
+      newNode->leftchild->parent = newNode;
+    }
+    if(curr->rightchild) {
       newNode->rightchild = new TreeNode();
+      newNode->rightchild->parent = newNode;
+    }
 
     copy(curr->leftchild, newNode->leftchild);
     copy(curr->rightchild, newNode->rightchild);
