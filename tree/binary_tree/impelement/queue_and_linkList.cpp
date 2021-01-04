@@ -353,5 +353,8 @@ int main() {
   BinaryTree TM = T.copy();
   TM.inorder();
 
+  TM.deleteKey('A');
+  TM.inorder();
+  
   return 0;
 }
