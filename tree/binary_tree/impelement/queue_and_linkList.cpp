@@ -54,7 +54,7 @@ public:
 
   // modifying functions
   void insertLevelorder(char data);
-  void deleteDeepset();
+  void deleteLeaf();
   void deleteKey();
 
   // capacity functions
@@ -182,12 +182,12 @@ void BinaryTree::insertLevelorder(char data) {
   }
 }
 
-void BinaryTree::deleteDeepset() {
-
+void BinaryTree::deleteLeaf() {
+  
 }
 
 void BinaryTree::deleteKey() {
-  
+
 }
 
 // capacity functions implmentations
