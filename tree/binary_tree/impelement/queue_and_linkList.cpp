@@ -215,7 +215,12 @@ void BinaryTree::deleteKey(char key) {
 }
 
 void BinaryTree::deleteDeepest(TreeNode *delNode) {
+  TreeNode *father = delNode->parent;
   
+  if(fatehr->leftchild == delNode)
+    father->leftchild == NULL;
+  else
+    father->rightchild == NULL;
 }
 
 // capacity functions implmentations
