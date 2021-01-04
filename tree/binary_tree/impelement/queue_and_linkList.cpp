@@ -282,8 +282,19 @@ int BinaryTree::getDepth(TreeNode *curr) {
 }
 
 int BinaryTree::getLeaf() {
-
+  return getLeaf(root);
 }
+
+int BinaryTree::getLeaf(TreeNode *curr) {
+  if(curr == NULL)
+    return 0;
+
+  if(curr->leftchild == NULL && curr->rightchild == NULL)
+    return 1;
+  else
+    return getLeaf(curr->leftchild) + getLeaf(curr->rightchild);
+}
+
 
 
 int main() {
