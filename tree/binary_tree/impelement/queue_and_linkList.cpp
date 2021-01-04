@@ -65,6 +65,7 @@ public:
 
 };
 
+
 // consturctor functions implmentations
 void BinaryTree::levelOrderConsturct(stringstream &ss) {
 
@@ -93,6 +94,7 @@ void BinaryTree::levelOrderConsturct(stringstream &ss) {
     q.pop();
   }
 }
+
 
 // traversal functions implmentations
 void BinaryTree::preorder() {
@@ -152,6 +154,7 @@ void BinaryTree::levelorder() {
       q.push(curr->rightchild);
   }
 }
+
 
 // modifying functions implmentations
 void BinaryTree::insertLevelorder(char data) {
@@ -228,6 +231,7 @@ void BinaryTree::deleteDeepest(TreeNode *delNode) {
   delete delNode;
 }
 
+
 // capacity functions implmentations
 int BinaryTree::getSize() {
 
@@ -265,6 +269,7 @@ int BinaryTree::getDepth(TreeNode *curr) {
 }
 
 
+
 int main() {
   const char *a = "A B C D E F x x x G H x I";
   BinaryTree T(a);
@@ -278,6 +283,9 @@ int main() {
 
   cout << T.getSize() << endl;
   cout << T.getDepth() << endl;
+
+  T.deleteKey('L');
+  T.inorder();
 
   return 0;
 }
