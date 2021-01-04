@@ -247,13 +247,13 @@ void BinaryTree::deleteDeepest(TreeNode *delNode) {
 }
 
 BinaryTree BinaryTree::copy() {
-  BinaryTree mir;
+  BinaryTree mir(new TreeNode());
 
   if(root == NULL)
     return mir;
   else
     copy(root, mir.root);
-    
+
   return mir;
 }
 
@@ -345,6 +345,9 @@ int main() {
 
   T.deleteKey('L');
   T.inorder();
+
+  BinaryTREE TM = T.copy();
+  TM.inorder();
 
   return 0;
 }
