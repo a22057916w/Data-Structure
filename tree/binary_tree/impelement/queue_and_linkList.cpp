@@ -55,7 +55,7 @@ public:
   // modifying functions
   void insertLevelorder(char data);
   void deleteLeaf();
-  void deleteKey();
+  void deleteKey(char key);
 
   // capacity functions
   int getSize();            // return the nodes of the tree
@@ -183,11 +183,37 @@ void BinaryTree::insertLevelorder(char data) {
 }
 
 void BinaryTree::deleteLeaf() {
-  
+
 }
 
-void BinaryTree::deleteKey() {
+void BinaryTree::deleteKey(char key) {
+  if(root == NULL)
+    return;
 
+  queue<TreeNode *> q;
+  q.push(root);
+
+  TreeNode *curr;
+  TreeNode *keyNode;
+
+  while(!q.empty()) {
+    curr = q.front();
+    q.pop();
+
+    if(curr->data == key)
+      keyNode = curr;
+
+    if(curr->leftchild != NULL)
+      q.push(curr->leftchild);
+    if(curr->rightchild != NULL)
+      q.push(curr->rightchild);
+  }
+
+  if(keyNode != NULL) {
+    char data = curr->data;
+    deleteDeepest(curr);
+    keyNode->data = data;
+  }
 }
 
 // capacity functions implmentations
