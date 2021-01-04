@@ -30,6 +30,9 @@ private:
   // consturctor fucntions
   void levelOrderConsturct(stringstream &ss);
 
+  // modifying functions
+  void deleteDeepest(TreeNode *delNode);  // a fucntion for deleteKey();
+
   // capacity functions
   int getDepth(TreeNode *curr);           // return the height of the tree
 
@@ -54,7 +57,6 @@ public:
 
   // modifying functions
   void insertLevelorder(char data);
-  void deleteLeaf();
   void deleteKey(char key);
 
   // capacity functions
@@ -182,10 +184,6 @@ void BinaryTree::insertLevelorder(char data) {
   }
 }
 
-void BinaryTree::deleteLeaf() {
-
-}
-
 void BinaryTree::deleteKey(char key) {
   if(root == NULL)
     return;
@@ -214,6 +212,10 @@ void BinaryTree::deleteKey(char key) {
     deleteDeepest(curr);
     keyNode->data = data;
   }
+}
+
+void BinaryTree::deleteDeepest(TreeNode *delNode) {
+  
 }
 
 // capacity functions implmentations
