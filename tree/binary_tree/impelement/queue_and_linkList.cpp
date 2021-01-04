@@ -248,11 +248,28 @@ void BinaryTree::deleteDeepest(TreeNode *delNode) {
 
 BinaryTree BinaryTree::copy() {
   BinaryTree mir;
+
+  if(root == NULL)
+    return mir;
+  else
+    copy(root, mir.root);
+    
   return mir;
 }
 
 void BinaryTree::copy(TreeNode *curr, TreeNode *newNode) {
+  if(curr == NULL)
+    return;
+  else {
+    newNode->data = curr->data;
+    if(curr->leftchild)
+      newNode->leftchild = new TreeNode();
+    if(curr->rightchild)
+      newNode->rightchild = new TreeNode();
 
+    copy(curr->leftchild, newNode->leftchild);
+    copy(curr->rightchild, newNode->rightchild);
+  }
 }
 
 // capacity functions implmentations
