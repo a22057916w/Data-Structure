@@ -188,16 +188,24 @@ void BinaryTree::insertLevelorder(char data) {
 }
 
 void BinaryTree::deleteKey(char key) {
+  // The idea is, starting at root, find the deepest and rightmost node in
+  // binary tree and the node which we want to delete. And replace the deepest
+  // rightmost node’s data with node to be deleted.
+  // Then delete the deepest rightmost node.
+
+  // check special case for root
   if(root == NULL)
     return;
   if(root->leftchild == NULL && root->rightchild == NULL && root->data == key)
     root = NULL;
 
+  // using queue to record the nodes in level order
+  // that is, in complete binary tree rules
   queue<TreeNode *> q;
   q.push(root);
 
-  TreeNode *curr;
-  TreeNode *keyNode;
+  TreeNode *curr;       // iterating to the deepest leaf
+  TreeNode *keyNode;    // to find the target node
 
   while(!q.empty()) {
     curr = q.front();
@@ -220,6 +228,9 @@ void BinaryTree::deleteKey(char key) {
 }
 
 void BinaryTree::deleteDeepest(TreeNode *delNode) {
+
+  // There would be no condition where father == NULL
+  // since we chech the situation in the caller function.
   TreeNode *father = delNode->parent;
 
   if(father->rightchild == delNode)
