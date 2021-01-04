@@ -346,7 +346,7 @@ int main() {
   T.deleteKey('L');
   T.inorder();
 
-  BinaryTREE TM = T.copy();
+  BinaryTree TM = T.copy();
   TM.inorder();
 
   return 0;
