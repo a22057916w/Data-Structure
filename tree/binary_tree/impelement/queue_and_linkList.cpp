@@ -62,6 +62,7 @@ public:
   // capacity functions
   int getSize();            // return the nodes of the tree
   int getDepth();           // return the height of the tree
+  int getLeaf();            // return the number of the leaf
 
 };
 
@@ -279,6 +280,9 @@ int BinaryTree::getDepth(TreeNode *curr) {
   return max(getDepth(curr->leftchild), getDepth(curr->rightchild)) + 1;
 }
 
+int BinaryTree::getLeaf() {
+  
+}
 
 
 int main() {
