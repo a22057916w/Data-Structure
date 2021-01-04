@@ -54,6 +54,8 @@ public:
 
   // modifying functions
   void insertLevelorder(char data);
+  void deleteDeepset();
+  void deleteKey();
 
   // capacity functions
   int getSize();            // return the nodes of the tree
@@ -178,6 +180,14 @@ void BinaryTree::insertLevelorder(char data) {
     curr = q.front();
     q.pop();
   }
+}
+
+void BinaryTree::deleteDeepset() {
+
+}
+
+void BinaryTree::deleteKey() {
+  
 }
 
 // capacity functions implmentations
