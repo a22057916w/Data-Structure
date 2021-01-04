@@ -310,6 +310,7 @@ int main() {
 
   cout << T.getSize() << endl;
   cout << T.getDepth() << endl;
+  cout << T.getLeaf() << endl;
 
   T.deleteKey('L');
   T.inorder();
