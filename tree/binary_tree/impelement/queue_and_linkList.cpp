@@ -273,8 +273,8 @@ int BinaryTree::getDepth() {
 }
 
 int BinaryTree::getDepth(TreeNode *curr) {
-  // the idea is find the maxinum between left subtree and right subtree
-  // ,then plus the root itself
+  // the idea is find the maxinum between left subtree and right subtree,
+  // then plus the root itself
 
   if(curr == NULL)
     return 0;
@@ -286,6 +286,10 @@ int BinaryTree::getLeaf() {
 }
 
 int BinaryTree::getLeaf(TreeNode *curr) {
+  // The idea is, if node is NULL then return 0.
+  // Else if left and right child nodes are NULL return 1.
+  // Else recursively calculate Leaf count of left subtree + Leaf count of right
+
   if(curr == NULL)
     return 0;
 
