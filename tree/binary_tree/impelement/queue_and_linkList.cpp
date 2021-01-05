@@ -405,5 +405,12 @@ int main() {
   TM.deleteKey('A');
   TM.inorder();
 
+  // testing equal()
+  BinaryTree TS = T.copy();
+  TS.inorder();
+  cout << TS.equal(T) << endl;
+  T.swap();
+  cout << TS.equal(T) << endl;
+
   return 0;
 }
