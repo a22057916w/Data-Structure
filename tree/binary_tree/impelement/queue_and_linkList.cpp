@@ -247,6 +247,8 @@ void BinaryTree::deleteDeepest(TreeNode *delNode) {
 }
 
 BinaryTree BinaryTree::copy() {
+  // using recursion to copy left subtree and right subtree
+  
   BinaryTree mir(new TreeNode());
 
   if(root == NULL)
@@ -355,6 +357,6 @@ int main() {
 
   TM.deleteKey('A');
   TM.inorder();
-  
+
   return 0;
 }
