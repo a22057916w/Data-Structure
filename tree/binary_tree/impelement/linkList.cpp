@@ -283,8 +283,12 @@ bool BinaryTree::equal(TreeNode *s, TreeNode *t) {
   else if(s != NULL && t != NULL) {     // case 2
     if(s->data != t->data)
       return false;
-    else if(equal(s->leftchild, t->leftchild))
-      return equal(s->rightchild, t->rightchild);
+    else {
+      if(equal(s->leftchild, t->leftchild))
+        return equal(s->rightchild, t->rightchild);
+      else
+        return false;
+    }
   }
   else                                  // case 3
     return false;
