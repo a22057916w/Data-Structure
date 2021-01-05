@@ -272,11 +272,20 @@ void BinaryTree::swap(TreeNode *curr) {
 }
 
 bool BinaryTree::equal(TreeNode *target) {
-
+  return equal(root, target);
 }
 
 bool BinaryTree::equal(TreeNode *s, TreeNode *t) {
-
+  if(s == NULL && t == NULL)
+    return true;
+  else if(s != NULL && t != NULL) {
+    if(s->data != t->data)
+      return false;
+    else if(equal(s->leftchild, t->leftchild))
+      return equal(s->rightchild, t->rightchild);
+    else
+      return false;
+  }
 }
 
 BinaryTree BinaryTree::copy() {
