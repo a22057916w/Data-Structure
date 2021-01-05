@@ -34,6 +34,7 @@ private:
   void deleteDeepest(TreeNode *delNode);        // for deleteKey() in public
   void copy(TreeNode *curr, TreeNode *newNode); // for copy() in public
   void swap(TreeNode *curr);                    // for swap() in public
+  bool equal(TreeNode *sor, TreeNode *tar)
 
   // capacity functions
   int getDepth(TreeNode *curr);           // return the height of the tree
@@ -62,6 +63,7 @@ public:
   void insertLevelorder(char data);
   void deleteKey(char key);
   void swap();
+  bool equal();
   BinaryTree copy();
 
   // capacity functions
@@ -267,6 +269,14 @@ void BinaryTree::swap(TreeNode *curr) {
     curr->leftchild = curr->rightchild;
     curr->rightchild = temp;
   }
+}
+
+bool BinaryTree::equal() {
+
+}
+
+bool BinaryTree::equal(TreeNode *s, TreeNode *t) {
+  
 }
 
 BinaryTree BinaryTree::copy() {
