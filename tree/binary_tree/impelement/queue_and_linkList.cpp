@@ -272,18 +272,20 @@ void BinaryTree::swap(TreeNode *curr) {
 }
 
 bool BinaryTree::equal(BinaryTree target) {
+
+  // Treversal by DFS
   return equal(root, target.root);
 }
 
 bool BinaryTree::equal(TreeNode *s, TreeNode *t) {
-  if(s == NULL && t == NULL)
+  if(s == NULL && t == NULL)            // case 1
     return true;
-  else if(s != NULL && t != NULL) {
+  else if(s != NULL && t != NULL) {     // case 2
     if(s->data != t->data)
       return false;
     else if(equal(s->leftchild, t->leftchild))
       return equal(s->rightchild, t->rightchild);
-    else
+    else                                // case 3
       return false;
   }
 }
