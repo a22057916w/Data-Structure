@@ -33,7 +33,7 @@ private:
   // modifying functions
   void deleteDeepest(TreeNode *delNode);        // for deleteKey() in public
   void copy(TreeNode *curr, TreeNode *newNode); // for copy() in public
-  void swap(TreeNode *curr);
+  void swap(TreeNode *curr);                    // for swap() in public
 
   // capacity functions
   int getDepth(TreeNode *curr);           // return the height of the tree
@@ -256,6 +256,9 @@ void BinaryTree::swap() {
 }
 
 void BinaryTree::swap(TreeNode *curr) {
+  // The task is to swap sibling nodes of every level except the root.
+  // We start with bottom-up by recursion
+
   if(curr) {
     swap(curr->leftchild);
     swap(curr->rightchild);
