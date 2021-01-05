@@ -372,6 +372,11 @@ int main() {
   T.deleteKey('L');
   T.inorder();
 
+  T.swap();
+  T.inorder();
+  T.preorder();
+  T.swap();
+
   BinaryTree TM = T.copy();
   TM.inorder();
 
