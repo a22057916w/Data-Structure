@@ -33,6 +33,7 @@ private:
   // modifying functions
   void deleteDeepest(TreeNode *delNode);        // for deleteKey() in public
   void copy(TreeNode *curr, TreeNode *newNode); // for copy() in public
+  void swap(TreeNode *curr);
 
   // capacity functions
   int getDepth(TreeNode *curr);           // return the height of the tree
@@ -60,6 +61,7 @@ public:
   // modifying functions
   void insertLevelorder(char data);
   void deleteKey(char key);
+  void swap();
   BinaryTree copy();
 
   // capacity functions
@@ -246,9 +248,17 @@ void BinaryTree::deleteDeepest(TreeNode *delNode) {
   delete delNode;
 }
 
+void BinaryTree::swap() {
+
+}
+
+void BinaryTree::swap(TreeNode *curr) {
+  
+}
+
 BinaryTree BinaryTree::copy() {
   // using recursion to copy left subtree and right subtree
-  
+
   BinaryTree mir(new TreeNode());
 
   if(root == NULL)
