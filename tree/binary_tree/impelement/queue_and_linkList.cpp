@@ -249,11 +249,21 @@ void BinaryTree::deleteDeepest(TreeNode *delNode) {
 }
 
 void BinaryTree::swap() {
-
+  if(root == NULL)
+    return;
+  else
+    swap(root);
 }
 
 void BinaryTree::swap(TreeNode *curr) {
-  
+  if(curr) {
+    swap(curr->leftchild);
+    swap(curr->rightchild);
+
+    TreeNode *temp = curr->leftchild;
+    curr->leftchild = curr->rightchild;
+    curr->rightchild = temp;
+  }
 }
 
 BinaryTree BinaryTree::copy() {
