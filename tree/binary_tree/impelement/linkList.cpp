@@ -285,9 +285,9 @@ bool BinaryTree::equal(TreeNode *s, TreeNode *t) {
       return false;
     else if(equal(s->leftchild, t->leftchild))
       return equal(s->rightchild, t->rightchild);
-    else                                // case 3
-      return false;
   }
+  else                                  // case 3
+    return false;
 }
 
 BinaryTree BinaryTree::copy() {
