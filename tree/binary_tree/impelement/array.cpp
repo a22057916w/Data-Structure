@@ -4,12 +4,12 @@ using namespace std;
 
 class BinaryTree {
 private:
-  int capacity;
+  int capacity, size;
   char *tree;
 
   void doubleCapacity();
 public:
-  BinaryTree(): capacity(10) {
+  BinaryTree(): capacity(10), size(0) {
       tree = new char[capacity];
   }
   BinaryTree(const char *str) {
