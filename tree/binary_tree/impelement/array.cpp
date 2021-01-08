@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class BinaryTree {
@@ -16,6 +17,9 @@ private:
   void preorder(int index);
   void inorder(int index);
   void postorder(int index);
+
+  // capacity function
+  void getDepth(int index);
 
 public:
   BinaryTree(): size(0) {};
@@ -116,7 +120,14 @@ int BinaryTree::getCapacity() {
 }
 
 int BinaryTree::getDepth() {
+  return getDepth(1);
+}
 
+int getDepth(int curr) {
+  if(curr < size)
+    return max(getDepth(getLeftchild(curr)), getDepth(getRightchild(curr)) + 1;
+  else
+    return 0;
 }
 
 int BinaryTree::getLeaf() {
