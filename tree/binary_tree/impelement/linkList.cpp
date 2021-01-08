@@ -326,6 +326,7 @@ void BinaryTree::copy(TreeNode *curr, TreeNode *newNode) {
   }
 }
 
+
 // capacity functions implmentations
 int BinaryTree::getSize() {
 
