@@ -141,10 +141,11 @@ void BinaryTree::deleteKey(char key) {
   int lastIndex = 0;
 
   for(int i = 0; i < size; i++) {
-    if(tree[i] != '-')
+    if(tree[i] != '-') {
       lastIndex = i;
-    else if(tree[i] == key)
-      keyIndex = i;
+        if(tree[i] == key) {
+          keyIndex = i;
+    }
     else
       continue;
   }
