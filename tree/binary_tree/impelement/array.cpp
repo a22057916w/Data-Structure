@@ -14,6 +14,8 @@ private:
 
   // treversal functions
   void preorder(int index);
+  void inorder(int index);
+  void postorder(int index);
 
 public:
   BinaryTree(): size(0) {};
@@ -29,6 +31,8 @@ public:
   // treversal functions
   void levelOrder();
   void preorder();
+  void inorder();
+  void postorder();
 
   void insert(char data);
 };
@@ -67,12 +71,40 @@ void BinaryTree::preorder(int curr) {
   }
 }
 
+void BinaryTree::inorder() {
+  inorder(1);
+  cout << endl;
+}
+
+void BinaryTree::inorder(int curr) {
+  if(curr > 0 && tree[curr] != '-') {
+    inorder(getLeftchild(curr));
+    cout << tree[curr] << " ";
+    inorder(getRightchild(curr));
+  }
+}
+
+void BinaryTree::postorder() {
+  postorder(1);
+  cout << endl;
+}
+
+void BinaryTree::postorder(int curr) {
+  if(curr > 0 && tree[curr] != '-') {
+    postorder(getLeftchild(curr));
+    postorder(getRightchild(curr));
+    cout << tree[curr] << " ";
+  }
+}
+
 int main() {
   string s = "-DAFEBRTGQ--V-JL";
   BinaryTree T(s);
 
   //T.levelOrder();
   T.preorder();
+  T.inorder();
+  T.postorder();
 
   return 0;
 }
