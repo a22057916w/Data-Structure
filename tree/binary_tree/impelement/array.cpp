@@ -45,7 +45,7 @@ public:
   BinaryTree(): size(0) {};
 
   // treversal functions
-  void levelOrder();
+  void levelorder();
   void preorder();
   void inorder();
   void postorder();
@@ -80,7 +80,7 @@ int BinaryTree::getRightchild(int index) {
 
 
 // treversal function implementations
-void BinaryTree::levelOrder() {
+void BinaryTree::levelorder() {
   for(auto c : tree) {
     if(c == '-')
       continue;
@@ -205,7 +205,7 @@ int main() {
   string s = "-DAFEBRTGQ--V-JL";
   BinaryTree T(s);
 
-  T.levelOrder();
+  T.levelorder();
   T.preorder();
   T.inorder();
   T.postorder();
@@ -215,25 +215,25 @@ int main() {
   cout << T.getLeaf() << endl;
 
   T.swap();
-  T.levelOrder();
+  T.levelorder();
   T.preorder();
   T.inorder();
   T.swap();
 
   T.insertLevelorder('X');
-  T.levelOrder();
+  T.levelorder();
   T.preorder();
 
   cout << "\n";
 
   T.deleteKey('F');
-  T.levelOrder();
+  T.levelorder();
   T.preorder();
 
   cout << "\n";
 
   BinaryTree TM = T.copy();
-  TM.levelOrder();
+  TM.levelorder();
   TM.preorder();
 
   return 0;
