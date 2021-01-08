@@ -8,16 +8,17 @@ private:
   int size;
   vector<char> tree;
 
-  // element access function
+  // element access functions
   int getLeftchild(int index);
   int getRightchild(int index);
 
+  // treversal functions
   void preorder(int index);
 
 public:
   BinaryTree(): size(0) {};
 
-  // levelOrderConsturctor
+  // levelOrderConsturctor, root start with 1
   BinaryTree(const string str) {
     for(auto c : str) {
       tree.push_back(c);
@@ -25,7 +26,7 @@ public:
     }
   }
 
-  // treversal function
+  // treversal functions
   void levelOrder();
   void preorder();
 
