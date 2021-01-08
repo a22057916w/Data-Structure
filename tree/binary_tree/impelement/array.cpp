@@ -9,8 +9,8 @@ private:
   vector<char> tree;
 
   // element access function
-  char getLeftchild(int index);
-  char getRightchild(int index);
+  int getLeftchild(int index);
+  int getRightchild(int index);
 
   void preorder(int index);
 
@@ -34,14 +34,14 @@ public:
 
 // element access function implmentations
 int BinaryTree::getLeftchild(int index) {
-  if(tree[index] != '-' && (index * 2) <= size)
+  if(tree[index] != '-' && (index * 2) < size)
     return index * 2 ;
   else
     return -1;
 }
 
 int BinaryTree::getRightchild(int index) {
-  if(tree[index] != '-' && (index * 2 + 1) <= size)
+  if(tree[index] != '-' && (index * 2 + 1) < size)
     return index * 2 + 1;
   else
     return -1;
@@ -54,20 +54,24 @@ void BinaryTree::levelOrder() {
 }
 
 void BinaryTree::preorder() {
-
+  preorder(1);
+  cout << endl;
 }
 
-void BinaryTree::preorder() {
-  preorder(getLeftchild(curr));
-  cout << tree[curr] << " ";
-  preorder(getRightchild(curr));
+void BinaryTree::preorder(int curr) {
+  if(curr > 0 && tree[curr] != '-') {
+    cout << tree[curr] << " ";
+    preorder(getLeftchild(curr));
+    preorder(getRightchild(curr));
+  }
 }
 
 int main() {
   string s = "-DAFEBRTGQ--V-JL";
   BinaryTree T(s);
 
-  T.levelOrder();
+  //T.levelOrder();
+  T.preorder();
 
   return 0;
 }
