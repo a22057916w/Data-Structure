@@ -9,8 +9,8 @@ private:
   vector<char> tree;
 
   // element access functions
-  int getLeftchild(int index);
-  int getRightchild(int index);
+  int getLeftchild(int index);    // for treversal functions
+  int getRightchild(int index);   // for treversal functions
 
   // treversal functions
   void preorder(int index);
@@ -37,7 +37,7 @@ public:
   void insert(char data);
 };
 
-// element access function implmentations
+// element access function implementations
 int BinaryTree::getLeftchild(int index) {
   if(tree[index] != '-' && (index * 2) < size)
     return index * 2 ;
@@ -52,6 +52,7 @@ int BinaryTree::getRightchild(int index) {
     return -1;
 }
 
+// treversal function implementations
 void BinaryTree::levelOrder() {
   for(auto c : tree)
     cout << c << " ";
