@@ -166,6 +166,9 @@ void BinaryTree::deleteKey(char key) {
 }
 
 void BinaryTree::swap() {
+
+  // using the characteristic of the array
+  // then using two pointer method to swap the content
   for(int i = 2, j = 3; i < size; i*=2, j=j*2+1 ) {
     int front = i, back = j;
     while(front < back) {
