@@ -9,7 +9,7 @@ private:
   vector<char> tree;
 
 public:
-  BinaryTree(): size(0) {);
+  BinaryTree(): size(0) {};
 
   // levelOrderConsturctor
   BinaryTree(const string str) {
@@ -20,7 +20,7 @@ public:
   }
 
   // treversal function
-  void levelorder();
+  void levelOrder();
 
   void insert(char data);
 };
@@ -32,5 +32,10 @@ void BinaryTree::levelOrder() {
 }
 
 int main() {
+  string s = "ABCDEFGHI";
+  BinaryTree T(s);
+
+  T.levelOrder();
+
   return 0;
 }
