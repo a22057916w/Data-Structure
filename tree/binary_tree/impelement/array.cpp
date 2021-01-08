@@ -195,5 +195,11 @@ int main() {
   T.levelOrder();
   T.preorder();
 
+  cout << "\n";
+
+  T.deleteKey('F');
+  T.levelOrder();
+  T.preorder();
+
   return 0;
 }
