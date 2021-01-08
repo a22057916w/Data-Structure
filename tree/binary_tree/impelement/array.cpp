@@ -5,7 +5,7 @@ using namespace std;
 
 class BinaryTree {
 private:
-  int size;
+  int size, node;
   vector<char> tree;
 
   // element access functions
@@ -35,6 +35,12 @@ public:
   void postorder();
 
   void insert(char data);
+
+  // capacity functions
+  void getCapacity();
+  void getDepth();
+  void getLeaf();
+
 };
 
 // element access function implementations
