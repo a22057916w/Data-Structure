@@ -22,7 +22,6 @@ private:
   int getDepth(int index);
 
 public:
-  BinaryTree(): size(0) {};
 
   // levelOrderConsturctor, root start with 1
   BinaryTree(const string str): size(0), node(0) {
@@ -37,6 +36,16 @@ public:
       size++;
     }
   }
+  BinaryTree(const vector<char> &tree, int size, int node) {
+    this->size = size; this->node = node;
+
+    this->tree.reserve(size);
+    for(int i = 0; i < size; i++)
+      this->tree[i] = tree[i];
+  }
+  BinaryTree(): size(0) {};
+
+
 
   // treversal functions
   void levelOrder();
@@ -47,6 +56,7 @@ public:
   // modifying functions
   void insertLevelorder(char data);
   void deleteKey(char key);
+  BinaryTree copy();
 
   // capacity functions
   int getCapacity();      // return the size of the array(vector)
@@ -155,6 +165,10 @@ void BinaryTree::deleteKey(char key) {
     tree[lastIndex] = '-';
     node--;
   }
+}
+
+BinaryTree BinaryTree::copy() {
+  return new BinaryTree(tree, size, node);
 }
 
 // capacity function implementations
