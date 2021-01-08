@@ -18,6 +18,9 @@ private:
   void inorder(int index);
   void postorder(int index);
 
+  // modifying functions
+  void swap(int index);
+
   // capacity function
   int getDepth(int index);
 
@@ -53,6 +56,7 @@ public:
   // modifying functions
   void insertLevelorder(char data);
   void deleteKey(char key);
+  void swap();
   BinaryTree copy();
 
   // capacity functions
@@ -161,6 +165,22 @@ void BinaryTree::deleteKey(char key) {
     tree[keyIndex] = tree[lastIndex];
     tree[lastIndex] = '-';
     node--;
+  }
+}
+
+void BinaryTree::swap() {
+  if(node > 0)
+    swap(1);
+}
+
+void BinaryTree::swap(int curr) {
+  if(curr > 0 && curr < size) {
+    swap(getLeftchild(curr));
+    swap(getRightchild(curr));
+
+    char tmp = tree[getLeftchild(curr)];
+    tree[getLeftchild(curr)] = tree[getRightchild(curr)];
+    tree[getRightchild(curr)] = tmp;
   }
 }
 
