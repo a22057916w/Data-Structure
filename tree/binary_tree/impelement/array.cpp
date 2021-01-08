@@ -124,7 +124,7 @@ int BinaryTree::getDepth() {
 }
 
 int Binary::getDepth(int curr) {
-  if(curr < size)
+  if(curr > 0)
     return max(getDepth(getLeftchild(curr)), getDepth(getRightchild(curr))) + 1;
   else
     return 0;
