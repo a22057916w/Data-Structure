@@ -46,6 +46,7 @@ public:
 
   // modifying functions
   void insertLevelorder(char data);
+  void deleteKey(char key);
 
   // capacity functions
   int getCapacity();
@@ -133,6 +134,10 @@ void BinaryTree::insertLevelorder(char data) {
     size++;
   }
   node++;
+}
+
+void BinaryTree::deleteKey(char key) {
+  
 }
 
 // capacity function implementations
