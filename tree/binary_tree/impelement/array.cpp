@@ -49,9 +49,9 @@ public:
   void deleteKey(char key);
 
   // capacity functions
-  int getCapacity();
-  int getDepth();
-  int getLeaf();
+  int getCapacity();      // return the size of the array(vector)
+  int getDepth();         // return the height of the tree
+  int getLeaf();          // return the number of nodes
 
 };
 
@@ -137,8 +137,8 @@ void BinaryTree::insertLevelorder(char data) {
 }
 
 void BinaryTree::deleteKey(char key) {
-  int keyIndex = 0;
-  int lastIndex = 0;
+  int keyIndex = 0;         // find the target node
+  int lastIndex = 0;        // find the deepest leaf
 
   for(int i = 0; i < size; i++) {
     if(tree[i] != '-') {
