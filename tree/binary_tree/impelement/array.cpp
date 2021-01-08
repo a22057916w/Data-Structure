@@ -33,12 +33,18 @@ public:
 };
 
 // element access function implmentations
-char BinaryTree::getLeftchild(int index) {
-  if(tree[index])
+int BinaryTree::getLeftchild(int index) {
+  if(tree[index] != '-' && (index * 2) <= size)
+    return index * 2 ;
+  else
+    return -1;
 }
 
-char BinaryTree::getRightchild(int index) {
-
+int BinaryTree::getRightchild(int index) {
+  if(tree[index] != '-' && (index * 2 + 1) <= size)
+    return index * 2 + 1;
+  else
+    return -1;
 }
 
 void BinaryTree::levelOrder() {
@@ -52,7 +58,9 @@ void BinaryTree::preorder() {
 }
 
 void BinaryTree::preorder() {
-
+  preorder(getLeftchild(curr));
+  cout << tree[curr] << " ";
+  preorder(getRightchild(curr));
 }
 
 int main() {
