@@ -1,20 +1,22 @@
 #include <iostream>
-#include <sstream>
+#include <string>
+#include <vector>
 using namespace std;
 
 class BinaryTree {
 private:
-  int capacity, size;
-  char *tree;
+  int size;
+  vector<char> tree;
 
-  void doubleCapacity();
 public:
-  BinaryTree(): capacity(10), size(0) {
-      tree = new char[capacity];
-  }
-  BinaryTree(const char *str) {
-    streamstring ss;
-    ss << str;
+  BinaryTree(): size(0) {);
+
+  // levelOrderConsturctor
+  BinaryTree(const string str) {
+    for(auto c : str) {
+      tree.push_back(c);
+      size++;
+    }
   }
 
   void insert(char data);
