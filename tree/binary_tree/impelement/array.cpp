@@ -68,14 +68,14 @@ public:
 
 // element access function implementations
 int BinaryTree::getLeftchild(int index) {
-  if(tree[index] != '-' && (index * 2) < size)
+  if(index * 2 < size)
     return index * 2 ;
   else
     return -1;
 }
 
 int BinaryTree::getRightchild(int index) {
-  if(tree[index] != '-' && (index * 2 + 1) < size)
+  if(index * 2 + 1 < size)
     return index * 2 + 1;
   else
     return -1;
@@ -198,7 +198,7 @@ int BinaryTree::getDepth() {
 }
 
 int BinaryTree::getDepth(int curr) {
-  if(curr > 0)
+  if(curr > 0 && tree[curr] != '-')
     return max(getDepth(getLeftchild(curr)), getDepth(getRightchild(curr))) + 1;
   else
     return 0;
@@ -207,7 +207,6 @@ int BinaryTree::getDepth(int curr) {
 int BinaryTree::getLeaf() {
   return node;
 }
-
 
 
 int main() {
