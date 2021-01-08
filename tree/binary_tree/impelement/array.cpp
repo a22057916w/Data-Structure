@@ -25,7 +25,7 @@ public:
   BinaryTree(): size(0) {};
 
   // levelOrderConsturctor, root start with 1
-  BinaryTree(const string str) {
+  BinaryTree(const string str): size(0), node(0) {
     for(auto c : str) {
 
       // record the amount of leaf
@@ -142,6 +142,10 @@ int main() {
   T.preorder();
   T.inorder();
   T.postorder();
+
+  cout << getCapacity() << endl;
+  cout << getDepth() << endl;
+  cout << getLeaf() << endl;
 
   return 0;
 }
