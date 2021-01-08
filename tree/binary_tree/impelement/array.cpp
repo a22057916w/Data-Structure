@@ -44,7 +44,8 @@ public:
   void inorder();
   void postorder();
 
-  void insert(char data);
+  // modifying functions
+  void insertLevelorder(char data);
 
   // capacity functions
   int getCapacity();
@@ -116,6 +117,12 @@ void BinaryTree::postorder(int curr) {
 }
 
 
+// modifying function implementations
+void BinaryTree::insertLevelorder(char data) {
+  tree.push_back(data);
+  size++; node++;
+}
+
 // capacity function implementations
 int BinaryTree::getCapacity() {
   return size;
@@ -125,7 +132,7 @@ int BinaryTree::getDepth() {
   return getDepth(1);
 }
 
-int Binary::getDepth(int curr) {
+int BinaryTree::getDepth(int curr) {
   if(curr > 0)
     return max(getDepth(getLeftchild(curr)), getDepth(getRightchild(curr))) + 1;
   else
