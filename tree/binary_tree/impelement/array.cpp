@@ -137,7 +137,23 @@ void BinaryTree::insertLevelorder(char data) {
 }
 
 void BinaryTree::deleteKey(char key) {
-  
+  int keyIndex = 0;
+  int lastIndex = 0;
+
+  for(int i = 0; i < size; i++) {
+    if(tree[i] != '-')
+      lastIndex = i;
+    else if(tree[i] == key)
+      keyIndex = i;
+    else
+      continue;
+  }
+
+  if(keyIndex > 0) {
+    tree[keyIndex] = tree[lastIndex];
+    tree[lastIndex] = '-';
+    node--;
+  }
 }
 
 // capacity function implementations
