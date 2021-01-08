@@ -19,7 +19,7 @@ private:
   void postorder(int index);
 
   // capacity function
-  void getDepth(int index);
+  int getDepth(int index);
 
 public:
   BinaryTree(): size(0) {};
@@ -123,9 +123,9 @@ int BinaryTree::getDepth() {
   return getDepth(1);
 }
 
-int getDepth(int curr) {
+int Binary::getDepth(int curr) {
   if(curr < size)
-    return max(getDepth(getLeftchild(curr)), getDepth(getRightchild(curr)) + 1;
+    return max(getDepth(getLeftchild(curr)), getDepth(getRightchild(curr))) + 1;
   else
     return 0;
 }
@@ -143,9 +143,9 @@ int main() {
   T.inorder();
   T.postorder();
 
-  cout << getCapacity() << endl;
-  cout << getDepth() << endl;
-  cout << getLeaf() << endl;
+  cout << T.getCapacity() << endl;
+  cout << T.getDepth() << endl;
+  cout << T.getLeaf() << endl;
 
   return 0;
 }
