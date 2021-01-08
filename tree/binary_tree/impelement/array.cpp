@@ -72,9 +72,12 @@ int BinaryTree::getRightchild(int index) {
 
 // treversal function implementations
 void BinaryTree::levelOrder() {
-  for(auto c : tree)
+  for(auto c : tree) {
+    if(c == '-')
+      continue;
     cout << c << " ";
-  cout << endl;
+  }
+  cout << "\n";
 }
 
 void BinaryTree::preorder() {
@@ -119,8 +122,17 @@ void BinaryTree::postorder(int curr) {
 
 // modifying function implementations
 void BinaryTree::insertLevelorder(char data) {
-  tree.push_back(data);
-  size++; node++;
+  int i = 1;
+  while(tree[i++] != '-' && i < size);
+  i--;
+
+  if(i < size)
+    tree[i] = data;
+  else {
+    tree.push_back(data);
+    size++;
+  }
+  node++;
 }
 
 // capacity function implementations
@@ -149,7 +161,7 @@ int main() {
   string s = "-DAFEBRTGQ--V-JL";
   BinaryTree T(s);
 
-  //T.levelOrder();
+  T.levelOrder();
   T.preorder();
   T.inorder();
   T.postorder();
@@ -157,6 +169,10 @@ int main() {
   cout << T.getCapacity() << endl;
   cout << T.getDepth() << endl;
   cout << T.getLeaf() << endl;
+
+  T.insertLevelorder('X');
+  T.levelOrder();
+  T.preorder();
 
   return 0;
 }
