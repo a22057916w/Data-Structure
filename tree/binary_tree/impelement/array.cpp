@@ -123,12 +123,12 @@ void BinaryTree::postorder(int curr) {
 // modifying function implementations
 void BinaryTree::insertLevelorder(char data) {
   int i = 1;
-  while(tree[i++] != '-' && i < size);
+  while(tree[i++] != '-' && i < size);  // find the empty slot or new space
   i--;
 
-  if(i < size)
+  if(i < size)              // if the tree is not complete, set into empty slot
     tree[i] = data;
-  else {
+  else {                    // if the tree is full, new space
     tree.push_back(data);
     size++;
   }
