@@ -37,9 +37,9 @@ public:
   void insert(char data);
 
   // capacity functions
-  void getCapacity();
-  void getDepth();
-  void getLeaf();
+  int getCapacity();
+  int getDepth();
+  int getLeaf();
 
 };
 
@@ -102,6 +102,19 @@ void BinaryTree::postorder(int curr) {
     postorder(getRightchild(curr));
     cout << tree[curr] << " ";
   }
+}
+
+// capacity function implementations
+int BinaryTree::getCapacity() {
+
+}
+
+int BinaryTree::getDepth() {
+
+}
+
+int BinaryTree::getLeaf() {
+  
 }
 
 int main() {
