@@ -223,6 +223,11 @@ int main() {
   cout << T.getDepth() << endl;
   cout << T.getLeaf() << endl;
 
+  T.swap();
+  T.preorder();
+  T.inorder();
+  T.swap();
+
   T.insertLevelorder('X');
   T.levelOrder();
   T.preorder();
