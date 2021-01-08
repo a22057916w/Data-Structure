@@ -9,8 +9,8 @@ private:
   vector<char> tree;
 
   // element access functions
-  int getLeftchild(int index);    // for treversal functions
-  int getRightchild(int index);   // for treversal functions
+  int getLeftchild(int index);
+  int getRightchild(int index);
 
   // treversal functions
   void preorder(int index);
