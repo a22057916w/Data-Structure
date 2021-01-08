@@ -39,13 +39,10 @@ public:
   BinaryTree(const vector<char> &tree, int size, int node) {
     this->size = size; this->node = node;
 
-    this->tree.reserve(size);
-    for(int i = 0; i < size; i++)
-      this->tree[i] = tree[i];
+    for(auto c : tree)
+      this->tree.push_back(c);
   }
   BinaryTree(): size(0) {};
-
-
 
   // treversal functions
   void levelOrder();
