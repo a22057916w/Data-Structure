@@ -18,9 +18,6 @@ private:
   void inorder(int index);
   void postorder(int index);
 
-  // modifying functions
-  void swap(int index);
-
   // capacity function
   int getDepth(int index);
 
@@ -169,18 +166,13 @@ void BinaryTree::deleteKey(char key) {
 }
 
 void BinaryTree::swap() {
-  if(node > 0)
-    swap(1);
-}
-
-void BinaryTree::swap(int curr) {
-  if(curr > 0 && curr < size) {
-    swap(getLeftchild(curr));
-    swap(getRightchild(curr));
-
-    char tmp = tree[getLeftchild(curr)];
-    tree[getLeftchild(curr)] = tree[getRightchild(curr)];
-    tree[getRightchild(curr)] = tmp;
+  for(int i = 2, j = 3; i < size; i*=2, j=j*2+1 ) {
+    int front = i, back = j;
+    while(front < back) {
+      char tmp = tree[front];
+      tree[front++] = tree[back];
+      tree[back--] = tmp;
+    }
   }
 }
 
@@ -223,6 +215,7 @@ int main() {
   cout << T.getLeaf() << endl;
 
   T.swap();
+  T.levelOrder();
   T.preorder();
   T.inorder();
   T.swap();
