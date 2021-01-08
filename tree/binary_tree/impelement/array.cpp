@@ -8,6 +8,8 @@ private:
   int size;
   vector<char> tree;
 
+  void preorder(int index);
+
 public:
   BinaryTree(): size(0) {};
 
@@ -21,6 +23,7 @@ public:
 
   // treversal function
   void levelOrder();
+  void preorder();
 
   void insert(char data);
 };
@@ -29,6 +32,14 @@ void BinaryTree::levelOrder() {
   for(auto c : tree)
     cout << c << " ";
   cout << endl;
+}
+
+void BinaryTree::preorder() {
+
+}
+
+void BinaryTree::preorder() {
+
 }
 
 int main() {
