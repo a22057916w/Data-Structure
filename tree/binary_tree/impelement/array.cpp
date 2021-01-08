@@ -150,7 +150,7 @@ void BinaryTree::deleteKey(char key) {
   for(int i = 0; i < size; i++) {
     if(tree[i] != '-') {
       lastIndex = i;
-        if(tree[i] == key) {
+        if(tree[i] == key) 
           keyIndex = i;
     }
     else
