@@ -23,6 +23,12 @@ public:
   // levelOrderConsturctor, root start with 1
   BinaryTree(const string str) {
     for(auto c : str) {
+
+      // record the amount of leaf
+      if(c != '-')
+        node++;
+
+      // store the array by vector and record the size of that
       tree.push_back(c);
       size++;
     }
@@ -106,7 +112,7 @@ void BinaryTree::postorder(int curr) {
 
 // capacity function implementations
 int BinaryTree::getCapacity() {
-
+  return size;
 }
 
 int BinaryTree::getDepth() {
@@ -114,7 +120,7 @@ int BinaryTree::getDepth() {
 }
 
 int BinaryTree::getLeaf() {
-  
+  return node;
 }
 
 int main() {
