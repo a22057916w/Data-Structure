@@ -68,6 +68,7 @@ int BinaryTree::getRightchild(int index) {
     return -1;
 }
 
+
 // treversal function implementations
 void BinaryTree::levelOrder() {
   for(auto c : tree)
@@ -114,6 +115,7 @@ void BinaryTree::postorder(int curr) {
   }
 }
 
+
 // capacity function implementations
 int BinaryTree::getCapacity() {
   return size;
@@ -133,6 +135,8 @@ int Binary::getDepth(int curr) {
 int BinaryTree::getLeaf() {
   return node;
 }
+
+
 
 int main() {
   string s = "-DAFEBRTGQ--V-JL";
