@@ -168,7 +168,7 @@ void BinaryTree::deleteKey(char key) {
 }
 
 BinaryTree BinaryTree::copy() {
-  return new BinaryTree(tree, size, node);
+  return BinaryTree(tree, size, node);
 }
 
 // capacity function implementations
