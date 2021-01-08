@@ -19,8 +19,17 @@ public:
     }
   }
 
+  // treversal function
+  void levelorder();
+
   void insert(char data);
 };
+
+void BinaryTree::levelOrder() {
+  for(auto c : tree)
+    cout << c << " ";
+  cout << endl;
+}
 
 int main() {
   return 0;
