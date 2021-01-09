@@ -54,7 +54,7 @@ public:
   void insertLevelorder(char data);
   void deleteKey(char key);
   void swap();
-  bool equal(BinaryTree &src);
+  bool equal(const BinaryTree &src);
   BinaryTree copy();
 
   // capacity functions
@@ -180,7 +180,7 @@ void BinaryTree::swap() {
   }
 }
 
-bool BinaryTree::equal(BinaryTree &src) {
+bool BinaryTree::equal(const BinaryTree &src) {
   if(size != src.size || node != src.node)
     return false;
 
