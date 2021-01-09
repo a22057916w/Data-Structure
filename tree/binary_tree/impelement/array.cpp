@@ -186,7 +186,7 @@ bool equal(BinaryTree &src) {
 
   for(int i = 0; i < size;; i++)
     if(tree[i] != src->tree[i])
-      return false;      
+      return false;
   return true;
 }
 
@@ -249,6 +249,8 @@ int main() {
   BinaryTree TM = T.copy();
   TM.levelorder();
   TM.preorder();
+
+  cout << TM.equal(T) << endl;
 
   return 0;
 }
