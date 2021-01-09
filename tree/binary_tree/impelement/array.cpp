@@ -181,7 +181,13 @@ void BinaryTree::swap() {
 }
 
 bool equal(BinaryTree &src) {
+  if(size != src->size || node != src->node)
+    return false;
 
+  for(int i = 0; i < size;; i++)
+    if(tree[i] != src->tree[i])
+      return false;      
+  return true;
 }
 
 BinaryTree BinaryTree::copy() {
