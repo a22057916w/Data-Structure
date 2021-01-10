@@ -19,7 +19,7 @@ using namespace std;
 
 
 
-vector<char> IndixToPostfix(const string s) {
+vector<char> InfixToPostfix(const string s) {
   vector<char> postExp;
   stack<char> st;
 
