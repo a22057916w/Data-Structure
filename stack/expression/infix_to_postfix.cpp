@@ -1,10 +1,15 @@
 #include <isotream>
 #include <string>
 #include <stack>
+#include <vector>
 using namespace std;
 
-void IndixToPostfix(const string s) {
+vector<char> IndixToPostfix(const string s) {
+  stack<char> st;
 
+  for(int i = 0; i < s.length(); i++) {
+    if()
+  }
 }
 
 int main() {
