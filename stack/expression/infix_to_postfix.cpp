@@ -42,10 +42,8 @@ vector<char> InfixToPostfix(const string s) {
         postExp.push_back(st.top());
         st.pop();
       }
-      if(st.top() == '(') {
-        postExp.push_back(st.top());
+      if(st.top() == '(')
         st.pop();
-      }
     }
     else {
       while(!st.empty() && prec(s[i]) < prec(st.top())) {
@@ -54,12 +52,13 @@ vector<char> InfixToPostfix(const string s) {
       }
       st.push(s[i]);
     }
-
-    while(!st.empty()) {
-      postExp.push_back(st.top());
-      st.pop();
-    }
   }
+
+  while(!st.empty()) {
+    postExp.push_back(st.top());
+    st.pop();
+  }
+
   return postExp;
 }
 
