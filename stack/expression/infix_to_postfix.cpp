@@ -67,7 +67,7 @@ int main() {
   string exp = "a+b*(c^d-e)^(f+g*h)-i";
 
   vector<char> postExp = InfixToPostfix(exp);
-  for(auto c : postexp)
+  for(auto c : postExp)
     cout << c;
   cout << "\n";
 
