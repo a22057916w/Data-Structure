@@ -46,7 +46,7 @@ vector<char> InfixToPostfix(const string s) {
         st.pop();
     }
     else {
-      while(!st.empty() && prec(s[i]) < prec(st.top())) {
+      while(!st.empty() && prec(s[i]) <= prec(st.top())) {
           postExp.push_back(st.top());
           st.pop();
       }
