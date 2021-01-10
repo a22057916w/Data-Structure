@@ -10,7 +10,7 @@ Algorithm
 7. Print the output
 8. Pop and output from the stack until it is not empty.
 
-#include <isotream>
+#include <iostream>
 #include <cctype>
 #include <string>
 #include <stack>
@@ -66,7 +66,7 @@ vector<char> InfixToPostfix(const string s) {
 int main() {
   string exp = "a+b*(c^d-e)^(f+g*h)-i";
 
-  vecotr<char> postExp = infixToPostfix(exp);
+  vector<char> postExp = InfixToPostfix(exp);
   for(auto c : postexp)
     cout << c;
   cout << "\n";
