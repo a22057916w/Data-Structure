@@ -17,7 +17,16 @@ Algorithm
 #include <vector>
 using namespace std;
 
-
+int prec(const char c) {
+  if(c == '^')
+    return 3;
+  else if(c == '*' || c == '/')
+    return 2;
+  else if(c == '-' || c == '+')
+    return 1;
+  else
+    return -1;
+}
 
 vector<char> InfixToPostfix(const string s) {
   vector<char> postExp;
@@ -39,9 +48,10 @@ vector<char> InfixToPostfix(const string s) {
       }
     }
     else {
-      while(!st.empty()) {
-
+      while(!st.empty() && prec(s[i]) < prec(st.top())) {
+          
       }
+      st.push(s[i]);
     }
   }
 }
