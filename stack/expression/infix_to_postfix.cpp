@@ -64,5 +64,12 @@ vector<char> InfixToPostfix(const string s) {
 }
 
 int main() {
+  string exp = "a+b*(c^d-e)^(f+g*h)-i";
+
+  vecotr<char> postExp = infixToPostfix(exp);
+  for(auto c : postexp)
+    cout << c;
+  cout << "\n";
+
   return 0;
 }
