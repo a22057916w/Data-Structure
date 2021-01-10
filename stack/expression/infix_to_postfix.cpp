@@ -49,11 +49,18 @@ vector<char> InfixToPostfix(const string s) {
     }
     else {
       while(!st.empty() && prec(s[i]) < prec(st.top())) {
-          
+          postExp.push_back(st.top());
+          st.pop();
       }
       st.push(s[i]);
     }
+
+    while(!st.empty()) {
+      postExp.push_back(st.top());
+      st.pop();
+    }
   }
+  return postExp;
 }
 
 int main() {
