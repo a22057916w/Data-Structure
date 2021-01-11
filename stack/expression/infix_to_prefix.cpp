@@ -22,7 +22,7 @@
 #include <string>
 #include <stack>
 #include <vector>
-#include <algorith>
+#include <algorithm>
 using namespace std;
 
 // Function to return the precedence of operators
@@ -66,7 +66,7 @@ string InfixToPrefix(const string s) {
     // stack until an ‘(‘ is encountered.
     else if(s[i] == ')') {
       while(!tmp.empty() && tmp.top() != '(') {
-        out.push((tmp.top());
+        out.push(tmp.top());
         tmp.pop();
       }
       if(tmp.top() == '(')
@@ -85,7 +85,7 @@ string InfixToPrefix(const string s) {
 
   // Pop all the remaining elements from the stack
   while(!out.empty()) {
-    s += out.top();
+    str += out.top();
     out.pop();
   }
 
@@ -95,8 +95,8 @@ string InfixToPrefix(const string s) {
 int main() {
   string exp = "a+b*(c^d-e)^(f+g*h)-i";
 
-  string preExp = InfixToPretfix(exp);
-  for(auto c : pretExp)
+  string preExp = InfixToPrefix(exp);
+  for(auto c : preExp)
     cout << c;
   cout << "\n";
 
