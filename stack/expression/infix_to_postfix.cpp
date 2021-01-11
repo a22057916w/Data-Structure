@@ -5,8 +5,8 @@
       1 If the precedence of the scanned operator is greater than the precedence
         of the operator in the stack(or the stack is empty or the stack contains
         a ‘(‘ ), push it.
-      2 Else, Pop all the operators from the stack which are greater than or
-        equal to in precedence than that of the scanned operator. After doing
+      2 Else, Pop all the operators from the stack which are greater than in
+        precedence than that of the scanned operator. After doing
         that Push the scanned operator to the stack. (If you encounter
         parenthesis while popping then stop there and push the scanned operator
         in the stack.)
@@ -65,7 +65,7 @@ vector<char> InfixToPostfix(const string s) {
 
     //If an operator is scanned
     else {
-      while(!st.empty() && prec(s[i]) <= prec(st.top())) {
+      while(!st.empty() && prec(s[i]) < prec(st.top())) {
           postExp.push_back(st.top());
           st.pop();
       }
