@@ -95,7 +95,7 @@ string InfixToPrefix(const string s) {
 int main() {
   string exp = "a+b*(c^d-e)^(f+g*h)-i";
 
-  vector<char> postExp = InfixToPostfix(exp);
+  vector<char> postExp = InfixToPretfix(exp);
   for(auto c : postExp)
     cout << c;
   cout << "\n";
