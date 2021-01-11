@@ -45,10 +45,10 @@ string InfixToPrefix(const string s) {
   stack<char> out, tmp;
 
   reverse(str.begin(), str.end());
-  for(auto c : str) {
+  for(auto &c : str) {
     if(c == ')')
       c = '(';
-    if(c == '(')
+    else if(c == '(')
       c = ')';
   }
 
