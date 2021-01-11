@@ -98,7 +98,7 @@ string InfixToPrefix(const string str) {
 }
 
 int main() {
-  string exp = "a+b*(c^d-e)^(f+g*h)-i";
+  string exp = "(a-b/c)*(a/k-l)";
 
   string preExp = InfixToPrefix(exp);
   for(auto c : preExp)
