@@ -22,6 +22,7 @@
 #include <string>
 #include <stack>
 #include <vector>
+#include <algorith>
 using namespace std;
 
 // Function to return the precedence of operators
@@ -39,8 +40,17 @@ int prec(const char c) {
 // The main function to convert infix expression
 // to postfix expression
 string InfixToPrefix(const string s) {
+  string str = s;
   string preExp = "";           // Declared as return params
   stack<char> out, tmp;
+
+  reverse(str.begin(), str.end());
+  for(auto c : str) {
+    if(c == ')')
+      c = '(';
+    if(c == '(')
+      c = ')';
+  }
 
   for(int i = 0; i < s.length(); i++) {
 
