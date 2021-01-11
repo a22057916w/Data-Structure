@@ -56,37 +56,37 @@ string InfixToPrefix(const string s) {
 
     // If the scanned character is an operand, add it to output vector.
     if(isalpha(s[i]))
-      postExp.push_back(s[i]);
+      out.push(s[i]);
 
     // If the scanned character is an ‘(‘, push it to the stack.
     else if(s[i] == '(')
-      st.push(s[i]);
+      tmp.push(s[i]);
 
     // If the scanned character is an ‘)’, pop and to output string from the
     // stack until an ‘(‘ is encountered.
     else if(s[i] == ')') {
-      while(!st.empty() && st.top() != '(') {
-        postExp.push_back(st.top());
-        st.pop();
+      while(!tmp.empty() && tmp.top() != '(') {
+        out.push((tmp.top());
+        tmp.pop();
       }
-      if(st.top() == '(')
-        st.pop();
+      if(tmp.top() == '(')
+        tmp.pop();
     }
 
     //If an operator is scanned
     else {
-      while(!st.empty() && prec(s[i]) <= prec(st.top())) {
-          postExp.push_back(st.top());
-          st.pop();
+      while(!tmp.empty() && prec(s[i]) <= prec(tmp.top())) {
+          out.push(tmp.top());
+          tmp.pop();
       }
-      st.push(s[i]);
+      tmp.push(s[i]);
     }
   }
 
   // Pop all the remaining elements from the stack
-  while(!st.empty()) {
-    postExp.push_back(st.top());
-    st.pop();
+  while(!out.empty()) {
+    s += out.top();
+    out.pop();
   }
 
   return preExp;
