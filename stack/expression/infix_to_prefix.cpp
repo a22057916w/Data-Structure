@@ -38,9 +38,9 @@ int prec(const char c) {
 
 // The main function to convert infix expression
 // to postfix expression
-vector<char> InfixToPostfix(const string s) {
+vector<char> InfixToPrefix(const string s) {
   vector<char> postExp;           // Declared as return params
-  stack<char> st;
+  stack<char> out, tmp;
 
   for(int i = 0; i < s.length(); i++) {
 
