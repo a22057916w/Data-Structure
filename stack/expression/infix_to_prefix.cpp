@@ -39,13 +39,13 @@ int prec(const char c) {
 
 // The main function to convert infix expression
 // to postfix expression
-string InfixToPrefix(const string s) {
-  string str = s;
+string InfixToPrefix(const string str) {
+  string s = str;
   string preExp = "";           // Declared as return params
   stack<char> out, tmp;
 
-  reverse(str.begin(), str.end());
-  for(auto &c : str) {
+  reverse(s.begin(), s.end());
+  for(auto &c : s) {
     if(c == ')')
       c = '(';
     else if(c == '(')
