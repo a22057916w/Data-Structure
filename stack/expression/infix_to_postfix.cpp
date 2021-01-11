@@ -1,4 +1,5 @@
-/*Algorithm
+/*
+Algorithm
 1. Scan the infix expression from left to right.
 2. If the scanned character is an operand, output it.
 3. Else,
@@ -15,7 +16,8 @@
    is encountered, and discard both the parenthesis.
 6. Repeat steps 2-6 until infix expression is scanned.
 7. Print the output
-8. Pop and output from the stack until it is not empty.*/
+8. Pop and output from the stack until it is not empty.
+*/
 
 #include <iostream>
 #include <cctype>       // For function isalpha()
