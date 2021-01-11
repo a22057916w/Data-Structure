@@ -83,9 +83,14 @@ string InfixToPrefix(const string s) {
     }
   }
 
+  while(!tmp.empty()) {
+    out.push(tmp.top());
+    tmp.pop();
+  }
+
   // Pop all the remaining elements from the stack
   while(!out.empty()) {
-    str += out.top();
+    preExp += out.top();
     out.pop();
   }
 
