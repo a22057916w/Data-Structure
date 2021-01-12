@@ -19,6 +19,9 @@ Concept & Algorithm
 8. Pop and output from the stack until it is not empty.
 */
 
+#ifndef INFIX_TO_POSTFIX_H_
+#define INFIX_TO_POSTFIX_H_
+
 #include <iostream>
 #include <cctype>       // For function isalpha()
 #include <string>
@@ -87,10 +90,4 @@ string InfixToPostfix(const string s) {
   return postExp;
 }
 
-int main() {
-  string exp = "a+b*(c^d-e)^(f+g*h)-i";
-
-  string postExp = InfixToPostfix(exp);
-
-  return 0;
-}
+#endif /* INFIX_TO_POSTFIX_H_ */
