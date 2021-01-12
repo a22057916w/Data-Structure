@@ -54,6 +54,7 @@ int prec(const char c) {
 
 #endif // PRECEDENCE
 
+
 #include <cctype>       // for function isalpha()
 #include <string>
 #include <stack>
@@ -61,6 +62,9 @@ int prec(const char c) {
 
 using std::string;
 using std::stack;
+
+#define ALGORITHM 1;
+#if(ALGORITHM == 1)
 
 // The main function to convert infix expression to pretfix expression
 string InfixToPrefix(const string str) {
@@ -125,4 +129,5 @@ string InfixToPrefix(const string str) {
   return preExp;
 }
 
+#endif // ALGORITHM == 1
 #endif /* INFIX_TO_PREFIX_H_ */
