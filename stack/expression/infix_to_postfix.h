@@ -22,6 +22,13 @@ Concept & Algorithm
 #ifndef INFIX_TO_POSTFIX_H_
 #define INFIX_TO_POSTFIX_H_
 
+#include <cctype>       // For function isalpha()
+#include <string>
+#include <stack>
+
+using std::string;
+using std::stack;
+
 #ifndef PRECEDENCE
 #define PRECEDENCE
 
@@ -38,14 +45,6 @@ int prec(const char c) {
 }
 
 #endif // PRECEDENCE
-
-#include <cctype>       // For function isalpha()
-#include <string>
-#include <stack>
-
-using std::string;
-using std::stack;
-
 
 // The main function to convert infix expression
 // to postfix expression
