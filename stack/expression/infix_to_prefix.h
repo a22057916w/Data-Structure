@@ -27,6 +27,13 @@ Algorithm 1
 3. Do step 3 to 9 from Concept with '(', ')' exchange.
 */
 
+/*
+Algorithm 2
+1. reverse the string and '(', ')'.
+2. Scan the infix expression from left to right using infix-to-postfix method.
+3. then reverse the postfix and get the prefix.
+*/
+
 #ifndef INFIX_TO_PREFIX_H_
 #define INFIX_TO_PREFIX_H_
 
