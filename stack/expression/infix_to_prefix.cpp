@@ -28,11 +28,10 @@ Algorithm 1
 */
 
 #include <iostream>
-#include <cctype>       // For function isalpha()
+#include <cctype>       // for function isalpha()
 #include <string>
 #include <stack>
-#include <vector>
-#include <algorithm>  // for reversing string
+#include <algorithm>    // for reversing string
 using namespace std;
 
 // Function to return the precedence of operators
