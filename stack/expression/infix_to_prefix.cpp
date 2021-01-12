@@ -35,7 +35,9 @@ Algorithm 1
 #include <string>
 #include <stack>
 #include <algorithm>    // for reversing string
-using namespace std;
+
+using std::string;
+using std::stack;
 
 // Function to return the precedence of operators
 int prec(const char c) {
@@ -57,7 +59,7 @@ string InfixToPrefix(const string str) {
 
   // Reverse the given string and exchange '(', ')'.
   // Make sure using reference to be able to change elements from s
-  reverse(s.begin(), s.end());
+  std::reverse(s.begin(), s.end());
   for(auto &c : s) {
     if(c == ')')
       c = '(';
