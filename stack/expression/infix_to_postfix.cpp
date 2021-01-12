@@ -24,7 +24,10 @@ Concept & Algorithm
 #include <string>
 #include <stack>
 #include <vector>
-using namespace std;
+
+using std::string;
+using std::stack;
+using std::vector;
 
 // Function to return the precedence of operators
 int prec(const char c) {
@@ -88,7 +91,6 @@ int main() {
   string exp = "a+b*(c^d-e)^(f+g*h)-i";
 
   string postExp = InfixToPostfix(exp);
-  cout << string << endl;
 
   return 0;
 }
