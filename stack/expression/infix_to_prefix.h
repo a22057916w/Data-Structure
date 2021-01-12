@@ -55,18 +55,6 @@ int prec(const char c) {
 using std::string;
 using std::stack;
 
-// Function to return the precedence of operators
-int prec(const char c) {
-  if(c == '^')
-    return 3;
-  else if(c == '*' || c == '/')
-    return 2;
-  else if(c == '-' || c == '+')
-    return 1;
-  else
-    return -1;
-}
-
 // The main function to convert infix expression to pretfix expression
 string InfixToPrefix(const string str) {
   string s = str;               // tmp for const str
