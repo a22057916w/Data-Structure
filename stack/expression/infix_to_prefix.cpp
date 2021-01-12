@@ -27,6 +27,9 @@ Algorithm 1
 3. Do step 3 to 9 from Concept with '(', ')' exchange.
 */
 
+#ifndef INFIX_TO_PREFIX_H_
+#define INFIX_TO_PREFIX_H_
+
 #include <iostream>
 #include <cctype>       // for function isalpha()
 #include <string>
@@ -109,13 +112,4 @@ string InfixToPrefix(const string str) {
   return preExp;
 }
 
-int main() {
-  string exp = "(a-b/c)*(a/k-l)";
-
-  string preExp = InfixToPrefix(exp);
-  for(auto c : preExp)
-    cout << c;
-  cout << "\n";
-
-  return 0;
-}
+#endif /* INFIX_TO_PREFIX_H_ */
