@@ -22,14 +22,8 @@ Concept & Algorithm
 #ifndef INFIX_TO_POSTFIX_H_
 #define INFIX_TO_POSTFIX_H_
 
-#include <iostream>
-#include <cctype>       // For function isalpha()
-#include <string>
-#include <stack>
-
-using std::string;
-using std::stack;
-using std::vector;
+#ifndef PRECEDENCE
+#define PRECEDENCE
 
 // Function to return the precedence of operators
 int prec(const char c) {
@@ -42,6 +36,16 @@ int prec(const char c) {
   else
     return -1;
 }
+
+#endif // PRECEDENCE
+
+#include <cctype>       // For function isalpha()
+#include <string>
+#include <stack>
+
+using std::string;
+using std::stack;
+
 
 // The main function to convert infix expression
 // to postfix expression

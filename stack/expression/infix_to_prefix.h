@@ -30,7 +30,23 @@ Algorithm 1
 #ifndef INFIX_TO_PREFIX_H_
 #define INFIX_TO_PREFIX_H_
 
-#include <iostream>
+#ifndef PRECEDENCE
+#define PRECEDENCE
+
+// Function to return the precedence of operators
+int prec(const char c) {
+  if(c == '^')
+    return 3;
+  else if(c == '*' || c == '/')
+    return 2;
+  else if(c == '-' || c == '+')
+    return 1;
+  else
+    return -1;
+}
+
+#endif // PRECEDENCE
+
 #include <cctype>       // for function isalpha()
 #include <string>
 #include <stack>
