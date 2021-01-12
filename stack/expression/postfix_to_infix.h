@@ -1,8 +1,12 @@
-#include <iostream>
+#ifndef POSTFIX_TO_INFIX_H_
+#define POSTFIX_TO_INFIX_H_
+
 #include <cctype>
 #include <string>
 #include <stack>
-using namespace std;
+
+using std::string;
+using std::stack;
 
 string PostfixToInfix(const string postfix) {
   stack<string> infix;
@@ -26,9 +30,4 @@ string PostfixToInfix(const string postfix) {
   return infix.top();
 }
 
-int main() {
-  string postfix = "xyae+/%";
-
-  cout << PostfixToInfix(postfix) << endl;
-  return 0;
-}
+#endif /* POSTFIX_TO_INFIX_H_ */
