@@ -40,15 +40,15 @@ int prec(const char c) {
 
 // The main function to convert infix expression
 // to postfix expression
-vector<char> InfixToPostfix(const string s) {
-  vector<char> postExp;           // Declared as return params
+string InfixToPostfix(const string s) {
+  string postExp = "";           // Declared as return params
   stack<char> st;
 
   for(int i = 0; i < s.length(); i++) {
 
     // If the scanned character is an operand, add it to output vector.
     if(isalpha(s[i]))
-      postExp.push_back(s[i]);
+      postExp += s[i];
 
     // If the scanned character is an ‘(‘, push it to the stack.
     else if(s[i] == '(')
@@ -58,7 +58,7 @@ vector<char> InfixToPostfix(const string s) {
     // stack until an ‘(‘ is encountered.
     else if(s[i] == ')') {
       while(!st.empty() && st.top() != '(') {
-        postExp.push_back(st.top());
+        postExp += st.top();
         st.pop();
       }
       if(st.top() == '(')
@@ -68,7 +68,7 @@ vector<char> InfixToPostfix(const string s) {
     //If an operator is scanned
     else {
       while(!st.empty() && prec(s[i]) < prec(st.top())) {
-          postExp.push_back(st.top());
+          postExp += st.top();
           st.pop();
       }
       st.push(s[i]);
@@ -77,7 +77,7 @@ vector<char> InfixToPostfix(const string s) {
 
   // Pop all the remaining elements from the stack
   while(!st.empty()) {
-    postExp.push_back(st.top());
+    postExp += st.top();
     st.pop();
   }
 
@@ -87,10 +87,8 @@ vector<char> InfixToPostfix(const string s) {
 int main() {
   string exp = "a+b*(c^d-e)^(f+g*h)-i";
 
-  vector<char> postExp = InfixToPostfix(exp);
-  for(auto c : postExp)
-    cout << c;
-  cout << "\n";
+  string postExp = InfixToPostfix(exp);
+  cout << string << endl;
 
   return 0;
 }
