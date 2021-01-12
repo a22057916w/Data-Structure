@@ -1,5 +1,5 @@
-#include <infix_to_postfix.h>
-#include <infix_to_prefix.h>
+#include "infix_to_postfix.h"
+#include "infix_to_prefix.h"
 
 #include <iostream>
 #include <string>
