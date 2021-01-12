@@ -37,6 +37,14 @@ Algorithm 2
 #ifndef INFIX_TO_PREFIX_H_
 #define INFIX_TO_PREFIX_H_
 
+#include <cctype>       // for function isalpha()
+#include <string>
+#include <stack>
+#include <algorithm>    // for reversing string
+
+using std::string;
+using std::stack;
+
 #ifndef PRECEDENCE
 #define PRECEDENCE
 
@@ -54,16 +62,8 @@ int prec(const char c) {
 
 #endif // PRECEDENCE
 
+#define ALGORITHM 2
 
-#include <cctype>       // for function isalpha()
-#include <string>
-#include <stack>
-#include <algorithm>    // for reversing string
-
-using std::string;
-using std::stack;
-
-#define ALGORITHM 1;
 #if(ALGORITHM == 1)
 
 // The main function to convert infix expression to pretfix expression
@@ -129,5 +129,31 @@ string InfixToPrefix(const string str) {
   return preExp;
 }
 
-#endif // ALGORITHM == 1
+#elif(ALGORITHM == 2)
+
+#include "infix_to_postfix.h"
+
+// The main function to convert infix expression to pretfix expression
+string InfixToPrefix(const string str) {
+  string infix = str;               // tmp for const str
+
+  // Reverse the given string and exchange '(', ')'.
+  // Make sure using reference to be able to change elements from s
+  std::reverse(infix.begin(), infix.end());
+  for(auto &c : infix) {
+    if(c == ')')
+      c = '(';
+    else if(c == '(')
+      c = ')';
+  }
+
+  string prefix = InfixToPostfix(infix);
+
+  // Reverse postfix
+  std::reverse(prefix.begin(), prefix.end());
+
+  return prefix;
+}
+
+#endif // ALGORITHM
 #endif /* INFIX_TO_PREFIX_H_ */
