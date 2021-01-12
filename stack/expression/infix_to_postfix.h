@@ -26,7 +26,6 @@ Concept & Algorithm
 #include <cctype>       // For function isalpha()
 #include <string>
 #include <stack>
-#include <vector>
 
 using std::string;
 using std::stack;
