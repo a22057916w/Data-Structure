@@ -105,7 +105,7 @@ string InfixToPrefix(const string str) {
 
     // If an operator is scanned
     else {
-      while(!tmp.empty() && prec(s[i]) <= prec(tmp.top())) {
+      while(!tmp.empty() && prec(s[i]) < prec(tmp.top())) {
           out.push(tmp.top());
           tmp.pop();
       }
