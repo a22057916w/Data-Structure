@@ -20,6 +20,11 @@ class ExpressionTree {
 private:
   TreeNode *root;
 
+  ExpressionTree(const string postfix);
+  ExpressionTree(const string prefix);
+
+  bool isOperator(const string data);
+
   void inorder(TreeNode *curr);
   void preorder(TreeNode *curr);
   void postorder(TreeNode *curr);
@@ -40,7 +45,9 @@ ExpressionTree::ExpressionTree(const string postfix) {
   TreeNode *opr, *op1, *op2;
 
   for(int i = 0; i < postfix.size(); i++) {
+    if(!isOperator(postfix[i])) {
 
+    }
   }
 }
 
