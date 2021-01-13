@@ -41,11 +41,13 @@ public:
 // ***************** constructor implementation *****************
 ExprsssionTree::ExprsssionTree(const string str, string exp) {
   if(exp == "post")
-    root = ExpressionTreeByPostfix()
+    root = ExpressionTreeByPostfix(str);
+  else if(exp == "pre")
+    root = ExpressionTreeByPrefix(str);
 }
 
 
-ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
+TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
   stack<TreeNode *> st;
   TreeNode *opr, *op1, *op2;
 
@@ -64,6 +66,36 @@ ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
 
       opr->left = op2;
       opr->right = op1;
+
+      st.push(opr);
+    }
+  }
+
+  TreeNode *et = st.top();
+  st.pop();
+
+  return et;
+}
+
+TreeNode *ExpressionTree::ExpressionTreeByPfix(const string prefix) {
+  stack<TreeNode *> st;
+  TreeNode *opr, *op1, *op2;
+
+  for(int i = prefix.size() - 1; i >= 0; i--) {
+    if(!isOperator(prefix[i])) {
+      op1 = new TreeNode(prefix[i]);
+      st.push(op1);
+    }
+    else {
+      opr = new TreeNode(prefix[i]);
+
+      op1 = new TreeNode(st.top());
+      st.pop();
+      op2 = new TreeNode(st.top());
+      st.pop();
+
+      opr->left = op1;
+      opr->right = op2;
 
       st.push(opr);
     }
