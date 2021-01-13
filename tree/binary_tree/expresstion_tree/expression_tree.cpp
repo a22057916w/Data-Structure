@@ -62,9 +62,9 @@ TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
     else {
       opr = new TreeNode(op);
 
-      op1 = new TreeNode(st.top());
+      op1 = st.top();
       st.pop();
-      op2 = new TreeNode(st.top());
+      op2 = st.top()
       st.pop();
 
       opr->left = op2;
@@ -87,7 +87,7 @@ TreeNode *ExpressionTree::ExpressionTreeByPfix(const string prefix) {
   for(int i = prefix.size() - 1; i >= 0; i--) {
     string op = "";
     op += prefix[i];
-    
+
     if(!isOperator(op)) {
       op1 = new TreeNode(op);
       st.push(op1);
@@ -95,9 +95,9 @@ TreeNode *ExpressionTree::ExpressionTreeByPfix(const string prefix) {
     else {
       opr = new TreeNode(op);
 
-      op1 = new TreeNode(st.top());
+      op1 = st.top();
       st.pop();
-      op2 = new TreeNode(st.top());
+      op2 = st.top();
       st.pop();
 
       opr->left = op1;
