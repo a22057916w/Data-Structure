@@ -1,5 +1,7 @@
 #include "infix_to_postfix.h"
 #include "infix_to_prefix.h"
+#include "postfix_to_infix.h"
+#include "prefix_to_infix.h"
 
 #include <iostream>
 #include <string>
@@ -14,6 +16,9 @@ int main() {
 
   cout << postExp << endl;
   cout << preExp << endl;
+
+  cout << PostfixToInfix(postExp) << endl;
+  cout << PrefixToInfix(preExp) << endl;
 
   return 0;
 }
