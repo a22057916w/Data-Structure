@@ -12,7 +12,7 @@ private:
 public:
   TreeNode(): parent(0), left(0), right(0), data('\0') {};
   TreeNode(char data): parent(0), left(0), right(0), data(data) {};
-  
+
   friend class ExpressionTree;
 }
 
@@ -32,6 +32,18 @@ public:
   void preorder();
   void postorder();
 };
+
+
+// ***************** constructor implementation *****************
+ExpressionTree::ExpressionTree(const string postfix) {
+  stack<TreeNode *> st;
+  TreeNode *opr, *op1, *op2;
+
+  for(int i = 0; i < postfix.size(); i++) {
+
+  }
+}
+
 
 int main() {
   return 0;
