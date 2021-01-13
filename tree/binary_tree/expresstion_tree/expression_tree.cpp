@@ -6,15 +6,15 @@ using namespace std;
 class ExpressionTree;
 class TreeNode {
 private:
-    char data;
+    string data;
     TreeNode *parent;
     TreeNode *left, *right;
 public:
   TreeNode(): parent(0), left(0), right(0), data('\0') {};
-  TreeNode(char data): parent(0), left(0), right(0), data(data) {};
+  TreeNode(string data): parent(0), left(0), right(0), data(data) {};
 
   friend class ExpressionTree;
-}
+};
 
 class ExpressionTree {
 private:
@@ -30,7 +30,7 @@ private:
   void postorder(TreeNode *curr);
 
 public:
-  ExpressionTree(const string exp, ing flag);
+  ExpressionTree(const string str, string exp);
 
   void inorder();
   void preorder();
@@ -39,7 +39,7 @@ public:
 
 
 // ***************** constructor implementation *****************
-ExprsssionTree::ExprsssionTree(const string str, string exp) {
+ExpressionTree::ExpressionTree(const string str, string exp) {
   if(exp == "post")
     root = ExpressionTreeByPostfix(str);
   else if(exp == "pre")
@@ -52,12 +52,15 @@ TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
   TreeNode *opr, *op1, *op2;
 
   for(int i = 0; i < postfix.size(); i++) {
-    if(!isOperator(postfix[i])) {
-      op1 = new TreeNode(postfix[i]);
+    string op = "";
+    op += postfix[i];
+
+    if(!isOperator(op)) {
+      op1 = new TreeNode(op);
       st.push(op1);
     }
     else {
-      opr = new TreeNode(postfix[i]);
+      opr = new TreeNode(op);
 
       op1 = new TreeNode(st.top());
       st.pop();
@@ -82,12 +85,15 @@ TreeNode *ExpressionTree::ExpressionTreeByPfix(const string prefix) {
   TreeNode *opr, *op1, *op2;
 
   for(int i = prefix.size() - 1; i >= 0; i--) {
-    if(!isOperator(prefix[i])) {
-      op1 = new TreeNode(prefix[i]);
+    string op = "";
+    op += prefix[i];
+    
+    if(!isOperator(op)) {
+      op1 = new TreeNode(op);
       st.push(op1);
     }
     else {
-      opr = new TreeNode(prefix[i]);
+      opr = new TreeNode(op);
 
       op1 = new TreeNode(st.top());
       st.pop();
