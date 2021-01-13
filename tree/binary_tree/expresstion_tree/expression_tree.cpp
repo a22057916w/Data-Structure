@@ -20,8 +20,8 @@ class ExpressionTree {
 private:
   TreeNode *root;
 
-  ExpressionTree(const string postfix);
-  ExpressionTree(const string prefix);
+  TreeNode *ExpressionTreeByPrefix(const string postfix);
+  TreeNode *ExpressionTreeByPostfix(const string prefix);
 
   bool isOperator(const string data);
 
@@ -39,7 +39,13 @@ public:
 
 
 // ***************** constructor implementation *****************
-ExpressionTree::ExpressionTree(const string postfix) {
+ExprsssionTree::ExprsssionTree(const string str, string exp) {
+  if(exp == "post")
+    root = ExpressionTreeByPostfix()
+}
+
+
+ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
   stack<TreeNode *> st;
   TreeNode *opr, *op1, *op2;
 
@@ -63,8 +69,10 @@ ExpressionTree::ExpressionTree(const string postfix) {
     }
   }
 
-  root = st.top();
+  TreeNode *et = st.top();
   st.pop();
+
+  return et;
 }
 
 
