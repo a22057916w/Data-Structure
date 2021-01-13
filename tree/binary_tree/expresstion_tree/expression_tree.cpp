@@ -52,6 +52,12 @@ ExpressionTree::ExpressionTree(const string postfix) {
 }
 
 
+bool ExpressionTree::isOperator(const string d) {
+  return (d == "+" || d == "-" || d == "*" || d == "/" || d == "^");
+}
+
+
+
 int main() {
   return 0;
 }
