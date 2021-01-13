@@ -1,4 +1,6 @@
-#include <iostream>
+#ifndef PREFIX_TO_INFIX_H_
+#define PREFIX_TO_INFIX_H_
+
 #include <cctype>
 #include <string>
 #include <stack>
@@ -28,8 +30,4 @@ string PrefixToInfix(const string prefix) {
   return infix.top();
 }
 
-int main() {
-  string pre_exp = "*-A/BC-/AKL";
-  std::cout << "Infix : " << PreToInfix(pre_exp);
-  return 0;
-}
+#endif /* PREFIX_TO_INFIX_H_ */
