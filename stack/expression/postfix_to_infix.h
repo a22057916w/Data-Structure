@@ -1,7 +1,17 @@
+/*
+Algorithm
+1. Read the Postfix expression from left to right.
+2. If the symbol is an operand, then push it onto the Stack.
+3. If the symbol is an operator, then pop two operands from the Stack
+   Create a string by concatenating the two operands and the operator between
+   them. string = (operand2 + operator + operand1)
+4. Repeat the above steps until end of Postfix expression.
+*/
+
 #ifndef POSTFIX_TO_INFIX_H_
 #define POSTFIX_TO_INFIX_H_
 
-#include <cctype>
+#include <cctype>           // for function isalpah()
 #include <string>
 #include <stack>
 
@@ -11,6 +21,7 @@ using std::stack;
 string PostfixToInfix(const string postfix) {
   stack<string> infix;
 
+  // read from left to right
   for(int i = 0; i < postfix.length(); i++) {
 
     if(isalpha(postfix[i])) {
@@ -27,6 +38,7 @@ string PostfixToInfix(const string postfix) {
     }
   }
 
+  // There must be a single element in stack now which is the required infix.
   return infix.top();
 }
 
