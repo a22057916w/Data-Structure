@@ -30,8 +30,7 @@ private:
   void postorder(TreeNode *curr);
 
 public:
-  ExpressionTree(const string postfix);
-  ExpressionTree(const string prefix);
+  ExpressionTree(const string exp, ing flag);
 
   void inorder();
   void preorder();
@@ -46,9 +45,26 @@ ExpressionTree::ExpressionTree(const string postfix) {
 
   for(int i = 0; i < postfix.size(); i++) {
     if(!isOperator(postfix[i])) {
+      op1 = new TreeNode(postfix[i]);
+      st.push(op1);
+    }
+    else {
+      opr = new TreeNode(postfix[i]);
 
+      op1 = new TreeNode(st.top());
+      st.pop();
+      op2 = new TreeNode(st.top());
+      st.pop();
+
+      opr->left = op2;
+      opr->right = op1;
+
+      st.push(opr);
     }
   }
+
+  root = st.top();
+  st.pop();
 }
 
 
