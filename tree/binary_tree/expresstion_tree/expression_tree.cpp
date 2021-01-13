@@ -64,7 +64,7 @@ TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
 
       op1 = st.top();
       st.pop();
-      op2 = st.top()
+      op2 = st.top();
       st.pop();
 
       opr->left = op2;
@@ -80,7 +80,7 @@ TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
   return et;
 }
 
-TreeNode *ExpressionTree::ExpressionTreeByPfix(const string prefix) {
+TreeNode *ExpressionTree::ExpressionTreeByPrefix(const string prefix) {
   stack<TreeNode *> st;
   TreeNode *opr, *op1, *op2;
 
