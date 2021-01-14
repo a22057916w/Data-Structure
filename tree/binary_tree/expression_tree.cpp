@@ -40,7 +40,7 @@ public:
 
 
 // ************************ constructor implementation ************************
-ExpressionTree::ExpressionTree(const string str, string exp) {
+ExpressionTree::ExpressionTree(const string str, const string exp) {
   if(exp == "post")
     root = ExpressionTreeByPostfix(str);
   else if(exp == "pre")
@@ -119,7 +119,7 @@ bool ExpressionTree::isOperator(const string d) {
   return (d == "+" || d == "-" || d == "*" || d == "/" || d == "^");
 }
 
-// ******************** treversal function implementation ********************
+// ******************** traversal function implementation ********************
 void ExpressionTree::inorder() {
   if(root) {
     inorder(root);
@@ -129,9 +129,9 @@ void ExpressionTree::inorder() {
 
 void ExpressionTree::inorder(TreeNode *curr) {
   if(curr) {
-    inorder(curr);
+    inorder(curr->left);
     cout << curr->data;
-    inorder(curr);
+    inorder(curr->right);
   }
 }
 
@@ -145,8 +145,8 @@ void ExpressionTree::preorder() {
 void ExpressionTree::preorder(TreeNode *curr) {
   if(curr) {
     cout << curr->data;
-    preorder(curr);
-    preorder(curr);
+    preorder(curr->left);
+    preorder(curr->right);
   }
 }
 
@@ -159,13 +159,19 @@ void ExpressionTree::postorder() {
 
 void ExpressionTree::postorder(TreeNode *curr) {
   if(curr) {
-    postorder(curr);
-    postorder(curr);
+    postorder(curr->left);
+    postorder(curr->right);
     cout << curr->data;
   }
 }
 
 
 int main() {
+  string postfix = "ab+ef*g*-";
+  ExpressionTree ET(postfix, "post");
+
+  printf("infix expression is \n");
+  ET.inorder();
+
   return 0;
 }
