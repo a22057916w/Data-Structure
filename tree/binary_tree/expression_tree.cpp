@@ -169,9 +169,11 @@ void ExpressionTree::postorder(TreeNode *curr) {
 int main() {
   string postfix = "ab+ef*g*-";
   ExpressionTree ET(postfix, "post");
-
-  printf("infix expression is \n");
   ET.inorder();
+
+  string prefix = "-+ab**efg";
+  ExpressionTree ET2(prefix, "pre");
+  ET2.inorder();
 
   return 0;
 }
