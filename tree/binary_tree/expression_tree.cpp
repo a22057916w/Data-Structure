@@ -20,6 +20,7 @@ class ExpressionTree {
 private:
   TreeNode *root;
 
+
   TreeNode *ExpressionTreeByPrefix(const string postfix);
   TreeNode *ExpressionTreeByPostfix(const string prefix);
 
@@ -38,7 +39,7 @@ public:
 };
 
 
-// ***************** constructor implementation *****************
+// ************************ constructor implementation ************************
 ExpressionTree::ExpressionTree(const string str, string exp) {
   if(exp == "post")
     root = ExpressionTreeByPostfix(str);
@@ -113,11 +114,56 @@ TreeNode *ExpressionTree::ExpressionTreeByPrefix(const string prefix) {
   return et;
 }
 
-
+// ******************* element accesss func implementation *******************
 bool ExpressionTree::isOperator(const string d) {
   return (d == "+" || d == "-" || d == "*" || d == "/" || d == "^");
 }
 
+// ******************** treversal function implementation ********************
+void ExpressionTree::inorder() {
+  if(root) {
+    inorder(root);
+    cout <<"\n";
+  }
+}
+
+void ExpressionTree::inorder(TreeNode *curr) {
+  if(curr) {
+    inorder(curr);
+    cout << curr->data;
+    inorder(curr);
+  }
+}
+
+void ExpressionTree::preorder() {
+  if(root) {
+    preorder(root);
+    cout <<"\n";
+  }
+}
+
+void ExpressionTree::preorder(TreeNode *curr) {
+  if(curr) {
+    cout << curr->data;
+    preorder(curr);
+    preorder(curr);
+  }
+}
+
+void ExpressionTree::postorder() {
+  if(root) {
+    postorder(root);
+    cout <<"\n";
+  }
+}
+
+void ExpressionTree::postorder(TreeNode *curr) {
+  if(curr) {
+    postorder(curr);
+    postorder(curr);
+    cout << curr->data;
+  }
+}
 
 
 int main() {
