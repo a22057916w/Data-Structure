@@ -23,6 +23,7 @@ private:
   // constructor functions
   TreeNode *ExpressionTreeByPrefix(const string postfix);
   TreeNode *ExpressionTreeByPostfix(const string prefix);
+  TreeNode *ExpressionTreeByInfix(const string infix);
 
   // element access
   bool isOperator(const string data);
@@ -48,6 +49,8 @@ ExpressionTree::ExpressionTree(const string str, const string exp) {
     root = ExpressionTreeByPostfix(str);
   else if(exp == "pre")
     root = ExpressionTreeByPrefix(str);
+  else if(exp == "in")
+    root = ExpressionTreeByInfix(str);
 }
 
 /*
