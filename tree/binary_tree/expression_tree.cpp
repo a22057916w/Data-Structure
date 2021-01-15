@@ -155,19 +155,41 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
       op1 = new TreeNode(op);
       st.push(op1);
     }
+    else if(op == "(")
+      stO.push(op);
+    else if(op == ")") {
+      while(!stO.empty() && stO.top() != "(") {
+        opr = new TreeNode(stO.top());
+        stO.pop();
+
+        op1 = st.top();
+        st.pop();
+        op2 = st.top();
+        st.top();
+
+        opr->left = op2;
+        opr->right = op1;
+
+        st.push(opr);
+      }
+      stO.pop();
+    }
     else {
-      opr = new TreeNode(op);
+      while(!stO.empty() && prec(op) <= prec(stO.top())) {
+        opr = new TreeNode(stO.top());
+        stO.pop();
 
-      // op2 must palce before op1 for Postfix
-      op1 = st.top();
-      st.pop();
-      op2 = st.top();
-      st.pop();
+        op1 = st.top();
+        st.pop();
+        op2 = st.top();
+        st.top();
 
-      opr->left = op2;
-      opr->right = op1;
+        opr->left = op2;
+        opr->right = op1;
 
-      st.push(opr);
+        st.push(opr);
+      }
+      stO.push(op);
     }
   }
 
