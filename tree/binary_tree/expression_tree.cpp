@@ -290,7 +290,7 @@ int main() {
   ExpressionTree ET2(prefix, "pre");
   ET2.inorder();
 
-  string infix = "a+b-e*f*g";
+  string infix = "(a^b^(c/d/e-f)^(x*y-m*n))";
   ExpressionTree ET3(infix, "in");
   ET3.postorder();
 
