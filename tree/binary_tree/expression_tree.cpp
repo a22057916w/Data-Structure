@@ -147,9 +147,9 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
   stack<string> stO;
   TreeNode *opr, *op1, *op2;
 
-  for(int i = 0; i < postfix.size(); i++) {
+  for(int i = 0; i < infix.size(); i++) {
     string op = "";
-    op += postfix[i];
+    op += infix[i];
 
     if(!isOperator(op)) {
       op1 = new TreeNode(op);
@@ -179,13 +179,14 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
 
 // ******************* element accesss func implementation *******************
 bool ExpressionTree::isOperator(const string d) {
-  return (d == "+" || d == "-" || d == "*" || d == "/" || d == "^");
+  return (data == "+" || data == "-" || data == "*" || data == "/"
+    || data == "^" || data == ')' || data == '(');
 }
 
-int ExpressionTree::prec(const string d) {
+int ExpressionTree::prec(const string data) {
   string c = "";
-  c += d;
-  
+  c += data;
+
   if(c == '^')
     return 3;
   else if(c == '*' || c == '/')
