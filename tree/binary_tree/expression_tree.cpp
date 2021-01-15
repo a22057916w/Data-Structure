@@ -175,7 +175,8 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
       stO.pop();
     }
     else {
-      while(!stO.empty() && prec(op) <= prec(stO.top())) {
+      while(!stO.empty() && (op != "^" && prec(op) <= prec(stO.top())
+        || op == "^" && prec(op) < prec(stO.top()))) {
         opr = new TreeNode(stO.top());
         stO.pop();
 
