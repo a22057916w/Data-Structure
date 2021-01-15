@@ -165,7 +165,7 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
         op1 = st.top();
         st.pop();
         op2 = st.top();
-        st.top();
+        st.pop();
 
         opr->left = op2;
         opr->right = op1;
