@@ -142,15 +142,47 @@ TreeNode *ExpressionTree::ExpressionTreeByPrefix(const string prefix) {
   return et;
 }
 
+/*
+Concept (Infix input)
+1. The algorithm follows a combination of shunting yard along with
+    postfix-to-expression tree conversion. e.g. Consider the below line:
+              ((s[i]!='^' && p[stC.top()]>=p[s[i]]) ||
+              (s[i]=='^' && p[stC.top()]>p[s[i]])))
+2. You might remember that unlike '+', '-', '*' ,and ''/;
+    '^' is right associative. In simpler terms, a^b^c is a^(b^c) not (a^b)^c.
+    So it must be evaluated from the right.
+
+Algorithm (Infix input)
+1. New two stacks, one for the node(A); the other for the op(B).
+2. Scan teh string from left to right.
+3. If a character is an operand push that into A.
+4. Else,
+     1-1. If the operator "is '^'", then the precedence of the scanned operator
+          is "greater than" the precedence of the operator in B, push it.
+     1-2. If the operator "is not '^'", then the precedence of the scanned
+          operator is "greater than or equal to" the precedence of the operator
+          in B, push it.
+     2 Else, pop 1 operators from B which are greater precedence than or
+       equal to that of the scanned operator depending by the case above. After
+       doing that, pop 2 nodes from A make them its(the operator) child and push
+       the current node into A.
+4. If the scanned character is an ‘(‘, push it to the stack.
+5. If the scanned character is an ‘)’, pop B and output it until a ‘(‘ is
+   encountered, and discard both the parenthesis.
+6. Repeat steps 3-5 until infix expression is scanned.
+7. Pop the remaining operator in B and repeat steps 3-5 until it is not empty.
+8. In the end, the only element of A will be the root of an expression tree.
+*/
 TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
-  stack<TreeNode *> st;
-  stack<string> stO;
+  stack<TreeNode *> st;         // Stack to hold nodes
+  stack<string> stO;            // Stack to hold operators
   TreeNode *opr, *op1, *op2;
 
   for(int i = 0; i < infix.size(); i++) {
     string op = "";
     op += infix[i];
 
+    // Push the operands in node stack
     if(!isOperator(op)) {
       op1 = new TreeNode(op);
       st.push(op1);
@@ -159,24 +191,34 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
       stO.push(op);
     else if(op == ")") {
       while(!stO.empty() && stO.top() != "(") {
+
+        // Get and remove the top element from the operator stack
         opr = new TreeNode(stO.top());
         stO.pop();
 
+        // Get and remove the top 2 element from the node stack
         op1 = st.top();
         st.pop();
         op2 = st.top();
         st.pop();
 
+        // Update the tree
         opr->left = op2;
         opr->right = op1;
 
+        // Push the node to the node stack
         st.push(opr);
       }
+
+      // Pop the top operator ")"
       stO.pop();
     }
     else {
+
+      // If an operator with lower or same associativity appears
       while(!stO.empty() && (op != "^" && prec(op) <= prec(stO.top())
         || op == "^" && prec(op) < prec(stO.top()))) {
+
         opr = new TreeNode(stO.top());
         stO.pop();
 
@@ -190,10 +232,13 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
 
         st.push(opr);
       }
+
+      // Push op (s[i]) to operator stack
       stO.push(op);
     }
   }
 
+  // Pop all the remaining elements from the operator stack
   while(!stO.empty()) {
     opr = new TreeNode(stO.top());
     stO.pop();
