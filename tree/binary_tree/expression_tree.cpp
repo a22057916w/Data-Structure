@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cctype>
+#include <string>
 #include <stack>
 using namespace std;
 
@@ -20,12 +20,14 @@ class ExpressionTree {
 private:
   TreeNode *root;
 
-
+  // constructor functions
   TreeNode *ExpressionTreeByPrefix(const string postfix);
   TreeNode *ExpressionTreeByPostfix(const string prefix);
 
+  // element access
   bool isOperator(const string data);
 
+  // traversal functions
   void inorder(TreeNode *curr);
   void preorder(TreeNode *curr);
   void postorder(TreeNode *curr);
@@ -33,6 +35,7 @@ private:
 public:
   ExpressionTree(const string str, string exp);
 
+  // traversal functions
   void inorder();
   void preorder();
   void postorder();
@@ -47,7 +50,15 @@ ExpressionTree::ExpressionTree(const string str, const string exp) {
     root = ExpressionTreeByPrefix(str);
 }
 
-
+/*
+Algorithm (Postfix input)
+1. Scan the string from left to right.
+2. If a character is an operand push that into the stack.
+3. If a character is an operator pop two values from the stack make them its
+   child and push the current node again.
+4. In the end, the only element of the stack will be the root of an
+   expression tree.
+*/
 TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
   stack<TreeNode *> st;
   TreeNode *opr, *op1, *op2;
@@ -63,6 +74,7 @@ TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
     else {
       opr = new TreeNode(op);
 
+      // op2 must palce before op1 for Postfix
       op1 = st.top();
       st.pop();
       op2 = st.top();
@@ -81,6 +93,15 @@ TreeNode *ExpressionTree::ExpressionTreeByPostfix(const string postfix) {
   return et;
 }
 
+/*
+Algorithm (Postfix input)
+1. Scan the string from right to left.
+2. If a character is an operand push that into the stack.
+3. If a character is an operator pop two values from the stack make them its
+   child and push the current node again.
+4. In the end, the only element of the stack will be the root of an
+   expression tree.
+*/
 TreeNode *ExpressionTree::ExpressionTreeByPrefix(const string prefix) {
   stack<TreeNode *> st;
   TreeNode *opr, *op1, *op2;
@@ -96,6 +117,7 @@ TreeNode *ExpressionTree::ExpressionTreeByPrefix(const string prefix) {
     else {
       opr = new TreeNode(op);
 
+      // op1 must palce before op2 for Prefix
       op1 = st.top();
       st.pop();
       op2 = st.top();
