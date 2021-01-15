@@ -27,6 +27,7 @@ private:
 
   // element access
   bool isOperator(const string data);
+  int prec(const string &data);
 
   // traversal functions
   void inorder(TreeNode *curr);
@@ -51,6 +52,8 @@ ExpressionTree::ExpressionTree(const string str, const string exp) {
     root = ExpressionTreeByPrefix(str);
   else if(exp == "in")
     root = ExpressionTreeByInfix(str);
+  else
+    cout << "Expression Type is wrong" << endl;
 }
 
 /*
@@ -128,6 +131,41 @@ TreeNode *ExpressionTree::ExpressionTreeByPrefix(const string prefix) {
 
       opr->left = op1;
       opr->right = op2;
+
+      st.push(opr);
+    }
+  }
+
+  TreeNode *et = st.top();
+  st.pop();
+
+  return et;
+}
+
+TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
+  stack<TreeNode *> st;
+  stack<string> stO;
+  TreeNode *opr, *op1, *op2;
+
+  for(int i = 0; i < postfix.size(); i++) {
+    string op = "";
+    op += postfix[i];
+
+    if(!isOperator(op)) {
+      op1 = new TreeNode(op);
+      st.push(op1);
+    }
+    else {
+      opr = new TreeNode(op);
+
+      // op2 must palce before op1 for Postfix
+      op1 = st.top();
+      st.pop();
+      op2 = st.top();
+      st.pop();
+
+      opr->left = op2;
+      opr->right = op1;
 
       st.push(opr);
     }
