@@ -3,9 +3,9 @@ Concept & Algorithm
 1. Scan the infix expression from left to right.
 2. If the scanned character is an operand, output it.
 3. Else,
-      1 If the precedence of the scanned operator is greater than or equal to
-        the precedence of the operator in the stack(or the stack is empty or the
-        stack contains a ‘(‘ ), push it.
+      1 If the precedence of the scanned operator is greater than the precedence
+        of the operator in the stack(or the stack is empty or the stack contains
+        a ‘(‘ ), push it.
       2 Else, Pop all the operators from the stack which are greater than in
         precedence than that of the scanned operator. After doing
         that Push the scanned operator to the stack. (If you encounter
@@ -75,7 +75,7 @@ string InfixToPostfix(const string s) {
 
     //If an operator is scanned
     else {
-      while(!st.empty() && prec(s[i]) <= prec(st.top())) {
+      while(!st.empty() && prec(s[i]) < prec(st.top())) {
           postExp += st.top();
           st.pop();
       }
