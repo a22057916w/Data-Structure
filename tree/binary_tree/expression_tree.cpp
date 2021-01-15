@@ -200,20 +200,20 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
 }
 
 // ******************* element accesss func implementation *******************
-bool ExpressionTree::isOperator(const string d) {
+bool ExpressionTree::isOperator(const string data) {
   return (data == "+" || data == "-" || data == "*" || data == "/"
-    || data == "^" || data == ')' || data == '(');
+    || data == "^" || data == ")" || data == "(");
 }
 
 int ExpressionTree::prec(const string data) {
-  string c = "";
-  c += data;
+  string op = "";
+  op += data;
 
-  if(c == '^')
+  if(op == "^")
     return 3;
-  else if(c == '*' || c == '/')
+  else if(op == "*" || op == "/")
     return 2;
-  else if(c == '-' || c == '+')
+  else if(op == "-" || op == "+")
     return 1;
   else
     return -1;
