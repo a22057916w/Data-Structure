@@ -27,7 +27,7 @@ private:
 
   // element access
   bool isOperator(const string data);
-  int prec(const string &data);
+  int prec(const string data);
 
   // traversal functions
   void inorder(TreeNode *curr);
@@ -35,7 +35,7 @@ private:
   void postorder(TreeNode *curr);
 
 public:
-  ExpressionTree(const string str, string exp);
+  ExpressionTree(const string str, const string exp);
 
   // traversal functions
   void inorder();
@@ -182,6 +182,19 @@ bool ExpressionTree::isOperator(const string d) {
   return (d == "+" || d == "-" || d == "*" || d == "/" || d == "^");
 }
 
+int ExpressionTree::prec(const string d) {
+  string c = "";
+  c += d;
+  
+  if(c == '^')
+    return 3;
+  else if(c == '*' || c == '/')
+    return 2;
+  else if(c == '-' || c == '+')
+    return 1;
+  else
+    return -1;
+}
 // ******************** traversal function implementation ********************
 void ExpressionTree::inorder() {
   if(root) {
