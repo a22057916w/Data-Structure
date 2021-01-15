@@ -182,7 +182,7 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
         op1 = st.top();
         st.pop();
         op2 = st.top();
-        st.top();
+        st.pop();
 
         opr->left = op2;
         opr->right = op1;
@@ -191,6 +191,21 @@ TreeNode *ExpressionTree::ExpressionTreeByInfix(const string infix) {
       }
       stO.push(op);
     }
+  }
+
+  while(!stO.empty()) {
+    opr = new TreeNode(stO.top());
+    stO.pop();
+
+    op1 = st.top();
+    st.pop();
+    op2 = st.top();
+    st.pop();
+
+    opr->left = op2;
+    opr->right = op1;
+
+    st.push(opr);
   }
 
   TreeNode *et = st.top();
@@ -273,6 +288,10 @@ int main() {
   string prefix = "-+ab**efg";
   ExpressionTree ET2(prefix, "pre");
   ET2.inorder();
+
+  string infix = "a+b-e*f*g";
+  ExpressionTree ET3(infix, "in");
+  ET3.postorder();
 
   return 0;
 }
