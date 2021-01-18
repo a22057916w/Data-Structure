@@ -26,21 +26,27 @@ class BST {
 private:
     TreeNode *root;
 
+    // element access
     TreeNode *search(int key, TreeNode *root);
 
+    // modifying function
     TreeNode *insert(TreeNode *root, TreeNode *newNode);
 
 public:
     BST(): root(0) {};
 
+    // element access
     TreeNode *search(int key);
 
+    // modifying function
     void insert(int key, string element);
 
+    // traversal function
     void inorder();
 };
 
 
+// ****************** element access function implementation ******************
 TreeNode *BST::search(int key) {
   return search(key, root);
 }
@@ -60,6 +66,7 @@ TreeNode *BST::search(int key, TreeNode *root) {
     return search(key, root->right);
 }
 
+// ********************* modifying function implementation ********************
 void BST::insert(int key, string element) {
   insert(root, new TreeNode(key, element));
 }
@@ -80,3 +87,5 @@ TreeNode* BST::insert(TreeNode *root, TreeNode *newNode) {
 
   return root;
 }
+
+// ******************* traversal function implementation **********************
