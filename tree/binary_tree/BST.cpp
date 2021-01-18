@@ -73,7 +73,7 @@ TreeNode *BST::search(int key, TreeNode *root) {
 
 // ********************* modifying function implementation ********************
 void BST::insert(int key, string element) {
-  insert(root, new TreeNode(key, element));
+  root = insert(root, new TreeNode(key, element));
 }
 
 TreeNode* BST::insert(TreeNode *root, TreeNode *newNode) {
