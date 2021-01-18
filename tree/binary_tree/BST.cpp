@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <queue>
 using namespace std;
 
 class BST;
@@ -46,6 +47,7 @@ public:
 
     // traversal function
     void inorder();
+    void levelorder();
 };
 
 
@@ -102,4 +104,25 @@ void BST::inorder(TreeNode *curr) {
     cout << curr->element << "(" << curr->key << ") ";
     inorder(curr->right);
   }
+}
+
+void BST::levelorder() {
+  queue<TreeNode*> q;
+  q.push(root);
+
+  while(!q.empty()) {
+    TreeNode *curr = q.front();
+    q.pop();
+
+    cout << curr->element << "(" << curr->key << ") ";
+
+    if(curr->left)
+      q.push(curr->left);
+    if(curr->right)
+      q.push(curr->right);
+  }
+}
+
+int main() {
+  return 0;
 }
