@@ -49,11 +49,11 @@ TreeNode *BST::search(int key, TreeNode *curr) {
   if(curr == NULL || curr->key = key)
     return curr;
 
-  // Key is greater than root's key
-  if(curr->key < key)
+  // Key is smaller than root's key
+  if(key < curr->key)
     return serach(key, curr->left);
 
-  // Key is smaller than root's key
+  // Key is greater than root's key
   else
     return search(key, curr->right);
 }
