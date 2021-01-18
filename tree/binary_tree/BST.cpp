@@ -24,9 +24,9 @@ class BST {
 private:
     TreeNode *root;
 
-    TreeNode *search(int key, TreeNode *curr);
+    TreeNode *search(int key, TreeNode *root);
 
-    TreeNode *insert(TreeNode *curr, TreeNode *newNode)
+    TreeNode *insert(TreeNode *root, TreeNode *newNode)
 
 public:
     BST(): root(0) {};
@@ -43,29 +43,29 @@ TreeNode *BST::search(int key) {
   return search(key, root);
 }
 
-TreeNode *BST::search(int key, TreeNode *curr) {
+TreeNode *BST::search(int key, TreeNode *root) {
 
-  // Base Cases: root(curr) is null or key is present at root(curr)
-  if(curr == NULL || curr->key = key)
-    return curr;
+  // Base Cases: root(curr node) is null or key is present at root(curr node)
+  if(root == NULL || root->key = key)
+    return root;
 
   // Key is smaller than root's key
-  if(key < curr->key)
-    return serach(key, curr->left);
+  if(key < root->key)
+    return serach(key, root->left);
 
   // Key is greater than root's key
   else
-    return search(key, curr->right);
+    return search(key, root->right);
 }
 
 void BST::insert(int key, string element) {
   insert(root, new TreeNode(key, element));
 }
 
-TreeNode* BST::insert(TreeNode *curr, TreeNode *newNode) {
+TreeNode* BST::insert(TreeNode *root, TreeNode *newNode) {
 
   // If the root is empty or reach the bottom of a leaf
-  if(curr == NULL)
+  if(root == NULL)
     return newNode;
 
   // Key is smaller than root's key
