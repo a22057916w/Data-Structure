@@ -124,5 +124,36 @@ void BST::levelorder() {
 }
 
 int main() {
+  BST T;
+
+  T.insert(8,"龜仙人");
+  T.insert(1000,"悟空");
+  T.insert(2,"克林");
+  T.insert(513,"比克");
+
+
+  cout << "Inorder Traversal:\n";
+  T.inorder();
+  cout << endl;
+  cout << "Level-order Traversal:\n";
+  T.levelorder();
+  cout << endl << endl;
+
+  TreeNode *node = T.search(1000);
+  if(node != NULL){
+      cout << "There is " << node->getElement() << "(" << node->getKey() << ")" << endl;
+  }
+  else {
+      cout << "no element with Key(1000)" << endl;
+  }
+
+  node = T.search(73);
+  if(node != NULL){
+    cout << "There is " << node->getElement() << "(" << node->getKey() << ")" << endl;
+  }
+  else {
+    cout << "no element with Key(73)" << endl;
+  }
+
   return 0;
 }
