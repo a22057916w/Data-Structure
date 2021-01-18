@@ -32,6 +32,9 @@ private:
     // modifying function
     TreeNode *insert(TreeNode *root, TreeNode *newNode);
 
+    // traversal function
+    void inorder(TreeNode *curr);
+
 public:
     BST(): root(0) {};
 
@@ -89,3 +92,14 @@ TreeNode* BST::insert(TreeNode *root, TreeNode *newNode) {
 }
 
 // ******************* traversal function implementation **********************
+void BST::inorder() {
+  inorder(root);
+}
+
+void BST::inorder(TreeNode *curr) {
+  if(curr) {
+    inorder(curr->left);
+    cout << curr->element << "(" << curr->key << ") ";
+    inorder(curr->right);
+  }
+}
