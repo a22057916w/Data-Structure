@@ -8,8 +8,10 @@ class TreeNode {
 private:
   int key;
   string element;
+
   TreeNode *parent;
   TreeNode *left, *right;
+
 public:
   TreeNode(): parent(0), left(0), right(0), key(0), element("") {};
   TreeNode(int k, string e): parent(0), left(0), right(0), key(k), element(e) {};
@@ -26,14 +28,14 @@ private:
 
     TreeNode *search(int key, TreeNode *root);
 
-    TreeNode *insert(TreeNode *root, TreeNode *newNode)
+    TreeNode *insert(TreeNode *root, TreeNode *newNode);
 
 public:
     BST(): root(0) {};
 
     TreeNode *search(int key);
 
-    void insert(int key, element);
+    void insert(int key, string element);
 
     void inorder();
 };
@@ -46,12 +48,12 @@ TreeNode *BST::search(int key) {
 TreeNode *BST::search(int key, TreeNode *root) {
 
   // Base Cases: root(curr node) is null or key is present at root(curr node)
-  if(root == NULL || root->key = key)
+  if(root == NULL || root->key == key)
     return root;
 
   // Key is smaller than root's key
   if(key < root->key)
-    return serach(key, root->left);
+    return search(key, root->left);
 
   // Key is greater than root's key
   else
@@ -69,7 +71,7 @@ TreeNode* BST::insert(TreeNode *root, TreeNode *newNode) {
     return newNode;
 
   // Key is smaller than root's key
-  if(newNode->key <= curr->key)
+  if(newNode->key <= root->key)
     root->left  = insert(root->left, newNode);
 
   // Key is greater than root's key
