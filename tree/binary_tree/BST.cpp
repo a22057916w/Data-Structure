@@ -6,12 +6,13 @@ using namespace std;
 class BST;
 class TreeNode {
 private:
-    string data;
-    TreeNode *parent;
-    TreeNode *left, *right;
+  int key;
+  string element;
+  TreeNode *parent;
+  TreeNode *left, *right;
 public:
-  TreeNode(): parent(0), left(0), right(0), data('\0') {};
-  TreeNode(string data): parent(0), left(0), right(0), data(data) {};
+  TreeNode(): parent(0), left(0), right(0), key(0), element("") {};
+  TreeNode(int k, string e): parent(0), left(0), right(0), key(k), element(e) {};
 
   friend class BST;
 };
