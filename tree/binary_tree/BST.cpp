@@ -29,6 +29,7 @@ private:
 
     // element access
     TreeNode *search(int key, TreeNode *root);
+    TreeNode *getSuccessor(TreeNode *curr);
 
     // modifying function
     TreeNode *insert(TreeNode *root, TreeNode *newNode);
@@ -71,6 +72,12 @@ TreeNode *BST::search(int key, TreeNode *root) {
   // Key is greater than root's key
   else
     return search(key, root->right);
+}
+
+TreeNode *BST::getSuccessor(TreeNode *curr) {
+  while(curr && curr->left)
+    curr = curr->left;
+  return curr;
 }
 
 // ********************* modifying function implementation ********************
@@ -130,8 +137,19 @@ TreeNode *BST::deleteNode(TreeNode *root, int key) {
       return temp;
     }
 
-    TreeNode *temp = getSuccessor();
+    // Case 3: node with two children. Get the inorder successor (smallest in
+    // the right subtree)
+    TreeNode *temp = getSuccessor(root->right);
+
+    // Copy the inorder successor's content to this node
+    root->key = temp->key;
+
+    // Delete the inorder successor
+    root->right = deleteNode(root->right, temp->key);
   }
+
+  // To retrun the result of Csee 3
+  return root;
 }
 // ******************* traversal function implementation **********************
 void BST::inorder() {
