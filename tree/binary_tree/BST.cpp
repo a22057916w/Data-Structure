@@ -130,7 +130,7 @@ TreeNode *BST::deleteNode(TreeNode *root, int key) {
       delete root;
       return temp;
     }
-    else if(root == NULL) {
+    else if(root->right == NULL) {
       TreeNode *temp  = root->left;
       root = NULL;
       delete root;
