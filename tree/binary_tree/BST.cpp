@@ -213,5 +213,15 @@ int main() {
     cout << "no element with Key(73)" << endl;
   }
 
+
+  cout << "Delete 20" << endl;
+  T.deleteNode(1000);
+  cout << "Inorder traversal of the modified tree" << endl;
+  T.inorder();
+  cout << endl;
+  cout << "Level-order Traversal:\n";
+  T.levelorder();
+  cout << endl << endl;
+
   return 0;
 }
