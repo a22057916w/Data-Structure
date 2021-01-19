@@ -32,6 +32,7 @@ private:
 
     // modifying function
     TreeNode *insert(TreeNode *root, TreeNode *newNode);
+    TreeNode *delNode(TreeNode *root, int key);
 
     // traversal function
     void inorder(TreeNode *curr);
@@ -44,6 +45,7 @@ public:
 
     // modifying function
     void insert(int key, string element);
+    void deleteNode(int key);
 
     // traversal function
     void inorder();
@@ -76,7 +78,7 @@ void BST::insert(int key, string element) {
   root = insert(root, new TreeNode(key, element));
 }
 
-TreeNode* BST::insert(TreeNode *root, TreeNode *newNode) {
+TreeNode *BST::insert(TreeNode *root, TreeNode *newNode) {
 
   // If the root is empty or reach the bottom of a leaf
   if(root == NULL)
@@ -93,6 +95,13 @@ TreeNode* BST::insert(TreeNode *root, TreeNode *newNode) {
   return root;
 }
 
+void BST::deleteNode(int key) {
+  root = deleteNode(root, key);
+}
+
+TreeNode *BST::deleteNode(TreeNode *root, int key) {
+
+}
 // ******************* traversal function implementation **********************
 void BST::inorder() {
   inorder(root);
