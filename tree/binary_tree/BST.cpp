@@ -33,7 +33,7 @@ private:
 
     // modifying function
     TreeNode *insert(TreeNode *root, TreeNode *newNode);
-    TreeNode *delNode(TreeNode *root, int key);
+    TreeNode *deleteNode(TreeNode *root, int key);
 
     // traversal function
     void inorder(TreeNode *curr);
