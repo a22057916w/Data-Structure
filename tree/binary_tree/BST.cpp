@@ -100,15 +100,37 @@ void BST::deleteNode(int key) {
 }
 
 TreeNode *BST::deleteNode(TreeNode *root, int key) {
+
+  // base case
   if(root == NULL)
     return root;
 
   if(key < root->key)
     root->left = deleteNode(root->left, key);
+
+  // If the key to be deleted is greater than the root's key, then it lies in
+  // right subtree
   else if(key > root->key)
     root->right = deleteNode(root->right, key);
+
+  // if key is same as root's key, then This is the node to be deleted
   else {
-    if(root->left == NULL)
+
+    // Case 1 & Case 2 : node with only one child or no child
+    if(root->left == NULL) {
+      TreeNode *temp  = root->right;
+      root = NULL;
+      delete root;
+      return temp;
+    }
+    else if(root == NULL) {
+      TreeNode *temp  = root->left;
+      root = NULL;
+      delete root;
+      return temp;
+    }
+
+    TreeNode *temp = getSuccessor();
   }
 }
 // ******************* traversal function implementation **********************
