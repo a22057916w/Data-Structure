@@ -100,7 +100,16 @@ void BST::deleteNode(int key) {
 }
 
 TreeNode *BST::deleteNode(TreeNode *root, int key) {
+  if(root == NULL)
+    return root;
 
+  if(key < root->key)
+    root->left = deleteNode(root->left, key);
+  else if(key > root->key)
+    root->right = deleteNode(root->right, key);
+  else {
+    if(root->left == NULL)
+  }
 }
 // ******************* traversal function implementation **********************
 void BST::inorder() {
