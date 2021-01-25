@@ -21,9 +21,11 @@ class AVL_TREE;
 class TreeNode {
 private:
   TreeNode *left, *right;
+  int key;
   int height;
 public:
-  TreeNode(): left(0), right(0), height(-1) {};
+  TreeNode(): left(0), right(0), key(0), height(-1) {};
+  TreeNode(int key): left(0), right(0), key(key), height(1) {};
 
   friend class AVL_TREE;
 };
