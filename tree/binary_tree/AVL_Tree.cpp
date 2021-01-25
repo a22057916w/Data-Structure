@@ -212,15 +212,16 @@ TreeNode *AVL_TREE::deleteNode(TreeNode *root, int key) {
   // If this node becomes unbalanced, then
   // there are 4 cases
   if(balance > 1) {
-    if(key < root->left->key)       // Case LL
+    if(getBalance(root->left) >= 0)   {     // Case LL
       return rightRotation(root);
+    }
     else {                          // Case LR
       root->left = leftRotation(root->left);
       return rightRotation(root);
     }
   }
   else if(balance < -1) {           // Case RR
-    if(key > root->right->key)
+    if(getBalance(root->right) <= 0)
       return leftRotation(root);
     else {                          // Case RL
       root->right = rightRotation(root->right);
