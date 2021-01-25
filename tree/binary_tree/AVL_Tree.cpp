@@ -205,5 +205,19 @@ void AVL_TREE::levelorder() {
 }
 
 int main() {
+
+  AVL_TREE avl;
+
+  avl.insert(13);
+  avl.insert(10);
+  avl.insert(15);
+  avl.insert(5);
+  avl.insert(11);
+  avl.insert(4);
+  avl.insert(8);
+  avl.insert(16);
+  avi.inorder();
+  cout << endl;
+
   return 0;
 }
