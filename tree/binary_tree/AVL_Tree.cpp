@@ -51,13 +51,42 @@ Concept (Insertion)
 2. Check the operation is vailed for the restrictions of AVL from bottom to up.
 3. If the tree is balanced, end of the insertion.
 4. Else, do the rotation(LL, LR, RR, RL) to make it balanced.
+
+Algorithm (Insertion)
+1. Perform the normal BST insertion.
+2. The current node must be one of the ancestors of the newly inserted node.
+   Update the height of the current node.
+3. Get the balance factor (left subtree height – right subtree height) of the
+   current node.
+4. If balance factor is greater than 1, then the current node is unbalanced and
+   we are either in LL case or LR case. To check whether it is LL case or not,
+   compare the newly inserted key with the key in left subtree root.
+5. If balance factor is less than -1, then the current node is unbalanced and we
+   are either in RR case or RL case. To check whether it is RR case or not,
+   compare the newly inserted key with the key in right subtree root.
 */
-void insert(int key) {
+void AVL_TREE::insert(int key) {
   root = insert(root, key);
 }
 
-TreeNode *insert(TreeNode *root, int key) {
+TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
 
+  // Step 1. Perform the normal BST insertion.
+  if(root == NULL)
+    return new TreeNode(key);
+  if(key < root.key)
+    root->left = insert(root->left, key);
+  else if(key > root->key)
+    root->right = insrt(root->right, key);
+  else          // Assume the duplication is not allowed in BST
+    return root;
+
+  // Step 2. Update height of this ancestor node
+  root->height = max(getHeight(root->left), getHeight(root->right)) + 1;
+
+  // Step 3. Get the balance factor of this ancestor node to check whether this
+  //         node became unbalanced
+  int balance = getBalance(root);
 }
 
 int main() {
