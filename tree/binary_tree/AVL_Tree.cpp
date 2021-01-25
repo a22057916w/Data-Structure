@@ -15,6 +15,7 @@ This is a C++ Program to Implement AVL Tree.
 */
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 class AVL_TREE;
@@ -37,11 +38,16 @@ private:
   // modifying functions
   TreeNode *insert(TreeNode *root, int key);
 
+  // capacity functions
+  int getHeight(TreeNode *curr);
+  int getBalance(TreeNpde *curr);
+
 public:
   AVL_TREE(): root(0);
 
   // modifying functions
   void insert(int key);
+
 };
 
 // ***************** Implementation of modifying functions ******************
@@ -87,6 +93,22 @@ TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
   // Step 3. Get the balance factor of this ancestor node to check whether this
   //         node became unbalanced
   int balance = getBalance(root);
+}
+
+
+// ******************* implementation of capacity functions *******************
+int AVL_TREE::getHeight(TreeNode *curr) {
+  if(curr == NULL)
+    return 0;
+
+  // we update the heigh of node for every insertions, so we just return the var
+  return curr->height;
+}
+
+int AVL_TREE::getBalance(TreeNode *curr) {
+  if(curr == NULL)
+    return 0;
+  return getHeight(curr->left) - getHeight(curr->right);
 }
 
 int main() {
