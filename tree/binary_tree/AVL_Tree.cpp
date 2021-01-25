@@ -225,29 +225,29 @@ TreeNode *AVL_TREE::deleteNode(TreeNode *root, int key) {
     return root;
 }
 
-// The tree must satisfy key(y) < key(z) < key(x) either before or after the
-// rotation take place
-TreeNode *AVL_TREE::rightRotation(TreeNode *x) {
-  TreeNode *y = x->left;
-  TreeNode *z = y->right;     // z for T2(right subtree of y)
+// The tree must satisfy key(x) < key(y) either before or after the
+// rotation take place, rotating subtree rooted with y
+TreeNode *AVL_TREE::rightRotation(TreeNode *y) {
+  TreeNode *x = y->left;
+  TreeNode *T2 = x->right;     // right subtree of x
 
   // Perform rotation
-  y->right = x;
-  x->left = z;
+  x->right = y;
+  y->left = T2;
 
   // Update heights
-  x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
-  y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+  y->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+  x->height = max(getHeight(y->left), getHeight(y->right)) + 1;
 
   // Return new root
-  return y;
+  return x;
 }
 
-// The tree must satisfy key(x) < key(z) < key(y) either before or after the
-// rotation take place
-TreeNode *AVL_TREE::leftRotation(TreeNode *y) {
-  TreeNode *x = y->right;
-  TreeNode *z = x->left;    // z for T2(left subtree of x)
+// The tree must satisfy key(x) < key(y) either before or after the
+// rotation take place, subtree rooted with x
+TreeNode *AVL_TREE::leftRotation(TreeNode *x) {
+  TreeNode *y = x->right;
+  TreeNode *T2 = y->left;    // left subtree of y
 
   y->left = x;
   x->right = z;
