@@ -38,6 +38,7 @@ private:
 
   // modifying functions
   TreeNode *insert(TreeNode *root, int key);
+  TreeNode *deleteNode(TreeNode *root, int key);
   TreeNode *leftRotation(TreeNode *curr);
   TreeNode *rightRotation(TreeNode *curr);
 
@@ -53,6 +54,7 @@ public:
 
   // modifying functions
   void insert(int key);
+  void deleteNode(int key);
 
   // traversal function
   void inorder();
@@ -125,6 +127,10 @@ TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
   // return the (unchanged) node pointer
   else
     return root;
+}
+
+TreeNode *AVL_TREE::deleteNode(TreeNode *root, int key) {
+
 }
 
 // The tree must satisfy key(y) < key(z) < key(x) either before or after the
