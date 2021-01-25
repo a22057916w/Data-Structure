@@ -163,7 +163,7 @@ TreeNode *AVL_TREE::deleteNode(TreeNode *root, int key) {
   if(root == NULL)
     return root;
   if(key < root->key)
-    root->left = deleteNode(root->left, ley);
+    root->left = deleteNode(root->left, key);
   else if(key > root->key)
     root->right = deleteNode(root->right, key);
   else {
