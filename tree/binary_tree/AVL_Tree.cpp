@@ -172,28 +172,34 @@ TreeNode *AVL_TREE::deleteNode(TreeNode *root, int key) {
 
     // Case 1 & Case 2 : node with only one child or no child
     if(root->left == NULL) {
-      TreeNode *temp  = root->right;
-      root = NULL;
-      delete root;
-      return temp;
+      TreeNode *temp  = root;
+      root = root->right;
+      temp = NULL;
+      delete temp;
     }
     else if(root->right == NULL) {
-      TreeNode *temp  = root->left;
-      root = NULL;
-      delete root;
-      return temp;
+      TreeNode *temp  = root;
+      root = root->left;
+      temp = NULL;
+      delete temp;
     }
 
     // Case 3: node with two children. Get the inorder successor (smallest in
     // the right subtree)
-    TreeNode *temp = getSuccessor(root->right);
+    else {
+      TreeNode *temp = getSuccessor(root->right);
 
-    // Copy the inorder successor's content to this node
-    root->key = temp->key;
+      // Copy the inorder successor's content to this node
+      root->key = temp->key;
 
-    // Delete the inorder successor
-    root->right = deleteNode(root->right, temp->key);
+      // Delete the inorder successor
+      root->right = deleteNode(root->right, temp->key);
+    }
   }
+
+  // If the tree had only one node , then return
+  if(root == NULL)
+    return NULL;
 
   // Step 2. Update height of this ancestor node
   root->height = max(getHeight(root->left), getHeight(root->right)) + 1;
