@@ -173,16 +173,16 @@ TreeNode *AVL_TREE::deleteNode(TreeNode *root, int key) {
 
     // Case 1 & Case 2 : node with only one child or no child
     if(root->left == NULL) {
-      TreeNode *temp  = root;
-      root = root->right;
-      temp = NULL;
-      delete temp;
+      TreeNode *temp  = root->right;
+      root = NULL;
+      delete root;
+      return temp;
     }
     else if(root->right == NULL) {
-      TreeNode *temp  = root;
-      root = root->left;
-      temp = NULL;
-      delete temp;
+      TreeNode *temp  = root->left;
+      root = NULL;
+      delete root;
+      return temp;
     }
 
     // Case 3: node with two children. Get the inorder successor (smallest in
@@ -243,8 +243,8 @@ TreeNode *AVL_TREE::rightRotation(TreeNode *y) {
   y->left = T2;
 
   // Update heights
-  y->height = max(getHeight(x->left), getHeight(x->right)) + 1;
-  x->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+  y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+  x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
 
   // Return new root
   return x;
