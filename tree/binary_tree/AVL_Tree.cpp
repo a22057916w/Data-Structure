@@ -217,7 +217,10 @@ int main() {
   avl.insert(4);
   avl.insert(8);
   avl.insert(16);
+
   avl.inorder();
+  cout << "\n";
+  avl.levelorder();
   cout << endl;
 
   return 0;
