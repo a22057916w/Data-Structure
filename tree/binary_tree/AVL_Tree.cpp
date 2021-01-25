@@ -36,6 +36,9 @@ class AVL_TREE {
 private:
   TreeNode *root;
 
+  // element access
+  TreeNode *getSuccessor(TreeNode *curr);
+
   // modifying functions
   TreeNode *insert(TreeNode *root, int key);
   TreeNode *deleteNode(TreeNode *root, int key);
@@ -61,6 +64,13 @@ public:
   void levelorder();
 
 };
+
+// *************** implementation of element access function ****************
+TreeNode *AVL_TREE::getSuccessor(TreeNode *curr) {
+  while(curr && curr->left)
+    curr = curr->left;
+  return curr;
+}
 
 // ***************** Implementation of modifying functions ******************
 /*
