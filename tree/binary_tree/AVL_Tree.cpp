@@ -31,9 +31,32 @@ public:
 class AVL_TREE {
 private:
   TreeNode *root;
+
+  // modifying functions
+  TreeNode *insert(TreeNode *root, int key);
+
 public:
   AVL_TREE(): root(0);
+
+  // modifying functions
+  void insert(int key);
 };
+
+// ***************** Implementation of modifying functions ******************
+/*
+Concept (Insertion)
+1. Perform the normal BST insertion.
+2. Check the operation is vailed for the restrictions of AVL from bottom to up.
+3. If the tree is balanced, end of the insertion.
+4. Else, do the rotation(LL, LR, RR, RL) to make it balanced.
+*/
+void insert(int key) {
+  root = insert(root, key);
+}
+
+TreeNode *insert(TreeNode *root, int key) {
+
+}
 
 int main() {
   return 0;
