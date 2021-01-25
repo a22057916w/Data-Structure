@@ -286,11 +286,11 @@ void AVL_TREE::inorder(TreeNode *curr) {
   }
 }
 
-void BinaryTree::preorder() {
+void AVL_TREE::preorder() {
   preorder(root);
 }
 
-void BinaryTree::preorder(TreeNode *curr) {
+void AVL_TREE::preorder(TreeNode *curr) {
   if(curr) {
     cout << curr->key << " ";
     preorder(curr->left);
