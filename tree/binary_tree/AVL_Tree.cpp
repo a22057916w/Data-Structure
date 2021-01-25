@@ -37,6 +37,8 @@ private:
 
   // modifying functions
   TreeNode *insert(TreeNode *root, int key);
+  TreeNode *leftRotation(TreeNode *curr);
+  TreeNode *rightRotation(TreeNode *curr);
 
   // capacity functions
   int getHeight(TreeNode *curr);
@@ -93,8 +95,55 @@ TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
   // Step 3. Get the balance factor of this ancestor node to check whether this
   //         node became unbalanced
   int balance = getBalance(root);
+
+  if(balance > 1) {
+    if(key < root->left->key)
+      return rightRotation(root);
+    else {
+
+    }
+  }
+  else if(balance < -1) {
+    if(key > root->right->key)
+      return leftRotation(root);
+    else {
+
+    }
+  }
 }
 
+// The tree must satisfy key(y) < key(z) < key(x) either before or after the
+// rotation take place
+TreeNode *AVL_TREE::rightRotation(TreeNode *x) {
+  TreeNode *y = x->left;
+  TreeNode *z = y->right;     // z for T2(right subtree of y)
+
+  // Perform rotation
+  y->right = x;
+  x->left = z;
+
+  // Update heights
+  x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+  y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+
+  // Return new root
+  return y;
+}
+
+// The tree must satisfy key(x) < key(z) < key(y) either before or after the
+// rotation take place
+TreeNode *AVL_TREE::leftRotation(TreeNode *y) {
+  TreeNode *x = y->right;
+  TreeNode *z = x->left;    // z for T2(left subtree of x)
+
+  y->left = x;
+  x->right = z;
+
+  x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+  y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+
+  return y;
+}
 
 // ******************* implementation of capacity functions *******************
 int AVL_TREE::getHeight(TreeNode *curr) {
