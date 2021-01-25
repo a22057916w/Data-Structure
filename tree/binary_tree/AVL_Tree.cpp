@@ -37,7 +37,7 @@ private:
   TreeNode *root;
 
   // element access
-  TreeNode *getSuccessor(TreeNode *curr);
+  TreeNode *getSuccessor(TreeNode *node);
 
   // modifying functions
   TreeNode *insert(TreeNode *root, int key);
@@ -68,7 +68,8 @@ public:
 };
 
 // *************** implementation of element access function ****************
-TreeNode *AVL_TREE::getSuccessor(TreeNode *curr) {
+TreeNode *AVL_TREE::getSuccessor(TreeNode *node) {
+  TreeNode *curr = node;
   while(curr && curr->left)
     curr = curr->left;
   return curr;
