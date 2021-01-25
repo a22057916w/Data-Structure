@@ -96,20 +96,27 @@ TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
   //         node became unbalanced
   int balance = getBalance(root);
 
+  // If this node becomes unbalanced, then
+  // there are 4 cases
   if(balance > 1) {
-    if(key < root->left->key)
+    if(key < root->left->key)       // Case LL
       return rightRotation(root);
-    else {
-
+    else {                          // Case LR
+      root->left = leftRotation(root->left);
+      return rightRotation(root);
     }
   }
-  else if(balance < -1) {
+  else if(balance < -1) {           // Case RR
     if(key > root->right->key)
       return leftRotation(root);
-    else {
-
+    else {                          // Case RL
+      root->right = rightRotation(root->right);
+      return rightRotation;
     }
   }
+  // return the (unchanged) node pointer
+  else
+    return root;
 }
 
 // The tree must satisfy key(y) < key(z) < key(x) either before or after the
