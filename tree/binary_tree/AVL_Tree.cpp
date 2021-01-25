@@ -44,11 +44,18 @@ private:
   int getHeight(TreeNode *curr);
   int getBalance(TreeNode *curr);
 
+  // traversal function
+  void inorder(TreeNode *curr);
+
 public:
   AVL_TREE(): root(0) {};
 
   // modifying functions
   void insert(int key);
+
+  // traversal function
+  void inorder();
+  void levelorder();
 
 };
 
@@ -152,7 +159,7 @@ TreeNode *AVL_TREE::leftRotation(TreeNode *y) {
   return y;
 }
 
-// ******************* implementation of capacity functions *******************
+// ****************** implementation of capacity functions *******************
 int AVL_TREE::getHeight(TreeNode *curr) {
   if(curr == NULL)
     return 0;
@@ -165,6 +172,36 @@ int AVL_TREE::getBalance(TreeNode *curr) {
   if(curr == NULL)
     return 0;
   return getHeight(curr->left) - getHeight(curr->right);
+}
+
+// ***************** implementation of traversal functions *******************
+void AVL_TREE::inorder() {
+  inorder(root);
+}
+
+void AVL_TREE::inorder(TreeNode *curr) {
+  if(curr) {
+    inorder(curr->left);
+    cout << curr->element << "(" << curr->key << ") ";
+    inorder(curr->right);
+  }
+}
+
+void AVL_TREE::levelorder() {
+  queue<TreeNode*> q;
+  q.push(root);
+
+  while(!q.empty()) {
+    TreeNode *curr = q.front();
+    q.pop();
+
+    cout << curr->element << "(" << curr->key << ") ";
+
+    if(curr->left)
+      q.push(curr->left);
+    if(curr->right)
+      q.push(curr->right);
+  }
 }
 
 int main() {
