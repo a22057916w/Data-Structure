@@ -7,8 +7,8 @@ class TreeNode {
 private:
     TreeNode *left, *right;
     TreeNode *parent;
-
-    int key, color;
+    int key;
+    int color; // 0: Red, 1: Black; using type:bool is ok
 
 public:
 
@@ -19,6 +19,7 @@ public:
 class RBT {
 private:
   TreeNode *root;
+  TreeNode *neel; 
 };
 
 int main() {
