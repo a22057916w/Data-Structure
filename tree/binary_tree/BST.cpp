@@ -90,7 +90,7 @@ TreeNode *BST::insert(TreeNode *root, TreeNode *newNode) {
   if(root == NULL)
     return newNode;
 
-  // Key is smaller than root's key
+  // Key is smaller than or equal to root's key
   if(newNode->key <= root->key)
     root->left  = insert(root->left, newNode);
 
