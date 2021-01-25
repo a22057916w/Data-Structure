@@ -42,10 +42,10 @@ private:
 
   // capacity functions
   int getHeight(TreeNode *curr);
-  int getBalance(TreeNpde *curr);
+  int getBalance(TreeNode *curr);
 
 public:
-  AVL_TREE(): root(0);
+  AVL_TREE(): root(0) {};
 
   // modifying functions
   void insert(int key);
@@ -82,10 +82,10 @@ TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
   // Step 1. Perform the normal BST insertion.
   if(root == NULL)
     return new TreeNode(key);
-  if(key < root.key)
+  if(key < root->key)
     root->left = insert(root->left, key);
   else if(key > root->key)
-    root->right = insrt(root->right, key);
+    root->right = insert(root->right, key);
   else          // Assume the duplication is not allowed in BST
     return root;
 
@@ -111,7 +111,7 @@ TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
       return leftRotation(root);
     else {                          // Case RL
       root->right = rightRotation(root->right);
-      return rightRotation;
+      return leftRotation(root);
     }
   }
   // return the (unchanged) node pointer
