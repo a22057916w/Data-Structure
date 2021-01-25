@@ -51,6 +51,7 @@ private:
 
   // traversal function
   void inorder(TreeNode *curr);
+  void preorder(TreeNode *curr);
 
 public:
   AVL_TREE(): root(0) {};
@@ -61,6 +62,7 @@ public:
 
   // traversal function
   void inorder();
+  void preorder();
   void levelorder();
 
 };
@@ -284,6 +286,18 @@ void AVL_TREE::inorder(TreeNode *curr) {
   }
 }
 
+void BinaryTree::preorder() {
+  preorder(root);
+}
+
+void BinaryTree::preorder(TreeNode *curr) {
+  if(curr) {
+    cout << curr->key << " ";
+    preorder(curr->left);
+    preorder(curr->right);
+  }
+}
+
 void AVL_TREE::levelorder() {
   queue<TreeNode*> q;
   q.push(root);
@@ -305,19 +319,25 @@ int main() {
 
   AVL_TREE avl;
 
-  avl.insert(13);
-  avl.insert(10);
-  avl.insert(15);
+  avl.insert(9);
   avl.insert(5);
+  avl.insert(10);
+  avl.insert(0);
+  avl.insert(6);
   avl.insert(11);
-  avl.insert(4);
-  avl.insert(8);
-  avl.insert(16);
+  avl.insert(-1);
+  avl.insert(1);
+  avl.insert(2);
 
-  avl.inorder();
+  avl.preorder();
   cout << "\n";
   avl.levelorder();
   cout << endl;
+
+  avl.deleteNode(10);
+  avl.preorder();
+  cout << "\n";
+  avl.levelorder();
 
   return 0;
 }
