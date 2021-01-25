@@ -129,8 +129,88 @@ TreeNode *AVL_TREE::insert(TreeNode *root, int key) {
     return root;
 }
 
+/*
+Algorithm (Deletetion)
+1. Perform the normal BST deletion.
+2. The current node must be one of the ancestors of the newly inserted node.
+   Update the height of the current node.
+3. Get the balance factor (left subtree height – right subtree height) of the
+   current node.
+4. If balance factor is greater than 1, then the current node is unbalanced and
+   we are either in LL case or LR case. To check whether it is LL case or not,
+   compare the newly inserted key with the key in left subtree root.
+5. If balance factor is less than -1, then the current node is unbalanced and we
+   are either in RR case or RL case. To check whether it is RR case or not,
+   compare the newly inserted key with the key in right subtree root.
+*/
+void AVL_TREE::deleteNode(int key) {
+  root = deleteNode(root, key);
+}
+
 TreeNode *AVL_TREE::deleteNode(TreeNode *root, int key) {
 
+  // Step 1. Perform the normal BST insertion.
+  if(root == NULL)
+    return root;
+  if(key < root->key)
+    root->left = deleteNode(root->left, ley);
+  else if(key > root->key)
+    root->right = deleteNode(root->right, key);
+  else {
+
+    // Case 1 & Case 2 : node with only one child or no child
+    if(root->left == NULL) {
+      TreeNode *temp  = root->right;
+      root = NULL;
+      delete root;
+      return temp;
+    }
+    else if(root->right == NULL) {
+      TreeNode *temp  = root->left;
+      root = NULL;
+      delete root;
+      return temp;
+    }
+
+    // Case 3: node with two children. Get the inorder successor (smallest in
+    // the right subtree)
+    TreeNode *temp = getSuccessor(root->right);
+
+    // Copy the inorder successor's content to this node
+    root->key = temp->key;
+
+    // Delete the inorder successor
+    root->right = deleteNode(root->right, temp->key);
+  }
+
+  // Step 2. Update height of this ancestor node
+  root->height = max(getHeight(root->left), getHeight(root->right)) + 1;
+
+  // Step 3. Get the balance factor of this ancestor node to check whether this
+  //         node became unbalanced
+  int balance = getBalance(root);
+
+  // If this node becomes unbalanced, then
+  // there are 4 cases
+  if(balance > 1) {
+    if(key < root->left->key)       // Case LL
+      return rightRotation(root);
+    else {                          // Case LR
+      root->left = leftRotation(root->left);
+      return rightRotation(root);
+    }
+  }
+  else if(balance < -1) {           // Case RR
+    if(key > root->right->key)
+      return leftRotation(root);
+    else {                          // Case RL
+      root->right = rightRotation(root->right);
+      return leftRotation(root);
+    }
+  }
+  // return the (unchanged) node pointer
+  else
+    return root;
 }
 
 // The tree must satisfy key(y) < key(z) < key(x) either before or after the
