@@ -250,7 +250,7 @@ TreeNode *AVL_TREE::leftRotation(TreeNode *x) {
   TreeNode *T2 = y->left;    // left subtree of y
 
   y->left = x;
-  x->right = z;
+  x->right = T2;
 
   x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
   y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
