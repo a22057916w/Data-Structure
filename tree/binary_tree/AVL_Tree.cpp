@@ -16,6 +16,7 @@ This is a C++ Program to Implement AVL Tree.
 
 #include <iostream>
 #include <algorithm>
+#include <queue>
 using namespace std;
 
 class AVL_TREE;
@@ -182,7 +183,7 @@ void AVL_TREE::inorder() {
 void AVL_TREE::inorder(TreeNode *curr) {
   if(curr) {
     inorder(curr->left);
-    cout << curr->element << "(" << curr->key << ") ";
+    cout << curr->key << " ";
     inorder(curr->right);
   }
 }
@@ -195,7 +196,7 @@ void AVL_TREE::levelorder() {
     TreeNode *curr = q.front();
     q.pop();
 
-    cout << curr->element << "(" << curr->key << ") ";
+    cout << curr->key << " ";
 
     if(curr->left)
       q.push(curr->left);
@@ -216,7 +217,7 @@ int main() {
   avl.insert(4);
   avl.insert(8);
   avl.insert(16);
-  avi.inorder();
+  avl.inorder();
   cout << endl;
 
   return 0;
