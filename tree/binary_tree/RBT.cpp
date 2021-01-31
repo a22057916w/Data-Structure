@@ -38,8 +38,8 @@ private:
 
   // modifying functions
   TreeNode *insert(TreeNode *root, TreeNode *newNode);
-  TreeNode *leftRotation(TreeNode *curr);
-  TreeNode *rightRotation(TreeNode *curr);
+  void leftRotation(TreeNode *curr);
+  void rightRotation(TreeNode *curr);
   void fixInsertion(TreeNode *curr);
 
   // traversal function
@@ -103,6 +103,36 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
     return root;
 }
 
+// The tree must satisfy key(x) < key(y) either before or after the
+// rotation take place, subtree rooted with x
+void RBT::leftRotation(TreeNode *x) {
+  TreeNode *y = x->right;
+
+}
+
+// The tree must satisfy key(x) < key(y) either before or after the
+// rotation take place, rotating subtree rooted with y
+void RBT::rightRotation(TreeNode *y) {
+  TreeNode *x = y->left;
+  y->left = x->right;
+
+  // if x's right child(or y's left child) isn't NULL, link the parent and child
+  if(y->left)
+    y->left->parent = y;
+  x->parent = y->parent;
+
+  // if y is originaly root, make x the new root
+  if(y->parent== NULL)
+    root = x;
+  else if(y == y->parent->left)
+    y->parent->left = x;
+  else
+    y->parent->right = x;
+
+  x->right = y;
+  y->parent = x;
+}
+
 void RBT::FixInsertion(TreeNode *curr) {
 
   // Case 0: if root is black, there is nothing to fix
@@ -110,23 +140,29 @@ void RBT::FixInsertion(TreeNode *curr) {
     TreeNode *parent = curr->parent;
     TreeNode *gand_parent = curr->parent->parent;
 
-    // Case A: Parent of pt is left child of Grand-parent of pt
+    // Case A: Parent of curr is left child of Grand-parent of pt
     if(parent == grand_parent->left) {
       TreeNode *uncle = grand_parent->right;
 
-      // Case 1: The uncle of pt is also red Only Recoloring required
+      // Case 1: The uncle of curr is also red, only recoloring required
       if(uncle->color == RED) {
-        grand_parent->color == RED;
-        parent->color == BLACK;
-        uncle->color == BLACK;
+        grand_parent->color = RED;
+        parent->color = BLACK;
+        uncle->color = BLACK;
         curr = grand_parent;
       }
+      // Case 2: The uncle of curr is black, rotation required
       else {
 
-        // Case LL: pt is left child of its parent, Right-rotation required
-        if(curr == parent->left) {
-          
+        // Case LR: curr is right child of its parent, left-rotation required
+        if(curr == parent->right) {
+
         }
+
+        // Case LL: curr is left child of its parent, right-rotation required
+        parent->color = BLACK;
+        grand_parent->color = RED;
+        rightRotation(grand_parent);
       }
     }
   }
