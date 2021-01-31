@@ -36,6 +36,10 @@ class RBT {
 private:
   TreeNode *root;
 
+  // modifying functions
+  TreeNode *leftRotation(TreeNode *curr);
+  TreeNode *rightRotation(TreeNode *curr);
+  
   // traversal function
   void inorder(TreeNode *curr);
 
