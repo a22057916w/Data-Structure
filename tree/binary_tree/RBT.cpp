@@ -9,8 +9,10 @@ Rules That Every Red-Black Tree Follows:
 */
 
 #include <iostream>
-#include <string>
 using namespace std;
+
+// each element in the enum would be assign a value according to the order
+enum Color {RED, BLACK};
 
 class RBT;
 class TreeNode {
@@ -18,10 +20,14 @@ private:
     TreeNode *left, *right;
     TreeNode *parent;
     int key;
-    int color;      // 0: Red, 1: Black; using type:bool is ok
+    bool color;      // 0: Red, 1: Black
 
 public:
-
+  TreeNode(int key) {
+    left = right = parent = NULL;
+    this->key = key;
+    color = RED;
+  }
 
     friend class RBT;
 };
