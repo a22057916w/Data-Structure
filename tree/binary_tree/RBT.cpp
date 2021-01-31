@@ -107,6 +107,10 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
 // rotation take place, subtree rooted with x
 void RBT::leftRotation(TreeNode *x) {
   TreeNode *y = x->right;
+  x->right = y->left;
+
+  if(x->right)
+    x->right->parent = x;
 
 }
 
@@ -116,9 +120,9 @@ void RBT::rightRotation(TreeNode *y) {
   TreeNode *x = y->left;
   y->left = x->right;
 
-  // if x's right child(or y's left child) isn't NULL, link the parent and child
-  if(y->left)
-    y->left->parent = y;
+  // if x's right child isn't NULL, link the parent and child
+  if(x->right)
+    x->right->parent = y;
   x->parent = y->parent;
 
   // if y is originaly root, make x the new root
