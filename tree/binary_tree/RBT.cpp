@@ -157,7 +157,7 @@ void RBT::FixInsertion(TreeNode *curr) {
     TreeNode *parent = curr->parent;
     TreeNode *gand_parent = curr->parent->parent;
 
-    // Case A: Parent of curr is left child of Grand-parent of pt
+    // Case A: Parent of curr is left child of Grand-parent of curr
     if(parent == grand_parent->left) {
       TreeNode *uncle = grand_parent->right;
 
@@ -173,13 +173,40 @@ void RBT::FixInsertion(TreeNode *curr) {
 
         // Case LR: curr is right child of its parent, left-rotation required
         if(curr == parent->right) {
-
+          curr = curr->parent;
+          leftRotation(curr);
         }
 
         // Case LL: curr is left child of its parent, right-rotation required
         parent->color = BLACK;
         grand_parent->color = RED;
         rightRotation(grand_parent);
+      }
+    }
+    // Case B: Parent of curr is right child of Grand-parent of curr
+    else {
+      TreeNode *uncle = grand_parent->left;
+
+      // Case 1: The uncle of curr is also red, only recoloring required
+      if(uncle->color == RED) {
+        grand_parent->color = RED;
+        parent->color = BLACK;
+        uncle->color = BLACK;
+        curr = grand_parent;
+      }
+      // Case 2: The uncle of curr is black, rotation required
+      else {
+
+        // Case RL: curr is left child of its parent, right-rotation required
+        if(curr == parent->right) {
+          curr = curr->parent;
+          rightRotation(curr);
+        }
+
+        // Case RR: curr is right child of its parent, left-rotation required
+        parent->color = BLACK;
+        grand_parent->color = RED;
+        leftRotation(grand_parent);
       }
     }
   }
