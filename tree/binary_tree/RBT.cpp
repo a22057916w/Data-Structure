@@ -9,6 +9,7 @@ Rules That Every Red-Black Tree Follows:
 */
 
 #include <iostream>
+#include <queue>
 using namespace std;
 
 // each element in the enum would be assign a value according to the order
@@ -77,13 +78,13 @@ Let x be the newly inserted node.
       (iv) Right Left Case (Mirror of case ii)
 */
 void RBT::insert(int key) {
-  TreeNode *newNode = new TreeNode(int key);
+  TreeNode *newNode = new TreeNode(key);
 
   // Step 1. Perform the normal BST insertion.
-  root = insert(root, key);
+  root = insert(root, newNode);
 
   // Step 2 & 3
-  FixInsertion(newNode);
+  fixInsertion(newNode);
 }
 
 TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
@@ -150,12 +151,12 @@ void RBT::rightRotation(TreeNode *y) {
   y->parent = x;
 }
 
-void RBT::FixInsertion(TreeNode *curr) {
+void RBT::fixInsertion(TreeNode *curr) {
 
   // Case 0: if root is black, there is nothing to fix
   while(curr->parent->color == RED && curr != root) {
     TreeNode *parent = curr->parent;
-    TreeNode *gand_parent = curr->parent->parent;
+    TreeNode *grand_parent = curr->parent->parent;
 
     // Case A: Parent of curr is left child of Grand-parent of curr
     if(parent == grand_parent->left) {
@@ -216,11 +217,11 @@ void RBT::FixInsertion(TreeNode *curr) {
 }
 
 // ***************** implementation of traversal functions *******************
-void AVL_TREE::inorder() {
+void RBT::inorder() {
   inorder(root);
 }
 
-void AVL_TREE::inorder(TreeNode *curr) {
+void RBT::inorder(TreeNode *curr) {
   if(curr) {
     inorder(curr->left);
     cout << curr->key << " ";
@@ -228,7 +229,7 @@ void AVL_TREE::inorder(TreeNode *curr) {
   }
 }
 
-void AVL_TREE::levelorder() {
+void RBT::levelorder() {
   queue<TreeNode*> q;
   q.push(root);
 
@@ -246,7 +247,7 @@ void AVL_TREE::levelorder() {
 }
 
 int main() {
-  RBTree tree;
+  RBT tree;
 
   tree.insert(7);
   tree.insert(6);
@@ -260,7 +261,7 @@ int main() {
   tree.inorder();
 
   cout << "\n\nLevel Order Traversal of Created Tree\n";
-  tree.levelOrder();
+  tree.levelorder();
 
   return 0;
 }
