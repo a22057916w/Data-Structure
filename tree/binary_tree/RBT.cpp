@@ -40,7 +40,7 @@ private:
   TreeNode *insert(TreeNode *root, TreeNode *newNode);
   TreeNode *leftRotation(TreeNode *curr);
   TreeNode *rightRotation(TreeNode *curr);
-  void fixViolation(TreeNode *root);
+  void fixInsertion(TreeNode *curr);
 
   // traversal function
   void inorder(TreeNode *curr);
@@ -82,7 +82,8 @@ void RBT::insert(int key) {
   // Step 1. Perform the normal BST insertion.
   root = insert(root, key);
 
-
+  // Step 2 & 3
+  FixInsertion(newNode);
 }
 
 TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
@@ -100,6 +101,10 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
   }
   else            // Assume the duplication is not allowed in BST
     return root;
+}
+
+void RBT::FixInsertion(TreeNode *curr) {
+  
 }
 
 int main() {
