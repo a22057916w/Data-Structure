@@ -107,7 +107,7 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
 void RBT::fixInsertion(TreeNode *curr) {
 
   // Case 0: if root is black, there is nothing to fix
-  while(curr->parent->color == RED && curr != root) {
+  while(curr != root && curr->parent->color == RED) {
     TreeNode *parent = curr->parent;
     TreeNode *grand_parent = curr->parent->parent;
 
@@ -116,7 +116,7 @@ void RBT::fixInsertion(TreeNode *curr) {
       TreeNode *uncle = grand_parent->right;
 
       // Case 1: The uncle of curr is also red, only recoloring required
-      if(uncle->color == RED) {
+      if(uncle && uncle->color == RED) {
         grand_parent->color = RED;
         parent->color = BLACK;
         uncle->color = BLACK;
@@ -142,7 +142,7 @@ void RBT::fixInsertion(TreeNode *curr) {
       TreeNode *uncle = grand_parent->left;
 
       // Case 1: The uncle of curr is also red, only recoloring required
-      if(uncle->color == RED) {
+      if(uncle && uncle->color == RED) {
         grand_parent->color = RED;
         parent->color = BLACK;
         uncle->color = BLACK;
