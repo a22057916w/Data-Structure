@@ -109,8 +109,21 @@ void RBT::leftRotation(TreeNode *x) {
   TreeNode *y = x->right;
   x->right = y->left;
 
-  if(x->right)
-    x->right->parent = x;
+  // if y's left child isn't NULL, link the parent and child
+  if(y->left)
+    y->left->parent = x;
+  y->parent = x->parent;
+
+  // if y is originaly root, make x the new root
+  if(x->parent== NULL)
+    root = y;
+  else if(x == x->parent->left)
+    x->parent->left = y;
+  else
+    x->parent->right = y;
+
+  y->left = x;
+  x->parent = y;
 
 }
 
