@@ -104,53 +104,6 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
     return root;
 }
 
-// The tree must satisfy key(x) < key(y) either before or after the
-// rotation take place, subtree rooted with x
-void RBT::leftRotation(TreeNode *x) {
-  TreeNode *y = x->right;
-  x->right = y->left;
-
-  // if y's left child isn't NULL, link the parent and child
-  if(y->left)
-    y->left->parent = x;
-  y->parent = x->parent;
-
-  // if y is originaly root, make x the new root
-  if(x->parent== NULL)
-    root = y;
-  else if(x == x->parent->left)
-    x->parent->left = y;
-  else
-    x->parent->right = y;
-
-  y->left = x;
-  x->parent = y;
-
-}
-
-// The tree must satisfy key(x) < key(y) either before or after the
-// rotation take place, rotating subtree rooted with y
-void RBT::rightRotation(TreeNode *y) {
-  TreeNode *x = y->left;
-  y->left = x->right;
-
-  // if x's right child isn't NULL, link the parent and child
-  if(x->right)
-    x->right->parent = y;
-  x->parent = y->parent;
-
-  // if y is originaly root, make x the new root
-  if(y->parent== NULL)
-    root = x;
-  else if(y == y->parent->left)
-    y->parent->left = x;
-  else
-    y->parent->right = x;
-
-  x->right = y;
-  y->parent = x;
-}
-
 void RBT::fixInsertion(TreeNode *curr) {
 
   // Case 0: if root is black, there is nothing to fix
@@ -214,6 +167,53 @@ void RBT::fixInsertion(TreeNode *curr) {
 
   // make sure the root is always black
   root->color = BLACK;
+}
+
+// The tree must satisfy key(x) < key(y) either before or after the
+// rotation take place, subtree rooted with x
+void RBT::leftRotation(TreeNode *x) {
+  TreeNode *y = x->right;
+  x->right = y->left;
+
+  // if y's left child isn't NULL, link the parent and child
+  if(y->left)
+    y->left->parent = x;
+  y->parent = x->parent;
+
+  // if y is originaly root, make x the new root
+  if(x->parent== NULL)
+    root = y;
+  else if(x == x->parent->left)
+    x->parent->left = y;
+  else
+    x->parent->right = y;
+
+  y->left = x;
+  x->parent = y;
+
+}
+
+// The tree must satisfy key(x) < key(y) either before or after the
+// rotation take place, rotating subtree rooted with y
+void RBT::rightRotation(TreeNode *y) {
+  TreeNode *x = y->left;
+  y->left = x->right;
+
+  // if x's right child isn't NULL, link the parent and child
+  if(x->right)
+    x->right->parent = y;
+  x->parent = y->parent;
+
+  // if y is originaly root, make x the new root
+  if(y->parent== NULL)
+    root = x;
+  else if(y == y->parent->left)
+    y->parent->left = x;
+  else
+    y->parent->right = x;
+
+  x->right = y;
+  y->parent = x;
 }
 
 // ***************** implementation of traversal functions *******************
