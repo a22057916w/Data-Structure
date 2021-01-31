@@ -81,7 +81,21 @@ void RBT::insert(int key) {
 
 TreeNode* RBT::insert(TreeNode *root, int key) {
 
-  if()
+  // Step 1. Perform the normal BST insertion.
+  if(root == NULL)
+    return new TreeNode(key);
+  if(key < root->key) {
+    root->left = insert(root->left, key);
+    root->left->parent = root;
+  }
+  if(key > root->key) {
+    root->right = insert(root->right, key);
+    root->right->parent = root;
+  }
+  else            // Assume the duplication is not allowed in BST
+    return root;
+
+
 }
 
 int main() {
