@@ -215,6 +215,36 @@ void RBT::FixInsertion(TreeNode *curr) {
   root->color = BLACK;
 }
 
+// ***************** implementation of traversal functions *******************
+void AVL_TREE::inorder() {
+  inorder(root);
+}
+
+void AVL_TREE::inorder(TreeNode *curr) {
+  if(curr) {
+    inorder(curr->left);
+    cout << curr->key << " ";
+    inorder(curr->right);
+  }
+}
+
+void AVL_TREE::levelorder() {
+  queue<TreeNode*> q;
+  q.push(root);
+
+  while(!q.empty()) {
+    TreeNode *curr = q.front();
+    q.pop();
+
+    cout << curr->key << " ";
+
+    if(curr->left)
+      q.push(curr->left);
+    if(curr->right)
+      q.push(curr->right);
+  }
+}
+
 int main() {
   return 0;
 }
