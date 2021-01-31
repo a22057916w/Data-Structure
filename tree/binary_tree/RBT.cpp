@@ -35,7 +35,19 @@ public:
 class RBT {
 private:
   TreeNode *root;
-  TreeNode *neel;   // stands for NIL, in case of IDE identifier error
+
+  // traversal function
+  void inorder(TreeNode *curr);
+
+public:
+  RBT(): root(0) {}
+
+  // modifying functions
+  void insert(const int &key);
+
+  // traversal function
+  void inorder();
+  void levelorder();
 };
 
 int main() {
