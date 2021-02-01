@@ -37,6 +37,9 @@ class RBT {
 private:
   TreeNode *root;
 
+  // element access functions
+  TreeNode *search(int key);
+
   // modifying functions
   TreeNode *insert(TreeNode *root, TreeNode *newNode);
   TreeNode *deleteNode(TreeNode *root, TreeNode *delNode);
@@ -58,6 +61,26 @@ public:
   void inorder();
   void levelorder();
 };
+
+// **************** implementation of element access function ***************
+TreeNode *BST::search(int key) {
+  return search(key, root);
+}
+
+TreeNode *BST::search(int key, TreeNode *root) {
+
+  // Base Cases: root(curr node) is null or key is present at root(curr node)
+  if(root == NULL || root->key == key)
+    return root;
+
+  // Key is smaller than root's key
+  if(key < root->key)
+    return search(key, root->left);
+
+  // Key is greater than root's key
+  else
+    return search(key, root->right);
+}
 
 // **************** implementation of modifying functions ********************
 /*
