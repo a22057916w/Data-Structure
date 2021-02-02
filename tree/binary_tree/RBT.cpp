@@ -83,8 +83,7 @@ TreeNode *BST::search(int key, TreeNode *root) {
     return search(key, root->right);
 }
 
-TreeNode *AVL_TREE::getSuccessor(TreeNode *node) {
-  TreeNode *curr = node;
+TreeNode *AVL_TREE::getSuccessor(TreeNode *curr) {
   while(curr && curr->left)
     curr = curr->left;
   return curr;
@@ -211,12 +210,31 @@ void RBT::deleteNode(int key) {
     return;
   }
 
-  TreeNode *u;
+  TreeNode *u;  // node to be delete
+  TreeNode *v;  // child of the node that about to be delete
 
+  // y has at most y child afther the if-else opration
   if(delNode->left == NULL || delNode->right == NULL)
     u = delNode;
   else
-    u = getSuccessor(delNode);
+    u = getSuccessor(delNode->right);
+
+  // x might contain actual data or not(NULL)
+  if(u->left)
+    v = u->left;
+  else if(y->right)
+    v = u->right;
+  else
+    v = u;
+
+  if(u->parent == NULL)
+    root = v;
+  else if(u == u->parent->left)
+
+  // For Case 3 of standard BST deletion
+  if(y != delNode)
+    delNode->key = u->key;
+
 }
 
 TreeNode *RBT::deleteNode(TreeNode *root, TreeNode *delNode) {
