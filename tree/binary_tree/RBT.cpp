@@ -83,7 +83,7 @@ TreeNode *BST::search(int key, TreeNode *root) {
     return search(key, root->right);
 }
 
-TreeNode *AVL_TREE::getSuccessor(TreeNode *curr) {
+TreeNode *RBT::getSuccessor(TreeNode *curr) {
   while(curr && curr->left)
     curr = curr->left;
   return curr;
