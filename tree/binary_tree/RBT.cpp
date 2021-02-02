@@ -39,6 +39,7 @@ private:
 
   // element access functions
   TreeNode *search(int key);
+  TreeNode *getSuccessor(TreeNode *curr);
 
   // modifying functions
   TreeNode *insert(TreeNode *root, TreeNode *newNode);
@@ -81,6 +82,14 @@ TreeNode *BST::search(int key, TreeNode *root) {
   else
     return search(key, root->right);
 }
+
+TreeNode *AVL_TREE::getSuccessor(TreeNode *node) {
+  TreeNode *curr = node;
+  while(curr && curr->left)
+    curr = curr->left;
+  return curr;
+}
+
 
 // **************** implementation of modifying functions ********************
 /*
@@ -203,6 +212,11 @@ void RBT::deleteNode(int key) {
   }
 
   TreeNode *u;
+
+  if(delNode->left == NULL || delNode->right == NULL)
+    u = delNode;
+  else
+    u = getSuccessor(delNode);
 }
 
 TreeNode *RBT::deleteNode(TreeNode *root, TreeNode *delNode) {
