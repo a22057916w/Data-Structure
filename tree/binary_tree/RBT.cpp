@@ -210,30 +210,46 @@ void RBT::deleteNode(int key) {
     return;
   }
 
-  TreeNode *u;  // node to be delete
-  TreeNode *v;  // child of the node that about to be delete
+  TreeNode *y;  // node to be delete
+  TreeNode *x;  // child of the node that about to be delete
 
   // y has at most y child afther the if-else opration
   if(delNode->left == NULL || delNode->right == NULL)
-    u = delNode;
+    y = delNode;
   else
-    u = getSuccessor(delNode->right);
+    y = getSuccessor(delNode->right);
 
-  // x might contain actual data or not(NULL)
-  if(u->left)
-    v = u->left;
+  // x might be a child of y or y if y has no child
+  if(y->left)
+    x = y->left;
   else if(y->right)
-    v = u->right;
+    x = y->right;
   else
-    v = u;
+    x = y;
 
-  if(u->parent == NULL)
-    root = v;
+  // x's parent must be the y's parent once y got deleted
+  x->parent = y->parent;
+
+  // x is the y's parents' child once y got deleted
+  if(y->parent == NULL)
+    root = x;
   else if(u == u->parent->left)
+    y->parent->left = x;
+  else
+    y->parent->right = x;
 
-  // For Case 3 of standard BST deletion
+  // Case 3 of standard BST deletion
   if(y != delNode)
-    delNode->key = u->key;
+    delNode->key = y->key;
+
+  // store the color of y for later usage and delete memeory of y
+  Color color = y->color;
+  y = NULL;
+  delete y;
+
+  // if the deleted node is BLACK, fix it up
+  if(color == BLACK)
+    FixDeletion(x);
 
 }
 
