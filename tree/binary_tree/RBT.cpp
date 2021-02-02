@@ -256,6 +256,10 @@ void RBT::deleteNode(int key) {
 
 TreeNode *RBT::Fixdeletion(TreeNode *curr) {
 
+  // Case 0: if curr is RED or root, simply make it black
+  while(curr != root && curr->color == BLACK) {
+
+  }
 }
 
 // The tree must satisfy key(x) < key(y) either before or after the
