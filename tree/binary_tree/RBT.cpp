@@ -195,7 +195,14 @@ void RBT::fixInsertion(TreeNode *curr) {
 }
 
 void RBT::deleteNode(int key) {
-  root = deleteNode(root)
+  TreeNode *delNode = search(KEY);
+
+  if(delNode == NULL) {
+    cout << "Key not Found" << endl;
+    return;
+  }
+
+  TreeNode *u;
 }
 
 TreeNode *RBT::deleteNode(TreeNode *root, TreeNode *delNode) {
