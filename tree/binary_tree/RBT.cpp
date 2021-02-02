@@ -47,6 +47,7 @@ private:
   void leftRotation(TreeNode *curr);
   void rightRotation(TreeNode *curr);
   void FixInsertion(TreeNode *curr);
+  void FixDeletion(TreeNode *curr);
 
   // traversal function
   void inorder(TreeNode *curr);
@@ -253,42 +254,8 @@ void RBT::deleteNode(int key) {
 
 }
 
-TreeNode *RBT::deleteNode(TreeNode *root, TreeNode *delNode) {
-  // Step 1. Perform the normal BST insertion.
-  if(root == NULL)
-    return root;
-  if(key < root->key)
-    root->left = deleteNode(root->left, key);
-  else if(key > root->key)
-    root->right = deleteNode(root->right, key);
-  else {
+TreeNode *RBT::Fixdeletion(TreeNode *curr) {
 
-    // Case 1 & Case 2 : node with only one child or no child
-    if(root->left == NULL) {
-      TreeNode *temp  = root->right;
-      root = NULL;
-      delete root;
-      return temp;
-    }
-    else if(root->right == NULL) {
-      TreeNode *temp  = root->left;
-      root = NULL;
-      delete root;
-      return temp;
-    }
-
-    // Case 3: node with two children. Get the inorder successor (smallest in
-    // the right subtree)
-    else {
-      TreeNode *temp = getSuccessor(root->right);
-
-      // Copy the inorder successor's content to this node
-      root->key = temp->key;
-
-      // Delete the inorder successor
-      root->right = deleteNode(root->right, temp->key);
-    }
-  }
 }
 
 // The tree must satisfy key(x) < key(y) either before or after the
