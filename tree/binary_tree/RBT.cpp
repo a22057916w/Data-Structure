@@ -46,7 +46,7 @@ private:
   TreeNode *deleteNode(TreeNode *root, TreeNode *delNode);
   void leftRotation(TreeNode *curr);
   void rightRotation(TreeNode *curr);
-  void fixInsertion(TreeNode *curr);
+  void FixInsertion(TreeNode *curr);
 
   // traversal function
   void inorder(TreeNode *curr);
@@ -117,7 +117,7 @@ void RBT::insert(int key) {
   root = insert(root, newNode);
 
   // Step 2 & 3
-  fixInsertion(newNode);
+  FixInsertion(newNode);
 }
 
 TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
@@ -137,7 +137,7 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
     return root;
 }
 
-void RBT::fixInsertion(TreeNode *curr) {
+void RBT::FixInsertion(TreeNode *curr) {
 
   // Case 0: if root is black, there is nothing to fix
   while(curr != root && curr->parent->color == RED) {
