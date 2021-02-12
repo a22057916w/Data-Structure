@@ -227,7 +227,7 @@ void RBT::deleteNode(int key) {
   else if(y->right)
     x = y->right;
   else
-    x = y;
+    x = neel;
 
   // x's parent must be the y's parent once y got deleted
   x->parent = y->parent;
