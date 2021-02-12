@@ -36,10 +36,11 @@ public:
 class RBT {
 private:
   TreeNode *root;
+  TreeNode *neel;  // to stand for NULL while dealing with fixing
 
   // element access functions
-  TreeNode *search(int key);
-  TreeNode *getSuccessor(TreeNode *curr);
+  TreeNode *search(int key);                // called by DeleteRBT()
+  TreeNode *getSuccessor(TreeNode *curr);   // called by DeleteRBT()
 
   // modifying functions
   TreeNode *insert(TreeNode *root, TreeNode *newNode);
