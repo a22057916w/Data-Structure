@@ -220,7 +220,7 @@ void RBT::deleteNode(int key) {
   else
     y = getSuccessor(delNode->right);
 
-  // x might be a child of y or y if y has no child
+  // x might be a child of y or x = y if y has no child
   if(y->left)
     x = y->left;
   else if(y->right)
