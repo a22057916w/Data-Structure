@@ -36,7 +36,7 @@ public:
 class RBT {
 private:
   TreeNode *root;
-  TreeNode *neel;  // to stand for NULL while dealing with fixing
+  TreeNode *neel;  // to stand for NULL while dealing with fixing deletion
 
   // element access functions
   TreeNode *search(int key);                // called by DeleteRBT()
