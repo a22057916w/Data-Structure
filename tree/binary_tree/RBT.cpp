@@ -127,13 +127,12 @@ void RBT::insert(int key) {
 
 TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
 
-  // Step 1. Perform the normal BST insertion.
   if(root == NULL) {
 
     // set NULL child to neel
     newNode->left = neel;
     newNode->right = neel;
-    
+
     return newNode;
   }
   if(newNode->key < root->key) {
