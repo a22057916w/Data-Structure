@@ -260,6 +260,18 @@ TreeNode *RBT::Fixdeletion(TreeNode *curr) {
   // Case 0: if curr is RED or root, simply make it black
   while(curr != root && curr->color == BLACK) {
 
+    // if curr is leftchild
+    if(curr == curr->parent->left) {
+      TreeNode *sibling = curr->parent->right;
+
+      // Case 1: if sibling is RED
+      if(sibling->color == RED) {
+        sibling->color = BLACK;
+        curr->parent->color = RED;
+        leftRotation(parent);
+        sibling = curr->parent->right;
+      }
+    }
   }
 }
 
