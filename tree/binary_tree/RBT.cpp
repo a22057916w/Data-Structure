@@ -280,10 +280,11 @@ TreeNode *RBT::Fixdeletion(TreeNode *curr) {
         sibling = curr->parent->right;
       }
 
-      // procede to Case 3, 4, 2: sibling is BLACK
-      // Case 3 & 4: one of the child is BLACK
-      if(sibling->right == BLACK) {
-        silbing->left =
+      // procede to Case 2, 3, 4: sibling is BLACK
+      // Case 2: both child of sibling are BLACK
+      if(sibling->left == BLACK && sibling->right == BLACK) {
+        silbing->color = RED;
+        curr->curr->parent;
       }
     }
   }
