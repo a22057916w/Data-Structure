@@ -264,13 +264,15 @@ TreeNode *RBT::Fixdeletion(TreeNode *curr) {
     if(curr == curr->parent->left) {
       TreeNode *sibling = curr->parent->right;
 
-      // Case 1: if sibling is RED
+      // Case 1: sibling is RED
       if(sibling->color == RED) {
         sibling->color = BLACK;
         curr->parent->color = RED;
         leftRotation(parent);
         sibling = curr->parent->right;
       }
+
+      // procede to Case 3, 4, 2: sibling is BLACK
     }
   }
 }
