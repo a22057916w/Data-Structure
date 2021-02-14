@@ -54,7 +54,10 @@ private:
   void inorder(TreeNode *curr);
 
 public:
-  RBT(): root(0) {}
+  RBT(): root(0) {
+    neel = new TreeNode(0);
+    neel->color = BLACK;
+  }
 
   // modifying functions
   void insert(int key);
@@ -125,8 +128,14 @@ void RBT::insert(int key) {
 TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
 
   // Step 1. Perform the normal BST insertion.
-  if(root == NULL)
+  if(root == NULL) {
+
+    // set NULL child to neel
+    newNode->left = neel;
+    newNode->right = neel;
+    
     return newNode;
+  }
   if(newNode->key < root->key) {
     root->left = insert(root->left, newNode);
     root->left->parent = root;
@@ -273,6 +282,10 @@ TreeNode *RBT::Fixdeletion(TreeNode *curr) {
       }
 
       // procede to Case 3, 4, 2: sibling is BLACK
+      // Case 3 & 4: one of the child is BLACK
+      if(sibling->right == BLACK) {
+        silbing->left =
+      }
     }
   }
 }
