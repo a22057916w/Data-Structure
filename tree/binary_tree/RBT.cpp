@@ -127,14 +127,9 @@ void RBT::insert(int key) {
 
 TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
 
-  if(root == NULL) {
-
-    // set NULL child to neel
-    newNode->left = neel;
-    newNode->right = neel;
-
+  if(root == NULL)
     return newNode;
-  }
+
   if(newNode->key < root->key) {
     root->left = insert(root->left, newNode);
     root->left->parent = root;
