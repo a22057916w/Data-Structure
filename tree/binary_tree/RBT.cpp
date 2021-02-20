@@ -325,7 +325,7 @@ TreeNode *RBT::Fixdeletion(TreeNode *curr) {
       // Case 3 & 4: only one child is BLACK
       else {
 
-        // Case 3: right child is BLACK, the other is RED
+        // Case 3: left child is BLACK, the other is RED
         if(sibling->left->color == BLACK) {
           sibling->right->color = BLACK;
           sibling->color = RED;
@@ -334,7 +334,7 @@ TreeNode *RBT::Fixdeletion(TreeNode *curr) {
         }
 
         // After performing Case 3 fixing, it must turn to Case 4
-        // Case 4: right child is RED, the other is BLACK
+        // Case 4: left child is RED, the other is BLACK
         sibling->color = curr->parent->color;
         curr->parent->color = BLACK;
         rightRotation(curr->parent);
