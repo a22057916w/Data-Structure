@@ -211,7 +211,7 @@ void RBT::FixInsertion(TreeNode *curr) {
 }
 
 void RBT::deleteNode(int key) {
-  TreeNode *delNode = search(KEY);
+  TreeNode *delNode = search(key);
 
   if(delNode == NULL) {
     cout << "Key not Found" << endl;
@@ -241,7 +241,7 @@ void RBT::deleteNode(int key) {
   // x is the y's parents' child once y got deleted
   if(y->parent == NULL)
     root = x;
-  else if(u == u->parent->left)
+  else if(y == y->parent->left)
     y->parent->left = x;
   else
     y->parent->right = x;
