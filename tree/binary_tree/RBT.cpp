@@ -69,11 +69,11 @@ public:
 };
 
 // **************** implementation of element access function ***************
-TreeNode *BST::search(int key) {
+TreeNode *RBT::search(int key) {
   return search(key, root);
 }
 
-TreeNode *BST::search(int key, TreeNode *root) {
+TreeNode *RBT::search(int key, TreeNode *root) {
 
   // Base Cases: root(curr node) is null or key is present at root(curr node)
   if(root == NULL || root->key == key)
@@ -453,7 +453,7 @@ int main() {
 
   tree.insert(7);
   tree.insert(3);
-  tree.insert(18); 
+  tree.insert(18);
   tree.insert(10);
   tree.insert(22);
   tree.insert(8);
