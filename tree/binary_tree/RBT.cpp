@@ -142,7 +142,8 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
     root->right = insert(root->right, newNode);
     root->right->parent = root;
   }
-       
+
+  // return the (unchanged) node pointer
   return root;
 }
 
