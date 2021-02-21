@@ -275,7 +275,7 @@ void RBT::FixDeletion(TreeNode *curr) {
       if(sibling->color == RED) {
         sibling->color = BLACK;
         curr->parent->color = RED;
-        leftRotation(parent);
+        leftRotation(curr->parent);
         sibling = curr->parent->right;
       }
 
@@ -283,12 +283,12 @@ void RBT::FixDeletion(TreeNode *curr) {
       if(sibling->left == NULL)
         sibling->left = neel;
       if(sibling->right == NULL)
-        sibing->right = neel;
+        sibling->right = neel;
 
       // procede to Case 2, 3, 4: sibling is BLACK
       // Case 2: both child of sibling are BLACK
-      if(sibling->left == BLACK && sibling->right == BLACK) {
-        silbing->color = RED;
+      if(sibling->left->color == BLACK && sibling->right->color == BLACK) {
+        sibling->color = RED;
         curr = curr->parent;
       }
       // Case 3 & 4: only one child is BLACK
@@ -321,14 +321,14 @@ void RBT::FixDeletion(TreeNode *curr) {
       if(sibling->color == RED) {
         sibling->color = BLACK;
         curr->parent->color = RED;
-        rightRotation(parent);
+        rightRotation(curr->parent);
         sibling = curr->parent->left;
       }
 
       // procede to Case 2, 3, 4: sibling is BLACK
       // Case 2: both child of sibling are BLACK
-      if(sibling->left == BLACK && sibling->right == BLACK) {
-        silbing->color = RED;
+      if(sibling->left->color == BLACK && sibling->right->color == BLACK) {
+        sibling->color = RED;
         curr = curr->parent;
       }
       // Case 3 & 4: only one child is BLACK
