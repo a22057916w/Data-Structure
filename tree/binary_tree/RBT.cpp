@@ -39,8 +39,8 @@ private:
   TreeNode *neel;  // to stand for NULL while dealing with fixing deletion
 
   // element access functions
-  TreeNode *search(int key);                // called by DeleteRBT()
-  TreeNode *getSuccessor(TreeNode *curr);   // called by DeleteRBT()
+  TreeNode *search(int key, TreeNode *root);          // called by DeleteRBT()
+  TreeNode *getSuccessor(TreeNode *curr);             // called by DeleteRBT()
 
   // modifying functions
   TreeNode *insert(TreeNode *root, TreeNode *newNode);
@@ -58,6 +58,9 @@ public:
     neel = new TreeNode(0);
     neel->color = BLACK;
   }
+
+  // element access functions
+  TreeNode *search(int key);      // called by DeleteRBT()
 
   // modifying functions
   void insert(int key);
