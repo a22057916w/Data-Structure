@@ -276,6 +276,12 @@ TreeNode *RBT::Fixdeletion(TreeNode *curr) {
         sibling = curr->parent->right;
       }
 
+      // making sure we can operate with the sibling's children
+      if(sibling->left == NULL)
+        sibling->left = neel;
+      if(sibling->right == NULL)
+        sibing->right = neel;
+
       // procede to Case 2, 3, 4: sibling is BLACK
       // Case 2: both child of sibling are BLACK
       if(sibling->left == BLACK && sibling->right == BLACK) {
