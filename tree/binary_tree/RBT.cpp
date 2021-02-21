@@ -433,7 +433,7 @@ void RBT::levelorder() {
 }
 
 int main() {
-  RBT tree;
+  /*RBT tree;
 
   tree.insert(7);
   tree.insert(6);
@@ -447,6 +447,34 @@ int main() {
   tree.inorder();
 
   cout << "\n\nLevel Order Traversal of Created Tree\n";
+  tree.levelorder();*/
+
+  RBT tree;
+
+  tree.insert(7);
+  tree.insert(3);
+  tree.insert(18); 
+  tree.insert(10);
+  tree.insert(22);
+  tree.insert(8);
+  tree.insert(11);
+  tree.insert(26);
+  tree.insert(2);
+  tree.insert(6);
+  tree.insert(13);
+
+  tree.inorder();
+  tree.levelorder();
+
+  cout<< endl << "Deleting 18, 11, 3, 10, 22" << endl;
+
+  tree.deleteNode(18);
+  tree.deleteNode(11);
+  tree.deleteNode(3);
+  tree.deleteNode(10);
+  tree.deleteNode(22);
+
+  tree.inorder();
   tree.levelorder();
 
   return 0;
