@@ -251,7 +251,7 @@ void RBT::deleteNode(int key) {
     delNode->key = y->key;
 
   // store the color of y for later usage and delete memeory of y
-  Color color = y->color;
+  Color color = (Color)y->color;
 
   y = NULL;
   delete y;
