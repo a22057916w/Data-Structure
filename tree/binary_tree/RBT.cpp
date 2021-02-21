@@ -137,12 +137,13 @@ TreeNode* RBT::insert(TreeNode *root, TreeNode *newNode) {
     root->left = insert(root->left, newNode);
     root->left->parent = root;
   }
-  if(newNode->key > root->key) {
+  // Assume the duplication is not allowed in BST
+  else if(newNode->key > root->key) {
     root->right = insert(root->right, newNode);
     root->right->parent = root;
   }
-  else            // Assume the duplication is not allowed in BST
-    return root;
+       
+  return root;
 }
 
 void RBT::FixInsertion(TreeNode *curr) {
