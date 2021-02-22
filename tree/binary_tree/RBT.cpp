@@ -31,6 +31,13 @@ public:
     color = RED;
   }
 
+  // for initiating neel pointer (null) when dealing wiht fixing deletion
+  TreeNode(TreeNode *neel) {
+    left = right = neel;
+    this->key = neel->key;
+    color = BLACK;
+  }
+
     friend class RBT;
 };
 
@@ -56,8 +63,7 @@ private:
 
 public:
   RBT(): root(0) {
-    neel = new TreeNode(0);
-    neel->color = BLACK;
+    neel = new TreeNode(new TreeNode(0));
   }
 
   // element access functions
@@ -441,7 +447,7 @@ void RBT::levelorder() {
 int main() {
   RBT tree;
 
-  tree.insert(7);
+  /*tree.insert(7);
   tree.insert(6);
   tree.insert(5);
   tree.insert(4);
@@ -453,9 +459,9 @@ int main() {
   tree.inorder();
 
   cout << "\n\nLevel Order Traversal of Created Tree\n";
-  tree.levelorder();
+  tree.levelorder();*/
 
-  /*RBT tree;
+  RBT tree;
 
   tree.insert(7);
   tree.insert(3);
@@ -481,7 +487,7 @@ int main() {
   tree.deleteNode(22);
 
   tree.inorder();
-  tree.levelorder();*/
+  tree.levelorder();
 
   return 0;
 }
