@@ -445,9 +445,9 @@ void RBT::levelorder() {
 }
 
 int main() {
-  RBT tree;
+  /*RBT tree;
 
-  /*tree.insert(7);
+  tree.insert(7);
   tree.insert(6);
   tree.insert(5);
   tree.insert(4);
@@ -476,7 +476,7 @@ int main() {
   tree.insert(13);
 
   tree.inorder();
-  cout << enld;
+  cout << endl;
   tree.levelorder();
 
   cout << endl << "Deleting 18, 11, 3, 10, 22" << endl;
