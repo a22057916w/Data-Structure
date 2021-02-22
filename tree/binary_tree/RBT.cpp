@@ -177,8 +177,7 @@ void RBT::FixInsertion(TreeNode *curr) {
         }
 
         // Case LL: curr is left child of its parent, right-rotation required
-        parent->color = BLACK;
-        grand_parent->color = RED;
+        swap(parent->color, grand_parent->color);
         rightRotation(grand_parent);
         curr = parent;
       }
@@ -205,8 +204,7 @@ void RBT::FixInsertion(TreeNode *curr) {
         }
 
         // Case RR: curr is right child of its parent, left-rotation required
-        parent->color = BLACK;
-        grand_parent->color = RED;
+        swap(parent->color, grand_parent->color);
         leftRotation(grand_parent);
         curr = parent;
       }
