@@ -47,8 +47,9 @@ private:
   TreeNode *neel;  // to stand for NULL while dealing with fixing deletion
 
   // element access functions
-  TreeNode *search(int key, TreeNode *root);          // called by DeleteRBT()
-  TreeNode *getSuccessor(TreeNode *curr);             // called by DeleteRBT()
+  TreeNode *search(int key, TreeNode *root);      // called by FixDeletetion()
+  TreeNode *getSuccessor(TreeNode *curr);         // called by FixDeletetion()
+  bool hasRedChild(TreeNode *curr);               // called by FixDeletetion()
 
   // modifying functions
   TreeNode *insert(TreeNode *root, TreeNode *newNode);
@@ -105,6 +106,9 @@ TreeNode *RBT::getSuccessor(TreeNode *curr) {
   return curr;
 }
 
+bool RBT::hasRedChild(TreeNode *curr) {
+  
+}
 
 // **************** implementation of modifying functions ********************
 /*
@@ -292,6 +296,7 @@ void RBT::FixDeletion(TreeNode *curr) {
         sibling = curr->parent->right;
       }
       // procede to Case 2, 3, 4: sibling is BLACK
+
       // Case 2: both child of sibling are BLACK
       if(sibling->left->color == BLACK && sibling->right->color == BLACK) {
 
