@@ -9,6 +9,7 @@ Rules That Every Red-Black Tree Follows:
 */
 
 #include <iostream>
+#include <algorithm>
 #include <queue>
 using namespace std;
 
@@ -171,7 +172,8 @@ void RBT::FixInsertion(TreeNode *curr) {
         // Case LR: curr is right child of its parent, left-rotation required
         if(curr == parent->right) {
           curr = parent;
-          leftRotation(curr);
+          leftRotation(parent);
+          parent = curr->parent;
         }
 
         // Case LL: curr is left child of its parent, right-rotation required
@@ -196,9 +198,10 @@ void RBT::FixInsertion(TreeNode *curr) {
       else {
 
         // Case RL: curr is left child of its parent, right-rotation required
-        if(curr == parent->right) {
+        if(curr == parent->left) {
           curr = parent;
           rightRotation(curr);
+          parent = curr->parent;
         }
 
         // Case RR: curr is right child of its parent, left-rotation required
@@ -440,7 +443,7 @@ void RBT::levelorder() {
 }
 
 int main() {
-  /*RBT tree;
+  RBT tree;
 
   tree.insert(7);
   tree.insert(6);
@@ -454,9 +457,9 @@ int main() {
   tree.inorder();
 
   cout << "\n\nLevel Order Traversal of Created Tree\n";
-  tree.levelorder();*/
+  tree.levelorder();
 
-  RBT tree;
+  /*RBT tree;
 
   tree.insert(7);
   tree.insert(3);
@@ -482,7 +485,7 @@ int main() {
   tree.deleteNode(22);
 
   tree.inorder();
-  tree.levelorder();
+  tree.levelorder();*/
 
   return 0;
 }
