@@ -476,9 +476,10 @@ int main() {
   tree.insert(13);
 
   tree.inorder();
+  cout << enld;
   tree.levelorder();
 
-  cout<< endl << "Deleting 18, 11, 3, 10, 22" << endl;
+  cout << endl << "Deleting 18, 11, 3, 10, 22" << endl;
 
   tree.deleteNode(18);
   tree.deleteNode(11);
@@ -487,6 +488,7 @@ int main() {
   tree.deleteNode(22);
 
   tree.inorder();
+  cout << endl;
   tree.levelorder();
 
   return 0;
