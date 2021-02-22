@@ -32,11 +32,11 @@ public:
   }
 
   // for initiating neel pointer (null) when dealing wiht fixing deletion
-  TreeNode(TreeNode *neel) {
+  /*TreeNode(TreeNode *neel) {
     left = right = neel;
     this->key = neel->key;
     color = BLACK;
-  }
+  }*/
 
     friend class RBT;
 };
@@ -63,7 +63,8 @@ private:
 
 public:
   RBT(): root(0) {
-    neel = new TreeNode(new TreeNode(0));
+    neel = new TreeNode(INT_MIN);
+    neel->color = BLACK;
   }
 
   // element access functions
