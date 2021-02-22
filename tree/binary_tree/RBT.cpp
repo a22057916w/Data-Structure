@@ -294,7 +294,7 @@ void RBT::FixDeletion(TreeNode *curr) {
       // Case 2: both child of sibling are BLACK
       if(sibling->left->color == BLACK && sibling->right->color == BLACK) {
 
-        // if curr is presenting null, save it and delete after
+        // if curr is representing null, save it and delete after
         if(curr == neel)
           TreeNode *temp = neel;
 
