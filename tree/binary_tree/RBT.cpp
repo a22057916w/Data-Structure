@@ -249,8 +249,10 @@ void RBT::deleteNode(int key) {
     x = y->left;
   else if(y->right)
     x = y->right;
-  else
-    x = neel;
+  else {
+    x = new TreeNode(INT_MIN);
+    x->color = BLACK;
+  }
 
   // x's parent must be the y's parent once y got deleted
   x->parent = y->parent;
@@ -279,6 +281,16 @@ void RBT::deleteNode(int key) {
   else if(color == BLACK)
     FixDeletion(x);
 
+  
+  if(x->key == INT_MIN) {
+    if(x == x->parent->right)
+      x->parent->right = NULL;
+    else
+      x->parent->left = NULL;
+    delete x;
+    x = NULL;
+  }
+
 }
 
 void RBT::FixDeletion(TreeNode *curr) {
@@ -288,9 +300,6 @@ void RBT::FixDeletion(TreeNode *curr) {
 
     // we need to delete neel after the rotation and recoloring is done
     TreeNode *temp = NULL;
-
-    if(curr == neel)
-      temp = neel;
 
     // if curr is leftchild
     if(curr == curr->parent->left) {
@@ -372,9 +381,6 @@ void RBT::FixDeletion(TreeNode *curr) {
       }
     }
 
-    // delete temp which might point to neel
-    delete temp;
-    temp = NULL;
   }
 
   // making root BLACK
