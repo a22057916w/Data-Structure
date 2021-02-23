@@ -107,10 +107,10 @@ TreeNode *RBT::getSuccessor(TreeNode *curr) {
 }
 
 bool RBT::hasRedChild(TreeNode *curr) {
-  TreeNode left = curr->left;
-  TreeNode right = curr->right;
+  TreeNode *left = curr->left;
+  TreeNode *right = curr->right;
 
-  return (left && left->color = RED) || (right && right->color == RED);
+  return (left && left->color == RED) || (right && right->color == RED);
 }
 
 // **************** implementation of modifying functions ********************
