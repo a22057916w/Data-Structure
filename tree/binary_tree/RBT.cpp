@@ -301,11 +301,12 @@ void RBT::FixDeletion(TreeNode *curr) {
         leftRotation(curr->parent);
         sibling = curr->parent->right;
       }
-      // procede to Case 2, 3, 4: sibling is BLACK
 
-      // Case 2: both child of sibling are BLACK
+      // procede to Case 2, 3, 4: sibling is BLACK
+      // Case 3 & 4: at least 1 red children
       if(hasRedChild(sibling)) {
-        // at least 1 red children
+
+        // Case 3: left child is RED
         if(sibling->left != NULL && sibling->left->color == RED) {
           sibling->left->color = BLACK;
           sibling->color = RED;
@@ -322,44 +323,15 @@ void RBT::FixDeletion(TreeNode *curr) {
         // After performing Case 4 fixing, the tree must be balanced,
         // for the total number of black node is remain unchange.
         curr = root;
-
-        if(sibling->left->color == BLACK && sibling->right->color == BLACK) {
-
-          // if curr is representing null, save it and delete after
-          if(curr == neel)
-            TreeNode *temp = neel;
-
-          // Do Case 2 operation
-          sibling->color = RED;
-          curr = curr->parent;
-        }
-        // Case 3 & 4: only one child is BLACK
-        else {
-          if(curr == neel)
-            TreeNode *temp = neel;
-
-          // Case 3: right child is BLACK, the other is RED
-          if(sibling->right->color == BLACK) {
-            sibling->left->color = BLACK;
-            sibling->color = RED;
-            rightRotation(sibling);
-            sibling = curr->parent->right;
-          }
-
-          // After performing Case 3 fixing, it must turn to Case 4
-          // Case 4: right child is RED, the other is BLACK
-          sibling->color = curr->parent->color;
-          curr->parent->color = BLACK;
-          leftRotation(curr->parent);
-
-          // After performing Case 4 fixing, the tree must be balanced,
-          // for the total number of black node is remain unchange.
-          curr = root;
-        }
+      }
+      // Case 2: both child are BLACK
+      else {
+        sibling->color = RED;
+        curr = curr->parent;
       }
     }
     // if curr is leftchild
-    else {
+    /*else {
       TreeNode *sibling = curr->parent->right;
 
       // Case 1: sibling is RED
@@ -400,7 +372,7 @@ void RBT::FixDeletion(TreeNode *curr) {
 
         curr = root;
       }
-    }
+    }*/
 
     // delete temp which might point to neel
     temp = NULL;
