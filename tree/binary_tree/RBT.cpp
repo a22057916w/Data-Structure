@@ -270,11 +270,13 @@ void RBT::deleteNode(int key) {
   // store the color of y for later usage and delete memeory of y
   Color color = (Color)y->color;
 
-  y = NULL;
   delete y;
+  y = NULL;
 
   // if the deleted node is BLACK, fix it up
-  if(color == BLACK)
+  if(color == BLACK && x->color == RED)
+    x->color = BLACK;
+  else if(color == BLACK)
     FixDeletion(x);
 
 }
@@ -371,8 +373,8 @@ void RBT::FixDeletion(TreeNode *curr) {
     }
 
     // delete temp which might point to neel
-    temp = NULL;
     delete temp;
+    temp = NULL;
   }
 
   // making root BLACK
