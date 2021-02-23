@@ -287,6 +287,9 @@ void RBT::FixDeletion(TreeNode *curr) {
     // we need to delete neel after the rotation and recoloring is done
     TreeNode *temp = NULL;
 
+    if(curr == neel)
+      TreeNode *temp = neel;
+
     // if curr is leftchild
     if(curr == curr->parent->left) {
       TreeNode *sibling = curr->parent->right;
@@ -301,23 +304,9 @@ void RBT::FixDeletion(TreeNode *curr) {
       // procede to Case 2, 3, 4: sibling is BLACK
 
       // Case 2: both child of sibling are BLACK
-      if(sibling->left->color == BLACK && sibling->right->color == BLACK) {
-
-        // if curr is representing null, save it and delete after
-        if(curr == neel)
-          TreeNode *temp = neel;
-
-        // Do Case 2 operation
-        sibling->color = RED;
-        curr = curr->parent;
-      }
-      // Case 3 & 4: only one child is BLACK
-      else {
-        if(curr == neel)
-          TreeNode *temp = neel;
-
-        // Case 3: right child is BLACK, the other is RED
-        if(sibling->right->color == BLACK) {
+      if(hasRedChild(sibling)) {
+        // at least 1 red children
+        if(sibling->left != NULL && sibling->left->color == RED) {
           sibling->left->color = BLACK;
           sibling->color = RED;
           rightRotation(sibling);
@@ -333,6 +322,40 @@ void RBT::FixDeletion(TreeNode *curr) {
         // After performing Case 4 fixing, the tree must be balanced,
         // for the total number of black node is remain unchange.
         curr = root;
+
+        if(sibling->left->color == BLACK && sibling->right->color == BLACK) {
+
+          // if curr is representing null, save it and delete after
+          if(curr == neel)
+            TreeNode *temp = neel;
+
+          // Do Case 2 operation
+          sibling->color = RED;
+          curr = curr->parent;
+        }
+        // Case 3 & 4: only one child is BLACK
+        else {
+          if(curr == neel)
+            TreeNode *temp = neel;
+
+          // Case 3: right child is BLACK, the other is RED
+          if(sibling->right->color == BLACK) {
+            sibling->left->color = BLACK;
+            sibling->color = RED;
+            rightRotation(sibling);
+            sibling = curr->parent->right;
+          }
+
+          // After performing Case 3 fixing, it must turn to Case 4
+          // Case 4: right child is RED, the other is BLACK
+          sibling->color = curr->parent->color;
+          curr->parent->color = BLACK;
+          leftRotation(curr->parent);
+
+          // After performing Case 4 fixing, the tree must be balanced,
+          // for the total number of black node is remain unchange.
+          curr = root;
+        }
       }
     }
     // if curr is leftchild
