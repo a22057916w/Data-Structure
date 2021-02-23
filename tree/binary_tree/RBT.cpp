@@ -288,7 +288,7 @@ void RBT::FixDeletion(TreeNode *curr) {
     TreeNode *temp = NULL;
 
     if(curr == neel)
-      TreeNode *temp = neel;
+      temp = neel;
 
     // if curr is leftchild
     if(curr == curr->parent->left) {
