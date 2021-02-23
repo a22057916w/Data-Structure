@@ -330,6 +330,46 @@ void RBT::FixDeletion(TreeNode *curr) {
         curr = curr->parent;
       }
     }
+    else {
+      TreeNode *sibling = curr->parent->right;
+
+      // Case 1: sibling is RED
+      if(sibling->color == RED) {
+        sibling->color = BLACK;
+        curr->parent->color = RED;
+        rightRotation(curr->parent);
+        sibling = curr->parent->left;
+      }
+
+      // procede to Case 2, 3, 4: sibling is BLACK
+      // Case 3 & 4: at least 1 red children
+      if(hasRedChild(sibling)) {
+
+        // Case 3: left child is RED
+        if(sibling->right != NULL && sibling->right->color == RED) {
+          sibling->right->color = BLACK;
+          sibling->color = RED;
+          leftRotation(sibling);
+          sibling = curr->parent->left;
+        }
+
+        // After performing Case 3 fixing, it must turn to Case 4
+        // Case 4: right child is RED, the other is BLACK
+        sibling->color = curr->parent->color;
+        curr->parent->color = BLACK;
+        rightRotation(curr->parent);
+
+        // After performing Case 4 fixing, the tree must be balanced,
+        // for the total number of black node is remain unchange.
+        curr = root;
+      }
+      // Case 2: both child are BLACK
+      else {
+        sibling->color = RED;
+        curr = curr->parent;
+      }
+    }
+
     // if curr is leftchild
     /*else {
       TreeNode *sibling = curr->parent->right;
