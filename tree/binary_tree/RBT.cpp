@@ -37,7 +37,6 @@ public:
 class RBT {
 private:
   TreeNode *root;
-  TreeNode *neel;  // to stand for NULL while dealing with fixing deletion
 
   // element access functions
   TreeNode *search(int key, TreeNode *root);      // called by FixDeletetion()
@@ -56,10 +55,7 @@ private:
   void inorder(TreeNode *curr);
 
 public:
-  RBT(): root(0) {
-    neel = new TreeNode(INT_MIN);
-    neel->color = BLACK;
-  }
+  RBT(): root(0) {}
 
   // element access functions
   TreeNode *search(int key);      // called by DeleteRBT()
