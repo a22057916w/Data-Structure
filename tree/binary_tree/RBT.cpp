@@ -216,6 +216,16 @@ void RBT::FixInsertion(TreeNode *curr) {
   root->color = BLACK;
 }
 
+/*
+Algorithm (Deletion)
+
+1. Perform standard BST delete. When we perform standard delete operation in BST,
+   we always end up deleting a node which is either leaf or has only one child.
+   Let y be the node to be deleted and x be the child that replaces y.
+2. Simple Case: If either x or y is red, we mark the replaced child as black (No
+   change in black height). Note that both x and y cannot be red as y is parent
+   of x and two consecutive reds are not allowed in red-black tree.
+*/
 void RBT::deleteNode(int key) {
   TreeNode *delNode = search(key);
 
@@ -264,9 +274,10 @@ void RBT::deleteNode(int key) {
   delete y;
   y = NULL;
 
-  // if the deleted node is BLACK, fix it up
+  // Simple case: either x or y is red
   if(color == BLACK && x->color == RED)
     x->color = BLACK;
+  // if the deleted node is BLACK, fix it up
   else if(color == BLACK)
     FixDeletion(x);
 
