@@ -8,6 +8,12 @@ Rules That Every Red-Black Tree Follows:
    has the same number of black nodes.
 */
 
+/*
+REFERENCE:
+https://www.geeksforgeeks.org/red-black-tree-set-3-delete-2/
+http://alrightchiu.github.io/SecondRound/red-black-tree-deleteshan-chu-zi-liao-yu-fixupxiu-zheng.html
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <queue>
