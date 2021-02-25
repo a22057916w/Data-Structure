@@ -249,6 +249,8 @@ void RBT::deleteNode(int key) {
   else if(y->right)
     x = y->right;
   else {
+
+    // new a temp node as NULL
     x = new TreeNode(INT_MIN);
     x->color = BLACK;
   }
@@ -274,14 +276,14 @@ void RBT::deleteNode(int key) {
   delete y;
   y = NULL;
 
-  // Simple case: either x or y is red
+  // Simple case: y is BLACK and x is red
   if(color == BLACK && x->color == RED)
     x->color = BLACK;
-  // if the deleted node is BLACK, fix it up
+  // else if the deleted node is BLACK, fix it up
   else if(color == BLACK)
     FixDeletion(x);
 
-
+  // delete the temp(NULL) node 
   if(x->key == INT_MIN) {
     if(x == x->parent->right)
       x->parent->right = NULL;
