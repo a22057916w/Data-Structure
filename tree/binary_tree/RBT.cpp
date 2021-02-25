@@ -217,7 +217,7 @@ void RBT::FixInsertion(TreeNode *curr) {
 }
 
 /*
-Algorithm (Deletion)
+Concept (Deletion)
 
 1. Perform standard BST delete. When we perform standard delete operation in BST,
    we always end up deleting a node which is either leaf or has only one child.
@@ -225,6 +225,25 @@ Algorithm (Deletion)
 2. Simple Case: If either x or y is red, we mark the replaced child as black (No
    change in black height). Note that both x and y cannot be red as y is parent
    of x and two consecutive reds are not allowed in red-black tree.
+3. If Both u and v are Black.
+   a) If sibling s is black and at least one of sibling’s children is "red",
+      perform rotation(s). Let the red child of s be r. This case can be divided
+      in four subcases depending upon positions of s and r.
+     (i)   Left Left Case (s is left child of its parent and r is left child of
+           s or both children of s are red)
+     (ii)  Left Right Case (s is left child of its parent and r is right child)
+     (iii) Right Right Case (s is right child of its parent and r is right
+           child of s or both children of s are red)
+     (iv)  Right Left Case (s is right child of its parent and r is left child of s)
+   b) If sibling is black and its both children are black, perform recoloring,
+      and recur for the parent if parent is black.
+   c) If sibling is red, perform a rotation to move old sibling up, recolor the
+      old sibling and parent. This mainly converts the tree to black sibling case
+      (by rotation) and leads to case (a) or (b). This case can be divided in two
+      subcases.
+      (i)  Left Case (s is left child of its parent). We right rotate the parent p.
+      (iI)  Right Case (s is right child of its parent). We left rotate the parent p.
+   d) If u is root, make it single black.
 */
 void RBT::deleteNode(int key) {
   TreeNode *delNode = search(key);
@@ -283,7 +302,7 @@ void RBT::deleteNode(int key) {
   else if(color == BLACK)
     FixDeletion(x);
 
-  // delete the temp(NULL) node 
+  // delete the temp(NULL) node
   if(x->key == INT_MIN) {
     if(x == x->parent->right)
       x->parent->right = NULL;
