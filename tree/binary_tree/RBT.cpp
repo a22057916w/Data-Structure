@@ -320,7 +320,7 @@ void RBT::deleteNode(int key) {
 
 }
 
-// The code is combined with the REFERENCE above 
+// The code is combined with the REFERENCE above
 void RBT::FixDeletion(TreeNode *curr) {
 
   // Case 0: if curr is RED or root, simply make it black
@@ -411,6 +411,18 @@ void RBT::FixDeletion(TreeNode *curr) {
   // making root BLACK
   curr->color = BLACK;
 }
+
+/*
+Insertion Vs Deletion:
+Recoloring and rotations are used to maintain the Red-Black properties.
+
+In insert operation, we check color of uncle to decide the appropriate case. In
+delete operation, we check color of sibling to decide the appropriate case.
+
+The main property that violates after insertion is two consecutive reds. In
+delete, the main violated property is, change of black height in subtrees as
+deletion of a black node may cause reduced black height in one root to leaf path.
+*/
 
 // The tree must satisfy key(x) < key(y) either before or after the
 // rotation take place, subtree rooted with x
