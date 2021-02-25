@@ -31,14 +31,7 @@ public:
     color = RED;
   }
 
-  // for initiating neel pointer (null) when dealing wiht fixing deletion
-  /*TreeNode(TreeNode *neel) {
-    left = right = neel;
-    this->key = neel->key;
-    color = BLACK;
-  }*/
-
-    friend class RBT;
+  friend class RBT;
 };
 
 class RBT {
