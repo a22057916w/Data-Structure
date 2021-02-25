@@ -320,6 +320,7 @@ void RBT::deleteNode(int key) {
 
 }
 
+// The code is combined with the REFERENCE above 
 void RBT::FixDeletion(TreeNode *curr) {
 
   // Case 0: if curr is RED or root, simply make it black
