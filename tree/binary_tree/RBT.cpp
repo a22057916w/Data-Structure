@@ -325,9 +325,6 @@ void RBT::FixDeletion(TreeNode *curr) {
   // Case 0: if curr is RED or root, simply make it black
   while(curr != root && curr->color == BLACK) {
 
-    // we need to delete neel after the rotation and recoloring is done
-    TreeNode *temp = NULL;
-
     // if curr is leftchild
     if(curr == curr->parent->left) {
       TreeNode *sibling = curr->parent->right;
