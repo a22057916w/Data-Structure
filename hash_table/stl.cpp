@@ -94,7 +94,7 @@ string HashChain::search(string key_str) {
 
 void HashChain::displayTable() {
   for(int i = 0; i < table.size(); i++) {
-    cout << "slot#" << i << endl;
+    cout << "slot#" << i << ": ";
     for(const auto& it: table[i])
        cout << "(" << it.key << "," << it.value << ") ";
     cout << endl;
