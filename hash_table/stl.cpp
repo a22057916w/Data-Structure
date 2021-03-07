@@ -12,8 +12,10 @@ public:
   Dict(): key(""), value("") {};
   Dict(string key, string value): key(key), value(value) {};
 
-  friend class HashChain 
-}
+  friend class HashChain
+};
+
+
 int main() {
   return 0;
 }
