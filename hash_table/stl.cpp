@@ -103,5 +103,23 @@ void HashChain::displayTable() {
 }
 
 int main() {
+
+  HashChain_std hash(5);
+  hash.insert(dict("T-Mac","Magic"));
+  hash.insert(dict("Bryant","Lakers"));
+  hash.insert(dict("Webber","Kings"));
+  hash.insert(dict("Arenas", "Wizards"));
+  hash.insert(dict("Davis","Clippers"));
+  hash.insert(dict("Kidd","Nets"));
+  hash.displayTable();
+
+  cout << "T-Mac is in " << hash.Search("T-Mac") << ". " << endl;
+  cout << "Arenas is in " << hash.Search("Arenas") << ". " << endl;
+
+  hash.deleteKey("Kidd");
+  hash.deleteKey("T-Mac");
+  cout << "\nAfter deleing Kidd and T-Mac:\n";
+  hash.displayTable();
+
   return 0;
 }
