@@ -49,6 +49,10 @@ void HashChain:insert(Dict data) {
   table[index].push_front(data);
 }
 
+int HashChain::HashFunction(string key_str) {
+  return (PreHashing(key_str) % this->size);    // Division method
+}
+
 int main() {
   return 0;
 }
