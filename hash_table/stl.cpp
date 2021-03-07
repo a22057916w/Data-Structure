@@ -29,7 +29,7 @@ private:
 public:
   HashChain(){};
   HashChain(int m): size(m), count(0) {
-    table.resize(size);
+    table.resize(size);                 // allocate memory for each slot
   }
 
   // element access functions
