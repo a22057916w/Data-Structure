@@ -96,7 +96,7 @@ void HashChain::displayTable() {
   for(int i = 0; i < table.size(); i++) {
     cout << "slot#" << i << endl;
     for(const auto& it: table[i])
-       cout << "(" << it,key << "," << it.value << ") ";
+       cout << "(" << it.key << "," << it.value << ") ";
     cout << endl;
   }
   cout << endl;
