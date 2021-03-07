@@ -41,6 +41,13 @@ public:
   void deleteKey(string key);
 };
 
+// ******************** imp of modifying function *********************
+void HashChain:insert(Dict data) {
+  // two steps: 1. get index from hash function
+  //            2. insert data at the front of linked list
+  int index = HashFunction(data->key);
+  table[index].push_front(data);
+}
 
 int main() {
   return 0;
