@@ -4,15 +4,16 @@
 #include <string>
 using namespace std;
 
+// self-defined dictionary
 class Dict {
 private:
-    String key;
-    String value;
+    String key;        // key for Name (eg:Jordan)
+    String value;      // value for Team (eg:Bulls)
 public:
   Dict(): key(""), value("") {};
   Dict(string key, string value): key(key), value(value) {};
 
-  friend class HashChain
+  friend class HashChain;
 };
 
 class HashChain {
@@ -24,7 +25,7 @@ private:
     vector<list<Dict> > table;
 
     int PreHashing(string key_str);     // turn string_type_key to int_type_key
-    int HashFunction(string key_str);   // using Division method  
+    int HashFunction(string key_str);   // using Division method
 public:
 };
 
