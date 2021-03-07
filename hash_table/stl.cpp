@@ -80,6 +80,18 @@ int HashChain::PreHashing(string key_str) {
   return key_int;
 }
 
+// ******************** imp of modifying function *********************
+string HashChain::search(string key_str) {
+  // two steps: 1. get index from hash function
+  //            2. traversal in linked list
+  int index = HashFunction(key_str);
+  for(const auto& it : table[index])
+    if(it->key == key_str)
+      return it.value;
+
+  return "...\nno such data.";
+}
+
 int main() {
   return 0;
 }
