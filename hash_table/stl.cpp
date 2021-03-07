@@ -48,9 +48,9 @@ void HashChain::deleteKey(string key_str) {
   // two steps: 1. get index from hash function
   //            2. traversal in linked list
   int index = HashFunction(key_str);
-  for(const auto& it : table[index])
+  for(const auto it : table[index])
     if(it->key == key_str)
-      return it->value;
+      table[index].earse(it);
 }
 
 void HashChain:insert(Dict data) {
