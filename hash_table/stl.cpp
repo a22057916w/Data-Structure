@@ -105,12 +105,12 @@ void HashChain::displayTable() {
 int main() {
 
   HashChain_std hash(5);
-  hash.insert(dict("T-Mac","Magic"));
-  hash.insert(dict("Bryant","Lakers"));
-  hash.insert(dict("Webber","Kings"));
-  hash.insert(dict("Arenas", "Wizards"));
-  hash.insert(dict("Davis","Clippers"));
-  hash.insert(dict("Kidd","Nets"));
+  hash.insert(Dict("T-Mac","Magic"));
+  hash.insert(Dict("Bryant","Lakers"));
+  hash.insert(Dict("Webber","Kings"));
+  hash.insert(Dict("Arenas", "Wizards"));
+  hash.insert(Dict("Davis","Clippers"));
+  hash.insert(Dict("Kidd","Nets"));
   hash.displayTable();
 
   cout << "T-Mac is in " << hash.Search("T-Mac") << ". " << endl;
