@@ -31,6 +31,14 @@ public:
   HashChain(int m): size(m), count(0) {
     table.resize(size);
   }
+
+  // element access functions
+  string search(string key);
+  void displayTable();
+
+  // modifying function
+  void insert(Dict data);
+  void deleteKey(string key);
 };
 
 
