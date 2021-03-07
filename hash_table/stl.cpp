@@ -104,7 +104,7 @@ void HashChain::displayTable() {
 
 int main() {
 
-  HashChain_std hash(5);
+  HashChain hash(5);
   hash.insert(Dict("T-Mac","Magic"));
   hash.insert(Dict("Bryant","Lakers"));
   hash.insert(Dict("Webber","Kings"));
@@ -113,8 +113,8 @@ int main() {
   hash.insert(Dict("Kidd","Nets"));
   hash.displayTable();
 
-  cout << "T-Mac is in " << hash.Search("T-Mac") << ". " << endl;
-  cout << "Arenas is in " << hash.Search("Arenas") << ". " << endl;
+  cout << "T-Mac is in " << hash.search("T-Mac") << ". " << endl;
+  cout << "Arenas is in " << hash.search("Arenas") << ". " << endl;
 
   hash.deleteKey("Kidd");
   hash.deleteKey("T-Mac");
