@@ -27,7 +27,7 @@ private:
     // modifying function
     int PreHashing(string key_str);     // turn string_type_key to int_type_key
     int HashFunction(string key_str);   // using Division method
-    
+
 public:
   HashChain(){};
   HashChain(int m): size(m), count(0) {
@@ -53,6 +53,22 @@ void HashChain:insert(Dict data) {
 
 int HashChain::HashFunction(string key_str) {
   return (PreHashing(key_str) % this->size);    // Division method
+}
+
+int HashChain::PreHashing(string key_str) {
+  // if   key_str = Jordan, exp = 9
+  // then key_int = ASCII(J)*9^5+ASCII(o)*9^4+ASCII(r)*9^3
+  //               +ASCII(d)*9^2+ASCII(a)*9^1+ASCII(n)*9^0
+
+  int exp = 9, p = 1;     // choose randomly
+  int key_int = 0;
+
+  for(int i = 0; i < key_str.length(); i++) {
+    key_int += key_str[i] * p;
+    p *= exp;
+  }
+
+  return key_int; 
 }
 
 int main() {
