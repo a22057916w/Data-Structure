@@ -27,6 +27,10 @@ private:
     int PreHashing(string key_str);     // turn string_type_key to int_type_key
     int HashFunction(string key_str);   // using Division method
 public:
+  HashChain(){};
+  HashChain(int m): size(m), count(0) {
+    table.resize(size);
+  }
 };
 
 
