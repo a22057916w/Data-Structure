@@ -24,8 +24,10 @@ private:
     // Hash table with linked list. vector for array, list for linked list chaining
     vector<list<Dict> > table;
 
+    // modifying function
     int PreHashing(string key_str);     // turn string_type_key to int_type_key
     int HashFunction(string key_str);   // using Division method
+    
 public:
   HashChain(){};
   HashChain(int m): size(m), count(0) {
