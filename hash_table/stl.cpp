@@ -7,8 +7,8 @@ using namespace std;
 // self-defined dictionary
 class Dict {
 private:
-    String key;        // key for Name (eg:Jordan)
-    String value;      // value for Team (eg:Bulls)
+    string key;        // key for Name (eg:Jordan)
+    string value;      // value for Team (eg:Bulls)
 public:
   Dict(): key(""), value("") {};
   Dict(string key, string value): key(key), value(value) {};
@@ -48,9 +48,9 @@ void HashChain::deleteKey(string key_str) {
   // two steps: 1. get index from hash function
   //            2. traversal in linked list
   int index = HashFunction(key_str);
-  for(const auto it : table[index])
+  for(auto it = table[index].begin(); it != table[index].end(); it++)
     if(it->key == key_str)
-      table[index].earse(it);
+      table[index].erase(it);
 }
 
 void HashChain:insert(Dict data) {
