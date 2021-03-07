@@ -53,10 +53,10 @@ void HashChain::deleteKey(string key_str) {
       table[index].erase(it);
 }
 
-void HashChain:insert(Dict data) {
+void HashChain::insert(Dict data) {
   // two steps: 1. get index from hash function
   //            2. insert data at the front of linked list
-  int index = HashFunction(data->key);
+  int index = HashFunction(data.key);
   table[index].push_front(data);
 }
 
@@ -86,7 +86,7 @@ string HashChain::search(string key_str) {
   //            2. traversal in linked list
   int index = HashFunction(key_str);
   for(const auto& it : table[index])
-    if(it->key == key_str)
+    if(it.key == key_str)
       return it.value;
 
   return "...\nno such data.";
@@ -96,7 +96,7 @@ void HashChain::displayTable() {
   for(int i = 0; i < table.size(); i++) {
     cout << "slot#" << i << endl;
     for(const auto& it: table[i])
-       cout << "(" << itr->key << "," << itr->value << ") ";
+       cout << "(" << it,key << "," << it.value << ") ";
     cout << endl;
   }
   cout << endl;
