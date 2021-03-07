@@ -50,7 +50,7 @@ void HashChain::deleteKey(string key_str) {
   int index = HashFunction(key_str);
   for(auto it = table[index].begin(); it != table[index].end(); it++)
     if(it->key == key_str)
-      table[index].erase(it);
+      it = table[index].erase(it);
 }
 
 void HashChain::insert(Dict data) {
