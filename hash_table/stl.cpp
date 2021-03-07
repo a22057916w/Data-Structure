@@ -92,6 +92,16 @@ string HashChain::search(string key_str) {
   return "...\nno such data.";
 }
 
+void HashChain::displayTable() {
+  for(int i = 0; i < table.size(); i++) {
+    cout << "slot#" << i << endl;
+    for(const auto& it: table[i])
+       cout << "(" << itr->key << "," << itr->value << ") ";
+    cout << endl;
+  }
+  cout << endl;
+}
+
 int main() {
   return 0;
 }
