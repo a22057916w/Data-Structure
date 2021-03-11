@@ -4,11 +4,11 @@ using namespace std;
 
 class Dict {
 private:
-  string key;
-  string value;
+  int key;
+  string val;
 public:
-  Dict(): key(""), value("") {};
-  Dict(string key, string val) key(key), value(val) {};
+  Dict(): key(0), value("") {};
+  Dict(int k, string s) key(k), val(s) {};
 
   friend class HashOpenAddress;
 };
