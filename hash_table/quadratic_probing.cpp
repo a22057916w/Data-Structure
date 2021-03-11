@@ -3,9 +3,10 @@
 using namespace std;
 
 class Dict {
+private:
   string key;
   string value;
-
+public:
   Dict(): key(""), value("") {};
   Dict(string key, string val) key(key), value(val) {};
 
