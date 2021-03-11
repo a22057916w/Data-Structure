@@ -10,7 +10,18 @@ class Dict {
   Dict(string key, string val) key(key), value(val) {};
 
   friend class HashChain;
-}
+};
+
+class HashChain {
+private:
+  int size, elements;
+
+  vector<Dict> table;
+
+  int quadraticProbing(int key, int i);
+public:
+  
+};
 
 int main() {
   return 0;
