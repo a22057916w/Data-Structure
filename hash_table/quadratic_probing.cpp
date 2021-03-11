@@ -9,10 +9,10 @@ class Dict {
   Dict(): key(""), value("") {};
   Dict(string key, string val) key(key), value(val) {};
 
-  friend class HashChain;
+  friend class HashOpenAddress;
 };
 
-class HashChain {
+class HashOpenAddress {
 private:
   int size, elements;
 
@@ -20,7 +20,7 @@ private:
 
   int quadraticProbing(int key, int i);
 public:
-  
+
 };
 
 int main() {
