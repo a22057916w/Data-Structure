@@ -73,6 +73,20 @@ int HashOpenAddress::quadraticProbing(int key, int i) {
    return ((int)((key & table.size()) * c1*i + c2*i*i) % table.size());
 }
 
+// ********************** imp of element access **************************
+string HashOpenAddress::search(int key) {
+
+    for(int i = 0; i < table.size(); i++) {
+      int index = quadraticProbing(key, i);
+
+      if(table[index].key == key)
+        return table[index].val;
+
+    }
+
+    return "...data not found\n";
+}
+
 int main() {
   return 0;
 }
