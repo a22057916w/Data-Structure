@@ -80,7 +80,7 @@ int HashChain::PreHashing(string key_str) {
   return key_int;
 }
 
-// ******************** imp of modifying function *********************
+// ******************** imp of element access *********************
 string HashChain::search(string key_str) {
   // two steps: 1. get index from hash function
   //            2. traversal in linked list
