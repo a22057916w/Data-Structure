@@ -1,3 +1,9 @@
+/*
+Reference:
+http://alrightchiu.github.io/SecondRound/hash-tableopen-addressing.html
+https://stackoverflow.com/questions/10865957/printf-with-stdstring
+*/
+
 #include <iostream>
 #include <cstdio>
 #include <string>
