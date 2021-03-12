@@ -90,7 +90,7 @@ string HashOpenAddress::search(int key) {
 
 void display() {
   for(int i = 0; i < table.size(); i++)
-    printf("slot#%d: ( %d,%s)\n", i, table[i].key, table[i.val]);
+    printf("slot#%d: ( %d,%s)\n", i, table[i].key, table[i].val);
   cout << endl;
 }
 
