@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdiio>
 #include <string>
 using namespace std;
 
@@ -85,6 +86,12 @@ string HashOpenAddress::search(int key) {
     }
 
     return "...data not found\n";
+}
+
+void display() {
+  for(int i = 0; i < table.size(); i++)
+    printf("slot#%d: ( %d,%s)\n", i, table[i].key, table[i.val]);
+  cout << endl;
 }
 
 int main() {
