@@ -70,10 +70,10 @@ void HashOpenAddress::deleteKey(int key) {
 }
 
 int HashOpenAddress::quadraticProbing(int key, int i) {
-   int c1 = 0.5, c2 = 0.5;
+   double c1 = 0.5, c2 = 0.5;
 
    // key & size(m) == HashFunction by Division method
-   return ((int)((key & table.size()) * c1*i + c2*i*i) % table.size());
+   return ((int)((key & table.size()) + c1*i + c2*i*i) % table.size());
 }
 
 // ********************** imp of element access **************************
