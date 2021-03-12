@@ -27,11 +27,13 @@ public:
     table.resize(this->size);
   }
 
-  string serch(int key);
-  void display();
-
+  // modifying functions
   void insert(int key, string val);
   void deleteKey(int key);
+
+  // element access
+  string serch(int key);
+  void display();
 
 };
 
