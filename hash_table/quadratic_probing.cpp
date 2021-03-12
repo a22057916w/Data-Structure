@@ -52,7 +52,7 @@ void HashOpenAddress::insert(int key string val) {
   cout << "Hash Table Overflow" << endl;
 }
 
-void deleteKey(int key) {
+void HashOpenAddress::deleteKey(int key) {
   for(int i = 0; i < table.size(); i++) {
     int index = quadraticProbing(key, i);
 
