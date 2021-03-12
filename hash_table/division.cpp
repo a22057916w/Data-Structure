@@ -1,3 +1,9 @@
+/*
+Reference:
+https://en.cppreference.com/w/cpp/container/list
+http://alrightchiu.github.io/SecondRound/hash-tablechaining.html
+*/
+
 #include <iostream>
 #include <vector>
 #include <list>
