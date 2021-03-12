@@ -1,6 +1,7 @@
 #include <iostream>
-#include <cstdiio>
+#include <cstdio>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Dict {
@@ -8,8 +9,8 @@ private:
   int key;
   string val;
 public:
-  Dict(): key(0), value("") {};
-  Dict(int k, string s) key(k), val(s) {};
+  Dict(): key(0), val("") {};
+  Dict(int k, string s): key(k), val(s) {};
 
   friend class HashOpenAddress;
 };
@@ -33,13 +34,13 @@ public:
   void deleteKey(int key);
 
   // element access
-  string serch(int key);
+  string search(int key);
   void display();
 
 };
 
 // ********************** imp of modifying func ***************************
-void HashOpenAddress::insert(int key string val) {
+void HashOpenAddress::insert(int key, string val) {
 
   for(int i = 0; i < table.size(); i++) {
     int index = quadraticProbing(key, i);
@@ -47,7 +48,7 @@ void HashOpenAddress::insert(int key string val) {
     if(table[index].val == "") {
       table[index].key = key;
       table[index].val = val;
-      element++;
+      elements++;
       return;
     }
   }
@@ -62,8 +63,9 @@ void HashOpenAddress::deleteKey(int key) {
     if(table[index].key == key) {
       table[index].key = 0;
       table[index].val = "";
-      element--;
+      elements--;
       return;
+    }
   }
 }
 
@@ -88,7 +90,7 @@ string HashOpenAddress::search(int key) {
     return "...data not found\n";
 }
 
-void display() {
+void HashOpenAddress::display() {
   for(int i = 0; i < table.size(); i++)
     printf("slot#%d: ( %d,%s)\n", i, table[i].key, table[i].val);
   cout << endl;
