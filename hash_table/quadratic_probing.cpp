@@ -35,6 +35,7 @@ public:
 
 };
 
+// ********************** imp of modifying func ***************************
 void HashOpenAddress::insert(int key string val) {
 
   for(int i = 0; i < table.size(); i++) {
@@ -49,6 +50,13 @@ void HashOpenAddress::insert(int key string val) {
   }
 
   cout << "Hash Table Overflow" << endl;
+}
+
+int HashOpenAddress::quadraticProbing(int key, int i) {
+   int c1 = 0.5, c2 = 0.5;
+   
+   // key & size(m) == HashFunction by Division method
+   return ((int)((key & table.size()) * c1*i + c2*i*i) % table.size());
 }
 
 int main() {
