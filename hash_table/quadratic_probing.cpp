@@ -20,6 +20,7 @@ private:
   vector<Dict> table;
 
   int quadraticProbing(int key, int i);
+
 public:
   HashOpenAddress(): size(0), elements(0), table(0) {};
   HashOpenAddress(int m): size(m), elements(0) {
@@ -33,6 +34,22 @@ public:
   void deleteKey(int key);
 
 };
+
+void HashOpenAddress::insert(int key string val) {
+
+  for(int i = 0; i < table.size(); i++) {
+    int index = quadraticProbing(key, i);
+
+    if(table[index].val == "") {
+      table[index].key = key;
+      table[index].val = val;
+      element++;
+      return;
+    }
+  }
+
+  cout << "Hash Table Overflow" << endl;
+}
 
 int main() {
   return 0;
