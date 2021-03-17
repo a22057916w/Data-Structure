@@ -21,7 +21,7 @@ public:
 
     void insert(int key);
     void deletKey(int index);
-}
+};
 
 int main() {
   return 0;
