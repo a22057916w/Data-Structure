@@ -14,3 +14,7 @@ public:
     int left(int index);
     int right(int index);
 }
+
+int main() {
+  return 0;
+}
