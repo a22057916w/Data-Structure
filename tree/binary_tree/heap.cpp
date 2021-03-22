@@ -1,15 +1,16 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class MinHeap {
 private:
     vector<int> heap;
-    int elements;
+    int element;
 public:
     MinHeap() {};
-    MinHeap(int size) {
-      heap.resize(size);
+    MinHeap(int size): element(0) {
+      heap.resize(size, INT_MAX);
     }
 
     int parent(int index);
@@ -35,6 +36,25 @@ int MinHeap::right(int index) {
 
 int MinHeap::left(int index) {
   return (index * 2) + 1;
+}
+
+// ********************* imp of modifying function *********************
+void insert(int key) {
+  if(element == heap.size()) {
+    cout << Overflow: Could now insert key << endl;
+    return;
+  }
+
+  // First insert the new key at the end
+  element++;
+  int i = heap.size() - 1;
+  heap[i] = key;
+
+  // Fix the min heap property if it is violated
+  while(i > 0 && heap[parent(i)] > heap[i]) {
+    swap(heap[parent[i]], heap[i]);
+    i = parent(i);
+  }
 }
 
 int main() {
