@@ -20,7 +20,7 @@ public:
 
     // modifying function
     void insert(int key);
-    void deletKey(int index);
+    void deleteKey(int index);
     void decreaseKey(int index, int val);
     void extractMin();
     void MinHeapify(int index);
@@ -44,9 +44,9 @@ int MinHeap::getMin() {
 }
 
 // ************************ imp of modifying function *************************
-void insert(int key) {
+void MinHeap::insert(int key) {
   if(element == heap.size()) {
-    cout << Overflow: Could now insert key << endl;
+    cout << "Overflow: Could now insert key" << endl;
     return;
   }
 
@@ -57,7 +57,7 @@ void insert(int key) {
 
   // Fix the min heap property if it is violated
   while(i > 0 && heap[parent(i)] > heap[i]) {
-    swap(heap[parent[i]], heap[i]);
+    swap(heap[parent(i)], heap[i]);
     i = parent(i);
   }
 }
@@ -69,10 +69,10 @@ void MinHeap::deleteKey(int index) {
 
 // Decreases value of key at index 'index' to new_val(val). It is assumed that
 // new_val is smaller than harr[i].
-void MinHeap::decreaseKey(int index, int val) {
+void MinHeap::decreaseKey(int i, int val) {
   heap[i] = val;
   while(i > 0 && heap[parent(i)] > heap[i]) {
-    swap(heap[parent[i]], heap[i]);
+    swap(heap[parent(i)], heap[i]);
     i = parent(i);
   }
 }
