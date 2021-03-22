@@ -1,3 +1,9 @@
+/*
+Reference:
+https://www.geeksforgeeks.org/binary-heap/
+*/
+
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -6,7 +12,7 @@ using namespace std;
 class MinHeap {
 private:
     vector<int> heap;
-    int element;
+    int element;            // recored the size(elements) of the vector
 public:
     MinHeap(int size): element(0) {
       heap.resize(size, INT_MAX);
@@ -21,9 +27,9 @@ public:
     // modifying function
     void insert(int key);
     void deleteKey(int index);
-    void decreaseKey(int index, int val);
-    void extractMin();
-    void MinHeapify(int index);
+    void decreaseKey(int index, int val);     // called by deleteKey()
+    void extractMin();                        // called by deletekey()
+    void MinHeapify(int index);               // called by extractMin()
 };
 
 // ************************ imp of element access ****************************
