@@ -16,14 +16,14 @@ public:
     int parent(int index);
     int left(int index);
     int right(int index);
-
-    int extractMin();
-    void decreaseKey(int index, int val);
-
     int getMin();
 
+    // modifying function
     void insert(int key);
+    void decreaseKey(int index, int val);
+    int extractMin();
     void deletKey(int index);
+    void MinHeapify(int index);
 };
 
 int MinHeap::parent(int index) {
@@ -57,9 +57,19 @@ void insert(int key) {
   }
 }
 
-
+// Decreases value of key at index 'index' to new_val(val). It is assumed that
+// new_val is smaller than harr[i].
 void MinHeap::decreaseKey(int index, int val) {
   heap[i] = val;
+  while(i > 0 && heap[parent(i)] > heap[i]) {
+    swap(heap[parent[i]], heap[i]);
+    i = parent(i);
+  }
+}
+
+// Method to remove minimum element (or root) from min heap
+void MinHeap::extractMin() {
+
 }
 
 void MinHeap::deleteKey(int index) {
