@@ -22,7 +22,7 @@ public:
     void insert(int key);
     void deletKey(int index);
     void decreaseKey(int index, int val);
-    int extractMin();
+    void extractMin();
     void MinHeapify(int index);
 };
 
@@ -74,10 +74,8 @@ void MinHeap::decreaseKey(int index, int val) {
 
 // Method to remove minimum element (or root) from min heap
 void MinHeap::extractMin() {
-  if(element == 0)
-    return INT_MAX;
-  if(element == 1)
-    return heap[0];
+  if(element < 1)
+    return;
 
   int root = heap[0];
   heap[0] = heap[element - 1];
@@ -85,6 +83,7 @@ void MinHeap::extractMin() {
 
   return root;
 }
+
 
 
 int main() {
