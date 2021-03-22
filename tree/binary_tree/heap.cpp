@@ -80,12 +80,10 @@ void MinHeap::extractMin() {
   int root = heap[0];
   heap[0] = heap[element - 1];
   MinHeapify(0);
-
-  return root;
 }
 
 // A recursive method to heapify a subtree with the root at given index
-// This method assumes that the subtrees are already heapified 
+// This method assumes that the subtrees are already heapified
 void MinHeap::MinHeapify(int i) {
   int l = left(i);
   int r = right(i);
