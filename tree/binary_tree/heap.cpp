@@ -13,6 +13,7 @@ public:
       heap.resize(size, INT_MAX);
     }
 
+    // element access
     int parent(int index);
     int left(int index);
     int right(int index);
@@ -26,6 +27,7 @@ public:
     void MinHeapify(int index);
 };
 
+// ************************ imp of element access ****************************
 int MinHeap::parent(int index) {
   return (index - 1) / 2;
 }
@@ -36,6 +38,10 @@ int MinHeap::right(int index) {
 
 int MinHeap::left(int index) {
   return (index * 2) + 1;
+}
+
+int MinHeap::getMin() {
+  return heap[0];
 }
 
 // ************************ imp of modifying function *************************
