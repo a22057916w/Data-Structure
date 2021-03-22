@@ -74,7 +74,16 @@ void MinHeap::decreaseKey(int index, int val) {
 
 // Method to remove minimum element (or root) from min heap
 void MinHeap::extractMin() {
+  if(element == 0)
+    return INT_MAX;
+  if(element == 1)
+    return heap[0];
 
+  int root = heap[0];
+  heap[0] = heap[element - 1];
+  MinHeapify(0);
+
+  return root;
 }
 
 
