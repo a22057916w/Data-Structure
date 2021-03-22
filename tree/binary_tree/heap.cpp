@@ -62,6 +62,11 @@ void MinHeap::decreaseKey(int index, int val) {
   heap[i] = val;
 }
 
+void MinHeap::deleteKey(int index) {
+  decreaseKey(index, INT_MIN);
+  extractMin();
+}
+
 int main() {
   return 0;
 }
