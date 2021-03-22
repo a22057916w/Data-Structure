@@ -20,9 +20,9 @@ public:
 
     // modifying function
     void insert(int key);
+    void deletKey(int index);
     void decreaseKey(int index, int val);
     int extractMin();
-    void deletKey(int index);
     void MinHeapify(int index);
 };
 
@@ -57,6 +57,11 @@ void insert(int key) {
   }
 }
 
+void MinHeap::deleteKey(int index) {
+  decreaseKey(index, INT_MIN);
+  extractMin();
+}
+
 // Decreases value of key at index 'index' to new_val(val). It is assumed that
 // new_val is smaller than harr[i].
 void MinHeap::decreaseKey(int index, int val) {
@@ -72,10 +77,6 @@ void MinHeap::extractMin() {
 
 }
 
-void MinHeap::deleteKey(int index) {
-  decreaseKey(index, INT_MIN);
-  extractMin();
-}
 
 int main() {
   return 0;
