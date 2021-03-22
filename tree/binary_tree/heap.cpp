@@ -38,7 +38,7 @@ int MinHeap::left(int index) {
   return (index * 2) + 1;
 }
 
-// ********************* imp of modifying function *********************
+// ************************ imp of modifying function *************************
 void insert(int key) {
   if(element == heap.size()) {
     cout << Overflow: Could now insert key << endl;
@@ -84,7 +84,22 @@ void MinHeap::extractMin() {
   return root;
 }
 
+// A recursive method to heapify a subtree with the root at given index
+// This method assumes that the subtrees are already heapified 
+void MinHeap::MinHeapify(int i) {
+  int l = left(i);
+  int r = right(i);
 
+  int smallest = i;
+  if(l < element && heap[l] < heap[i])
+    smallest = l;
+  if(r < element && heap[r] < smallest)
+    smallest = r;
+  if(smallest != i) {
+    swap(heap[i], heap[smallest]);
+    MinHeapify(smallest);
+  }
+}
 
 int main() {
   return 0;
