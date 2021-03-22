@@ -5,6 +5,7 @@ using namespace std;
 class MinHeap {
 private:
     vector<int> heap;
+    int elements;
 public:
     MinHeap() {};
     MinHeap(int size) {
