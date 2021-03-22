@@ -52,7 +52,7 @@ void MinHeap::insert(int key) {
 
   // First insert the new key at the end
   element++;
-  int i = heap.size() - 1;
+  int i = element - 1;
   heap[i] = key;
 
   // Fix the min heap property if it is violated
@@ -82,8 +82,8 @@ void MinHeap::extractMin() {
   if(element < 1)
     return;
 
-  int root = heap[0];
   heap[0] = heap[element - 1];
+  element--;
   MinHeapify(0);
 }
 
@@ -107,13 +107,13 @@ void MinHeap::MinHeapify(int i) {
 int main() {
   MinHeap h(11);
 
-  h.insertKey(3);
-  h.insertKey(2);
+  h.insert(3);
+  h.insert(2);
   h.deleteKey(1);
-  h.insertKey(15);
-  h.insertKey(5);
-  h.insertKey(4);
-  h.insertKey(45);
+  h.insert(15);
+  h.insert(5);
+  h.insert(4);
+  h.insert(45);
 
   h.extractMin();
   cout << h.getMin() << " ";
