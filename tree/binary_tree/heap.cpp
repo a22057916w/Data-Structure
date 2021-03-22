@@ -8,7 +8,6 @@ private:
     vector<int> heap;
     int element;
 public:
-    MinHeap() {};
     MinHeap(int size): element(0) {
       heap.resize(size, INT_MAX);
     }
@@ -110,7 +109,7 @@ int main() {
 
   h.insertKey(3);
   h.insertKey(2);
-  h.deleteKey(1); 
+  h.deleteKey(1);
   h.insertKey(15);
   h.insertKey(5);
   h.insertKey(4);
