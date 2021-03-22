@@ -18,7 +18,7 @@ public:
     int right(int index);
 
     int extractMin();
-    void decreaseKey(int index, int new_val);
+    void decreaseKey(int index, int val);
 
     int getMin();
 
@@ -55,6 +55,11 @@ void insert(int key) {
     swap(heap[parent[i]], heap[i]);
     i = parent(i);
   }
+}
+
+
+void MinHeap::decreaseKey(int index, int val) {
+  heap[i] = val;
 }
 
 int main() {
