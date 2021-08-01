@@ -71,7 +71,7 @@ C++的`virtual`關鍵字分成**虛擬函式**(virtual function)與**純虛函�
 2. **純虛函式 pure virtual function**
         如下例子，Base的func1為純虛函式，純虛函式寫法為`virtual void func1() = 0;`，然後沒有實作，Base是**抽象類別**不能被實體化，強制子類一定要覆寫實作，在某種情況下有這種設計需求。子類實作的話當然就會以子類的實作為主，若子類沒實作則會收到編譯器**Error**。
         
-        **使用時機**：設計一些介面interface時，強制別人一定要這樣實作。
+     **使用時機**：設計一些介面interface時，強制別人一定要這樣實作。
         ![](https://i.imgur.com/DW9aHgC.png)
 
 
