@@ -63,8 +63,8 @@ C++的`virtual`關鍵字分成**虛擬函式**(virtual function)與**純虛函�
         不強制子類一定要實作，子類不實作的話會以父類的實作為主，子類實作的話會以子類的實作為主，另外子類在覆載override父類時，加上`override`關鍵字是個好習慣。
         
     **使用時機**：在子類不覆寫 override 時，有個預設實作(父類的實作)。
-        ![](https://i.imgur.com/TgBFXOF.png)
-    **輸出:**<br><br>
+        ![](https://i.imgur.com/TgBFXOF.png)<br><br>
+    **輸出:**
         ![](https://i.imgur.com/QtIOfLv.png)
 
 
