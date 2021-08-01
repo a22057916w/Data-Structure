@@ -4,6 +4,7 @@ https://www.ibm.com/docs/en/i/7.3?topic=only-pointers-members-c
 
 #include <iostream>
 using namespace std;
+
 class X
 {
     public:
@@ -11,6 +12,7 @@ class X
     void f(int b) {
         cout << b << endl; }
 };
+
 int main()
 {
     // declare pointer to data membe
