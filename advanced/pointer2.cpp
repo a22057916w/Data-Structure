@@ -1,3 +1,7 @@
+/* Reference
+https://www.ibm.com/docs/en/i/7.3?topic=only-pointers-members-c
+*/
+
 #include <iostream>
 using namespace std;
 class X
