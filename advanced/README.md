@@ -64,7 +64,7 @@ C++的`virtual`關鍵字分成**虛擬函式**(virtual function)與**純虛函�
         
     **使用時機**：在子類不覆寫 override 時，有個預設實作(父類的實作)。
         ![](https://i.imgur.com/TgBFXOF.png)
-    **輸出:**
+    **輸出:**<br>
         ![](https://i.imgur.com/QtIOfLv.png)
 
 
