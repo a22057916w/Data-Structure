@@ -14,7 +14,7 @@ T myMin(T x, T y) {
     return x < y ? x : y;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
     cout << myMax<int>(3, 7) << endl; // Call myMax for int
     cout << myMin<int>(3, 7) << endl; // Call myMax for int
