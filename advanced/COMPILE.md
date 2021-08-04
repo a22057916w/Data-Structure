@@ -7,4 +7,4 @@ Actually, for `-o <file>`, it will place the primary output in file <file>. This
 ### Run the output file
 Simply type `./a.out` or `./<filename>.out` on CLI.
 
-If you have an input file, you can do file redirecting `./a.out < input > output`, for example `./a.out < in.txt > out.txt`.
+For linux, if you have an input file, you can do file redirecting `./a.out < input > output`, for example `./a.out < in.txt > out.txt`.
