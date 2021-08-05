@@ -10,3 +10,5 @@ Simply type `./a.out` or `./<filename>.out` on CLI.
 For linux, if you have an input file, you can do file redirecting `./a.out < input > output`, for example `./a.out < in.txt > out.txt`.
 
 ![](https://github.com/a22057916w/Data-Structure/blob/main/advanced/.meta/comple_exp.png)
+
+ Further Information about `int main(int argc, char *argv[])`: [C/C++ 程式設計教學：main 函數讀取命令列參數，argc 與 argv 用法 - G. T. Wang](https://blog.gtwang.org/programming/c-cpp-tutorial-argc-argv-read-command-line-arguments/)
