@@ -22,13 +22,14 @@ Array<T>::Array(T arr[], int s) {
 template <typename T>
 void Array<T>::print() {
 	for (int i = 0; i < size; i++)
-		cout<<" "<<*(ptr + i);
-	cout<<endl;
+		cout << " " << *(ptr + i);
+	cout << endl;
 }
 
 int main() {
 	int arr[5] = {1, 2, 3, 4, 5};
 	Array<int> a(arr, 5);
 	a.print();
+
 	return 0;
 }
