@@ -60,9 +60,13 @@ int _tmain(int argc, _TCHAR* argv[])
 ```
 
 ## Q4
+* **Please explain the (1) meaning & benefit of virtual function (2) benefit of virtual destructor**
 
 ## Q5
+* **Please (1) explain the meaning of forward declaration (reduce dependency about header file) (2) Please rewrite the sample code with forward declaration.**
 
 ## Q6
+* **Given an array A[1~n], please write code to find the smallest and largest element with function template form efficiently.**
 
 ## Q7
+* **What’s the difference between a stack and a heap? How is memory allocated on the stack and heap? How do threads interact with the stack and the heap?**
