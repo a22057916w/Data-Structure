@@ -9,8 +9,8 @@ void main()
 	*(ptr++)+=1;
 }
 ```
-(1) What is the result of *ptr?
-(2) What is the result of *(++ptr)?
+(1) What is the result of *ptr? <br>
+(2) What is the result of *(++ptr)? <br>
 (3) What is the result of arr array?
 
 ## Q2
