@@ -1,5 +1,5 @@
 ## Q1
-* Please see below code and answer questions
+* **Please see below code and answer questions**
 ```
 #include <stdio.h>
 void main()
