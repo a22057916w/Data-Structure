@@ -66,7 +66,7 @@ int _tmain(int argc, _TCHAR* argv[])
 * **Please (1) explain the meaning of forward declaration (reduce dependency about header file) (2) Please rewrite the sample code with forward declaration.**
 
 ## Q6
-* **Given an array A[1~n], please write code to find the smallest and largest element with function template form efficiently.**
+* **Given an array A[1~n], please write code to find the smallest and largest element with function template form efficiently.** <br>
 Please refer to the `function_temp.cpp` and `class_temp.cpp` for code example, also [TEMPLATE.md](https://github.com/a22057916w/Data-Structure/blob/main/advanced/TEMPLATE.md) for further explanation
 
 ## Q7
