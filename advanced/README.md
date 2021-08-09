@@ -75,7 +75,7 @@ Through the video [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For B
 	* Understanding how memory stack operates
 	* Stack overflow error in program
 	* How memory heap operates
-* <
+
 And refer to the [Data-Structure/advanced/memory/README.md](https://github.com/a22057916w/Data-Structure/tree/main/advanced/memory)
 
 #### Reference
