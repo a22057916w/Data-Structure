@@ -69,7 +69,7 @@ int _tmain(int argc, _TCHAR* argv[])
 * **Given an array A[1~n], please write code to find the smallest and largest element with function template form efficiently.**
 
 ## Q7
-* **What’s the difference between a stack and a heap? How is memory allocated on the stack and heap? How do threads interact with the stack and the heap?**
+* **What’s the difference between a stack and a heap? How is memory allocated on the stack and heap? How do threads interact with the stack and the heap?** <br>
 The following guide will help you learn:
 * Understanding how memory stack operates
 * Stack overflow error in program
