@@ -77,7 +77,7 @@ Through the video [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For B
 	* How memory heap operates
 	
 
-&nbsp And refer to the [Data-Structure/advanced/memory/README.md](https://github.com/a22057916w/Data-Structure/tree/main/advanced/memory).
+&nbsp; And refer to the [Data-Structure/advanced/memory/README.md](https://github.com/a22057916w/Data-Structure/tree/main/advanced/memory).
 
 #### Reference
 * [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For Beginners | Simplilearn](https://www.youtube.com/watch?v=gRwfHzeS-GM)
