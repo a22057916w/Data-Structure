@@ -71,12 +71,12 @@ Please refer to the `function_temp.cpp` and `class_temp.cpp` for code example, a
 
 ## Q7
 * **What’s the difference between a stack and a heap? How is memory allocated on the stack and heap? How do threads interact with the stack and the heap?** <br><br>
-	Through the video [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For Beginners | Simplilearn](https://www.youtube.com/watch?v=gRwfHzeS-GM), you will learn:
-		* Understanding how memory stack operates
-		* Stack overflow error in program
-		* How memory heap operates
-
-	And refer to the [Data-Structure/advanced/memory/README.md](https://github.com/a22057916w/Data-Structure/tree/main/advanced/memory)
+Through the video [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For Beginners | Simplilearn](https://www.youtube.com/watch?v=gRwfHzeS-GM), you will learn:
+	* Understanding how memory stack operates
+	* Stack overflow error in program
+	* How memory heap operates
+<br>
+And refer to the [Data-Structure/advanced/memory/README.md](https://github.com/a22057916w/Data-Structure/tree/main/advanced/memory)
 
 #### Reference
 * [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For Beginners | Simplilearn](https://www.youtube.com/watch?v=gRwfHzeS-GM)
