@@ -10,7 +10,7 @@
 以下是各個區塊的說明。
 
 ### **text：程式碼**
-文字區段（text segment）也稱為程式碼區段（code segment），這裡存放的是可執行的 CPU 指令（instructions）。
+文字區段（text segment）也稱為程式碼區段（code segment），這裡存放的是**可執行的 CPU 指令（instructions）**。
 
 這個區段通常位於 heap 或 stack 之後，避免因 heap 或 stack 溢位而覆寫 CPU 指令。
 
