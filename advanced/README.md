@@ -70,7 +70,7 @@ int _tmain(int argc, _TCHAR* argv[])
 Please refer to the `function_temp.cpp` and `class_temp.cpp` for code example, also [TEMPLATE.md](https://github.com/a22057916w/Data-Structure/blob/main/advanced/TEMPLATE.md) for further explanation.
 
 ## Q7
-* **What’s the difference between a stack and a heap? How is memory allocated on the stack and heap? How do threads interact with the stack and the heap?** <br>
+* **What’s the difference between a stack and a heap? How is memory allocated on the stack and heap? How do threads interact with the stack and the heap?** <br><br>
 
 Through the video [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For Beginners | Simplilearn](https://www.youtube.com/watch?v=gRwfHzeS-GM), you will learn:
 * Understanding how memory stack operates
