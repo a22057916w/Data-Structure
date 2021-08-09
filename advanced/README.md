@@ -74,7 +74,8 @@ Please refer to the `function_temp.cpp` and `class_temp.cpp` for code example, a
 Through the video [Stack vs Heap Memory | Stack And Heap In C | C Tutorial For Beginners | Simplilearn](https://www.youtube.com/watch?v=gRwfHzeS-GM), you will learn:
 	* Understanding how memory stack operates
 	* Stack overflow error in program
-	* How memory heap operates <br><br>
+	* How memory heap operates
+
 And refer to the [Data-Structure/advanced/memory/README.md](https://github.com/a22057916w/Data-Structure/tree/main/advanced/memory)
 
 #### Reference
