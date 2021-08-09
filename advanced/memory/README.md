@@ -1,7 +1,11 @@
 ## C 語言程式記憶體配置概念
 下圖為典型的 C 語言程式在執行時的記憶體配置圖，記憶體的使用主要可分為 text、data、bss、stack、heap 與 system 這幾個部分。
 
-![](https://github.com/a22057916w/Data-Structure/blob/main/advanced/.meta/memory-layout-of-c-program-diagram-20170301.png)
+
+<div align="center">
+  <img src="https://github.com/a22057916w/Data-Structure/blob/main/advanced/.meta/memory-layout-of-c-program-diagram-20170301.png" width="40%" height="40%">
+</div>
+
 
 以下是各個區塊的說明。
 
