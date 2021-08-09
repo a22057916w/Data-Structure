@@ -3,7 +3,7 @@
 
 
 <div align="center">
-  <img src="https://github.com/a22057916w/Data-Structure/blob/main/advanced/.meta/memory-layout-of-c-program-diagram-20170301.png" width="40%" height="40%">
+  <img src="https://github.com/a22057916w/Data-Structure/blob/main/advanced/.meta/memory-layout-of-c-program-diagram-20170301.png" width="50%" height="60%">
 </div>
 
 
