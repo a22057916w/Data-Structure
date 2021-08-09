@@ -67,6 +67,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 ## Q6
 * **Given an array A[1~n], please write code to find the smallest and largest element with function template form efficiently.**
+Please refer to the `function_temp.cpp` and `class_temp.cpp` for code example, also [TEMPLATE.md](https://github.com/a22057916w/Data-Structure/blob/main/advanced/TEMPLATE.md) for further explanation
 
 ## Q7
 * **What’s the difference between a stack and a heap? How is memory allocated on the stack and heap? How do threads interact with the stack and the heap?** <br>
