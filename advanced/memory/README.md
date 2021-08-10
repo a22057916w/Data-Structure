@@ -1,3 +1,4 @@
+[![hackmd-github-sync-badge](https://hackmd.io/eDLdyYl-S869xwHC3mwWJg/badge)](https://hackmd.io/eDLdyYl-S869xwHC3mwWJg)
 ## C 語言程式記憶體配置概念
 下圖為典型的 C 語言程式在執行時的記憶體配置圖，記憶體的使用主要可分為 text、data、bss、stack、heap 與 system 這幾個部分。
 
