@@ -1,10 +1,10 @@
 [![hackmd-github-sync-badge](https://hackmd.io/eDLdyYl-S869xwHC3mwWJg/badge)](https://hackmd.io/eDLdyYl-S869xwHC3mwWJg)
-## C 語言程式記憶體配置概念
+# C 語言程式記憶體配置概念
 下圖為典型的 C 語言程式在執行時的記憶體配置圖，記憶體的使用主要可分為 text、data、bss、stack、heap 與 system 這幾個部分。
 
 
 <div align="center">
-  <img src="https://github.com/a22057916w/Data-Structure/blob/main/advanced/.meta/memory-layout-of-c-program-diagram-20170301.png" width="50%" height="70%">
+  <img src="https://i.imgur.com/VcIHLOp.png" width="50%" height="70%">
 </div>
 
 
@@ -26,10 +26,10 @@
 未初始化資料區段（uninitialized data segment）又稱為 **bss** 區段（這個名稱的起源來自於古老的組譯器，代表 block started by symbol）是儲存**尚未被初始化的靜態變數**，而這些變數在程式執行之前會被系統初始化為 0 或是 null。
 
 ### **stack：區域變數**
-堆疊區段（stack segment）用於儲存函數的區域變數，以及各種函數呼叫時需要儲存的資訊（例如函數返回的記憶體位址還有呼叫者函數的狀態等），每一次的函數呼叫就會在堆疊區段建立一個 stack frame，儲存該次呼叫的所有變數與狀態，這樣一來同一個函數重複被呼叫時就會有不同的 stack frame，不會互相干擾，遞迴函數就是透過這樣的機制來執行的。
+堆疊區段（stack segment）用於儲存**函數**的區域變數，以及各種函數呼叫時需要儲存的資訊（例如函數返回的記憶體位址還有呼叫者函數的狀態等），每一次的函數呼叫就會在堆疊區段建立一個 **stack frame**，儲存該次呼叫的所有變數與狀態，這樣一來同一個函數重複被呼叫時就會有不同的 stack frame，不會互相干擾，遞迴函數就是透過這樣的機制來執行的。
 
 ### **heap：動態配置變數**
-heap 區段的記憶體空間用於儲存動態配置的變數，例如 C 語言的 malloc 以及 C++ 的 new 所建立的變數都是儲存於此。
+heap 區段的記憶體空間用於儲存動態配置的變數，例如 C 語言的 **malloc** 以及 C++ 的 **new**
 
 堆疊區段一般的狀況會從高記憶體位址往低記憶體位址成長，而 heap 剛好從對面以相反的方向成長。
 
