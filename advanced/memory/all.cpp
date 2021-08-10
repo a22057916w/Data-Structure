@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 const int global_x = 1;  // 儲存於 data 區段(唯讀區域)
 int global_y = 2;        // 儲存於 data 區段(可讀寫區域)
 int global_z;            // 儲存於 bss 區段
