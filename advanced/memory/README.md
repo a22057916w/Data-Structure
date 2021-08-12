@@ -37,3 +37,50 @@ heap 區段的記憶體空間用於儲存動態配置的變數，例如 C 語言
 system 區段用於儲存一些命令列參數與環境變數，這部分會跟系統有關。
 
 ## 實際範例
+這是一個最簡單的 C 語言程式：
+
+```
+#include <stdio.h>
+int main() {
+  return 0;
+}
+```
+編譯之後，可使用`size`查看它的內部記憶體配置：
+
+![](https://github.com/a22057916w/Data-Structure/blob/main/.meta/main_func_size.png)
+gcc source.c
+size a.out
+   text	   data	    bss	    dec	    hex	filename
+   1099	    544	      8	   1651	    673	a.out
+新增一個未初始化的全域靜態變數：
+
+#include <stdio.h>
+double global[30];  // 儲存於 bss 的未初始化靜態變數
+int main() {
+  return 0;
+}
+查看內部記憶體配置：
+
+gcc source.c
+size a.out
+   text	   data	    bss	    dec	    hex	filename
+   1099	    544	    272	   1915	    77b	a.out
+這一個未被初始化的陣列被放在 bss 區段。
+
+接著增加一個已初始化的靜態變數：
+
+#include <stdio.h>
+int main() {
+  // 儲存於 data 的已初始化靜態變數
+  static int x[5] = {1, 2, 3, 4, 5};
+  return 0;
+}
+查看內部記憶體配置：
+
+gcc source.c
+size a.out
+   text	   data	    bss	    dec	    hex	filename
+   1099	    564	      4	   1667	    683	a.out
+有初始化的靜態變數或全域變數都會被放進 data 區段中。
+
+儲存於 stack 與 heap 的變數在這裡看不到，以下是儲存於各種區段的變數：
