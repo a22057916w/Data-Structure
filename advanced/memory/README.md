@@ -40,7 +40,8 @@ system 區段用於儲存一些命令列參數與環境變數，這部分會跟�
 這是一個最簡單的 C 語言程式：
 
 ```
-#include <stdio.h>
+// main.cpp
+#include <cstdio>
 int main() {
   return 0;
 }
@@ -48,24 +49,18 @@ int main() {
 編譯之後，可使用`size`查看它的內部記憶體配置：
 
 ![](https://github.com/a22057916w/Data-Structure/blob/main/.meta/main_func_size.png)
-gcc source.c
-size a.out
-   text	   data	    bss	    dec	    hex	filename
-   1099	    544	      8	   1651	    673	a.out
-新增一個未初始化的全域靜態變數：
 
-#include <stdio.h>
+新增一個未初始化的全域靜態變數：
+```
+#include <cstdio>
 double global[30];  // 儲存於 bss 的未初始化靜態變數
 int main() {
   return 0;
 }
+```
 查看內部記憶體配置：
 
-gcc source.c
-size a.out
-   text	   data	    bss	    dec	    hex	filename
-   1099	    544	    272	   1915	    77b	a.out
-這一個未被初始化的陣列被放在 bss 區段。
+![](https://github.com/a22057916w/Data-Structure/blob/main/.meta/global_var_size.png)
 
 接著增加一個已初始化的靜態變數：
 
