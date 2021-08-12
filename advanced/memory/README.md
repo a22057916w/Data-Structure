@@ -63,19 +63,19 @@ int main() {
 ![](https://github.com/a22057916w/Data-Structure/blob/main/.meta/global_var_size.png)
 
 接著增加一個已初始化的靜態變數：
-
-#include <stdio.h>
+```
+#include <cstdioh>
 int main() {
   // 儲存於 data 的已初始化靜態變數
   static int x[5] = {1, 2, 3, 4, 5};
   return 0;
 }
+```
 查看內部記憶體配置：
 
-gcc source.c
-size a.out
-   text	   data	    bss	    dec	    hex	filename
-   1099	    564	      4	   1667	    683	a.out
+![](https://github.com/a22057916w/Data-Structure/blob/main/.meta/static_var_size.png)
+
 有初始化的靜態變數或全域變數都會被放進 data 區段中。
 
 儲存於 stack 與 heap 的變數在這裡看不到，以下是儲存於各種區段的變數：
+
