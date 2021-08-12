@@ -100,3 +100,6 @@ int main() {
 }
 ```
 ![](https://github.com/a22057916w/Data-Structure/blob/main/.meta/all_sector_size.png)
+
+### Reference
+* [C 語言程式的記憶體配置概念教學 - G. T. Wang](https://blog.gtwang.org/programming/memory-layout-of-c-program/)
