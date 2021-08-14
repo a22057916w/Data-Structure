@@ -103,3 +103,4 @@ int main() {
 
 ### Reference
 * [C 語言程式的記憶體配置概念教學 - G. T. Wang](https://blog.gtwang.org/programming/memory-layout-of-c-program/)
+* [c++ - Why are two different concepts both called "heap"? - Stack Overflow](https://stackoverflow.com/questions/1699057/why-are-two-different-concepts-both-called-heap)
