@@ -75,7 +75,7 @@ int foo(string const& str) {
   } 
   return str.length();
 }
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```
 We need to know the whole function with its body. So the line `int foo(string const& str);` is so-called as "forward declaration" of that function. This method can apply to every datatype of C++, including class.
 
 Usually, we write a class said `class MyDependency` definition in a header file like `MyDependency.h` then including it in the driver file. Since #includes are plain text replacement done during the compilation. Therefore, forward declaration comes in handy. We can replace `#include "MyDependency.h";` definition into `class MyDependency;` declaration.
