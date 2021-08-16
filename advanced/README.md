@@ -64,6 +64,16 @@ int _tmain(int argc, _TCHAR* argv[])
 
 ## Q5
 * **Please (1) explain the meaning of forward declaration (reduce dependency about header file) (2) Please rewrite the sample code with forward declaration.**
+```
+//file C.h
+#include "A.h"
+#include "B.h"
+class C 
+{
+    A* a;
+    B b;
+};
+```
 
 First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that something exists. On the other hand, Definitions give all the details, take a function, for example, a declaration goes like: 
 `int foo(string const& str);` 
