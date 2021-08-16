@@ -64,18 +64,19 @@ int _tmain(int argc, _TCHAR* argv[])
 
 ## Q5
 * **Please (1) explain the meaning of forward declaration (reduce dependency about header file) (2) Please rewrite the sample code with forward declaration.** <br><br>
+
 First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that something exists. On the other hand, Definitions give all the details, take a function, for example, a declaration goes like: 
 `int foo(string const& str);` 
 All we need to know is the return type, parameters, and function name. We know there is a function called foo that existed, but not for detail. 
 As for definition, 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```
+```
 int foo(string const& str) {
   if (str.empty()) {
     return 0;
   } 
   return str.length();
 }
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```
+```
 We need to know the whole function with its body. So the line `int foo(string const& str);` is so-called as "forward declaration" of that function. This method can apply to every datatype of C++, including class.
 
 Usually, we write a class said `class MyDependency` definition in a header file like `MyDependency.h` then including it in the driver file. Since #includes are plain text replacement done during the compilation. Therefore, forward declaration comes in handy. We can replace `#include "MyDependency.h";` definition into `class MyDependency;` declaration.
