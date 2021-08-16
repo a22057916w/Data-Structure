@@ -63,7 +63,7 @@ int _tmain(int argc, _TCHAR* argv[])
 * **Please explain the (1) meaning & benefit of virtual function (2) benefit of virtual destructor**
 
 ## Q5
-* **Please (1) explain the meaning of forward declaration (reduce dependency about header file) (2) Please rewrite the sample code with forward declaration.** <br><br>
+* **Please (1) explain the meaning of forward declaration (reduce dependency about header file) (2) Please rewrite the sample code with forward declaration.**
 
 First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that something exists. On the other hand, Definitions give all the details, take a function, for example, a declaration goes like: 
 `int foo(string const& str);` 
