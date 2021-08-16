@@ -77,7 +77,7 @@ class C
 
 <br>
 
-First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that something exists. On the other hand, Definitions give all the details, take a function, for example, a declaration goes like: 
+First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that **something exists**. On the other hand, Definitions give all the **details**, take a function, for example, a declaration goes like: 
 `int foo(string const& str);` 
 All we need to know is the return type, parameters, and function name. We know there is a function called foo that existed, but not for detail. 
 As for definition, 
@@ -94,6 +94,19 @@ We need to know the whole function with its body. So the line `int foo(string co
 Usually, we write a class said `class MyDependency` definition in a header file like `MyDependency.h` then including it in the driver file. Since #includes are plain text replacement done during the compilation. Therefore, forward declaration comes in handy. We can replace `#include "MyDependency.h";` definition into `class MyDependency;` declaration.
 
 So, what dependencies have to be defined for our class definition to compile? The answer is everything the compiler needs to determine the size and memory layout of the objects it has to instantiate. Let's take question 2 for example. 
+
+**The code can be rewrite as:**
+```
+//file C.h
+#include "B.h"
+class A;
+class C 
+{
+    		A* a;
+    		B b;
+};
+```
+We only need class definitions of the **actual types** of our member variables(like class B). If our member variable is a **pointer(class A)**, we don’t need the class definition, because, for the compiler, pointers are only addresses.
 
 
 
