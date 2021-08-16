@@ -75,7 +75,7 @@ class C
 };
 ```
 
-<br><br>
+<br>
 
 First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that something exists. On the other hand, Definitions give all the details, take a function, for example, a declaration goes like: 
 `int foo(string const& str);` 
