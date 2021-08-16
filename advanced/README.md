@@ -64,8 +64,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 ## Q5
 * **Please (1) explain the meaning of forward declaration (reduce dependency about header file) (2) Please rewrite the sample code with forward declaration.** <br><br>
-First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that something exists. On the other hand, Definitions give all the details, take a function, for example, a declaration goes like: <br><br>
-`int foo(string const& str);`
+First, C++ distinguishes definitions from declarations. Declarations more or less tell the compiler that something exists. On the other hand, Definitions give all the details, take a function, for example, a declaration goes like: <br>
+`int foo(string const& str);` <br>
 All we need to know is the return type, parameters, and function name. We know there is a function called foo that existed, but not for detail. 
 As for definition, 
 ```
