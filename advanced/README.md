@@ -110,6 +110,7 @@ We only need class definitions of the **actual types** of our member variables(l
 
 #### Reference
 * [Forward Declarations to Reduce Compiletime Dependencies - Simplify C++!](https://arne-mertz.de/2018/03/forward-declarations/)
+* [What are Forward declarations in C++ - GeeksforGeeks](https://www.geeksforgeeks.org/what-are-forward-declarations-in-c/)
 
 ## Q6
 * **Given an array A[1~n], please write code to find the smallest and largest element with function template form efficiently.** <br><br>
