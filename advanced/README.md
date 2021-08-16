@@ -108,7 +108,8 @@ class C
 ```
 We only need class definitions of the **actual types** of our member variables(like class B). If our member variable is a **pointer(class A)**, we don’t need the class definition, because, for the compiler, pointers are only addresses.
 
-
+#### Reference
+* [Forward Declarations to Reduce Compiletime Dependencies - Simplify C++!](https://arne-mertz.de/2018/03/forward-declarations/)
 
 ## Q6
 * **Given an array A[1~n], please write code to find the smallest and largest element with function template form efficiently.** <br><br>
