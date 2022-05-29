@@ -6,7 +6,7 @@ public:
     vector<vector<int>> fireSpreadTime(vector<vector<int>> grid) {
 
       // declare the frieTime table as the same size as grid
-      vector<vector<int>> fireTime(grid.size(), vector<int>(grid[0].size(), -1));
+      vector<vector<int>> fireTime(grid.size(), vector<int>(grid[0].size(), 0));
 
       // set fireTime table by BFS queue
       queue<pair<int, int>> fire;
@@ -20,26 +20,22 @@ public:
                 }
 
       // set fireTime table
-      int fire_mins = 0;
       while(!fire.empty()) {
+        pair<int, int> pf = fire.front();
+        fire.pop();
+        int fx = pf.first, fy = pf.second;
 
-          int size = fire.size();
-          while(size--) {
+        int newTime = fireTime[fx][fy] + 1;
+        for(int i = 0; i < 4; i++) {
+          fx = fx + r[i];
+          fy = fy + c[i];
 
-              pair<int, int> pf = fire.front();
-              fire.pop();
-              int fx = pf.first, fy = pf.second;
-
-              fire_mins +=1;
-
-              for(int k = 0; k < 4; k++) {
-                  if((fx+r[k] >= 0 && fx+r[k] < grid.size()) && (fy+c[k] >= 0 && fy+c[k] < grid[0].size()) && (grid[fx+r[k]][fy+c[k]] == 0)) {
-                      grid[fx+r[k]][fy+c[k]] = 1;
-                      fireTime[fx+r[k]][fy+c[k]] = fire_mins;
-                      fire.push({fx+r[k], fy+c[k]});
-                  }
-              }
-          }
+            if((fx >= 0 && fx < grid.size()) && (fy >= 0 && fy < grid[0].size()) && (grid[fx][fy] == 0)) {
+                grid[fx][fy] = 1;
+                fireTime[fx][fy] = newTime;
+                fire.push({fx, fy});
+            }
+        }
       }
       return fireTime;
     }
@@ -55,60 +51,56 @@ public:
         cout << endl;
       }
 
+      int maxPossibleTime = grid.size() * grid[0].size();
+      if(canEscape(maxPossibleTime, fireTime, grid))
+        return 1E9;
+
+      if(!canEscape(0, fireTime, grid))
+        return -1;
+
       int maxWaitTime = 0;
-      int L = 0, R = fireTime[0][0];
+      int L = 0, R = maxPossibleTime;
       while(L < R) {
         int M = (L + R) >> 1;
-        if(canEscape(M, fireTime, grid))
+        if(canEscape(M, fireTime, grid)) {
+          maxWaitTime = M;
           L = M + 1;
+        }
         else
           R = M - 1;
       }
 
-      return 0;
+      return maxWaitTime;
+    }
 
     bool canEscape(int waitTime, vector<vector<int>>& fireTime, vector<vector<int>> grid) {
 
       // declare the playerTime table as the same size as grid
-      vector<vector<int>> playerTime(grid.size(), vector<int>(grid[0].size(), -1));
-    }
+      vector<vector<int>> playerTime(grid.size(), vector<int>(grid[0].size(), waitTime));
 
-        // queue<pair<int, int>> mov;
-        // mov.push({0, 0});
-        //
-        // while(!man_reach && !mov.empty()) {
-        //
-        //     int size = mov.size();
-        //     while(size--) {
-        //
-        //         pair<int, int> pm = mov.front();
-        //         mov.pop();
-        //         int mx = pm.first, my = pm.second;
-        //
-        //         for(int k = 0; k < 4; k++) {
-        //             if(mx+r[k] >= 0 && mx+r[k] < grid.size() && my+c[k] >= 0 && my+c[k] < grid[0].size() && grid[mx+r[k]][my+c[k]] != 2) {
-        //                 if((mx+r[k] == grid.size() - 1 && my+c[k] == grid[0].size() - 1)) {
-        //                     man_reach = true;
-        //                     break;
-        //                 }
-        //
-        //                 grid[mx+r[k]][my+c[k]] = 3;
-        //                 mov.push({mx+r[k], my+c[k]});
-        //             }
-        //         }
-        //     }
-        //     mov_mins += 1;
-        // }
-        //
-        // cout << mov_mins << " " << man_reach << endl;
-        // cout << fire_mins << " " << fire_reach << endl;
-        // if(fire_reach) {
-        //     if(mov_mins <= fire_mins)
-        //         return fire_mins - mov_mins;
-        //     else
-        //         return -1;
-        // }
-        // else
-        //     return 1E9;
+      queue<pair<int, int>> q;
+      q.push({0, 0});
+
+      while(!q.empty()) {
+        pair<int, int> pp = q.front();
+        q.pop();
+        int px = pp.first, py = pp.second;
+
+        int newTime = playerTime[px][py] + 1;
+        for(int i = 0; i < 4; i++) {
+          px = px + r[i];
+          py = py + c[i];
+
+          if((px == grid.size() - 1 && py = grid[0].size() - 1) && newTime <= fireTime[px][py])
+            return true;
+
+          if((px >= 0 && px < grid.size()) && (py >= 0 && py < grid[0].size()) && (grid[px][py] == 0) && newTime < fireTime[px][py]) {
+              grid[px][py] = 1;
+              playerTime[px][py] = newTime;
+              q.push({px, py});
+          }
+        }
+      }
+      return false;
     }
 };
