@@ -46,18 +46,32 @@ public:
 
     int maximumMinutes(vector<vector<int>>& grid) {
 
-        // get fireTime table/grid
-        vector<vector<int>> fireTime = fireSpreadTime(grid);
+      // get fireTime table/grid
+      vector<vector<int>> fireTime = fireSpreadTime(grid);
 
-        for(int i = 0; i < grid.size(); i++) {
-          for(int j = 0; j < grid[0].size(); j++)
-            cout << fireTime[i][j] << " ";
-            cout << endl;
-       }
+      for(int i = 0; i < grid.size(); i++) {
+        for(int j = 0; j < grid[0].size(); j++)
+          cout << fireTime[i][j] << " ";
+        cout << endl;
+      }
 
-        return 0;
+      int maxWaitTime = 0;
+      int L = 0, R = fireTime[0][0];
+      while(L < R) {
+        int M = (L + R) >> 1;
+        if(canEscape(M, fireTime, grid))
+          L = M + 1;
+        else
+          R = M - 1;
+      }
 
+      return 0;
 
+    bool canEscape(int waitTime, vector<vector<int>>& fireTime, vector<vector<int>> grid) {
+
+      // declare the playerTime table as the same size as grid
+      vector<vector<int>> playerTime(grid.size(), vector<int>(grid[0].size(), -1));
+    }
 
         // queue<pair<int, int>> mov;
         // mov.push({0, 0});
