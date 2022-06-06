@@ -1,6 +1,7 @@
+// https://www.hackerrank.com/challenges/primsmstsub/problem?isFullScreen=true
+
 #include <bits/stdc++.h>
 #include <algorithm>
-#include <iostream>
 
 using namespace std;
 
@@ -44,7 +45,7 @@ int prims(int n, vector<vector<int>> edges, int start) {
       e[a][b] = min(e[a][b], dist);   // there might be multiple path between two specfic nodes
       e[b][a] = e[a][b];
   }
-  
+
   key[start - 1] = 0;
   for(int i = 0; i < n; i++) {      // iterate throught all vertice
     int u = MinKeyExtract(key, visited, n);   // get the vertex which has the mininum weight(to its predecessor)
@@ -56,7 +57,7 @@ int prims(int n, vector<vector<int>> edges, int start) {
       }
   }
 
-  // the final value of the key is the minimun cost of MST
+  // the final value of the sum of key is the minimun cost of MST
   int cost = 0;
   for(auto &weight : key)
     cost += weight;
