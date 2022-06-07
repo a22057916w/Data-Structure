@@ -1,3 +1,7 @@
+// https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=1541
+
+// calculate only MST
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -12,8 +16,6 @@ int prim(int v, vector<vector<int>> &edges) {
   vector<pair<int, int>> adj[v];
   vector<bool> vis(v, false);
 
-  vector<vector<int>> used_edge(v, vector<int>(v, 1E9));
-
   // initiate the adjacency list
   for(int i = 0; i < edges.size(); i++) {
     int u = edges[i][0] - 1;
@@ -25,7 +27,7 @@ int prim(int v, vector<vector<int>> &edges) {
   }
 
   int cost = 0;
-  pq.push({0, 0});    // given a initial trivial value (0-dist, node-random)
+  pq.push({0, 0});    // given a initial value (0-dist, node-start-point)
   while(!pq.empty()) {
     auto p = pq.top();  // the top of pq is the most lishtwage edge
     pq.pop();
