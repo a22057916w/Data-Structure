@@ -12,6 +12,8 @@ int prim(int v, vector<vector<int>> &edges) {
   vector<pair<int, int>> adj[v];
   vector<bool> vis(v, false);
 
+  vector<vector<int>> used_edge(v, vector<int>(v, 1E9));
+
   // initiate the adjacency list
   for(int i = 0; i < edges.size(); i++) {
     int u = edges[i][0] - 1;
@@ -22,10 +24,8 @@ int prim(int v, vector<vector<int>> &edges) {
     adj[v].push_back({u, dist});
   }
 
-  int vertex = edges[0][0];   // set a strating point
-  pq.push({0, 0});    // given a initial trivial value (0-dist, node-random)
-
   int cost = 0;
+  pq.push({0, 0});    // given a initial trivial value (0-dist, node-random)
   while(!pq.empty()) {
     auto p = pq.top();  // the top of pq is the most lishtwage edge
     pq.pop();
@@ -33,6 +33,7 @@ int prim(int v, vector<vector<int>> &edges) {
     int vertex = p.second;
 
     if(!vis[vertex]) {
+
       cost += weight;
       vis[vertex] = true;
 
@@ -53,6 +54,7 @@ int main() {
     int v, e;
     cin >> v >> e;
 
+    // read the input
     vector<vector<int>> edges(e, vector<int>(3));
     for(int i = 0; i < e; i++)
       for(int j = 0; j < 3; j++)
