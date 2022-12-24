@@ -34,16 +34,21 @@ int GraphFlowNetWork::FordFulkerson(int src, int tml) {
   vi predecessor(V, -1);
   int maxFlow = 0;
 
+  // BFS finds augmenting path,
   while(BFSfindExistingPath(graphResidual, predecessor, src, tml)) {
 
+    // Find minimum residual capacity of the edges along
+    // 用predecessor[v] 和 v 表示一條edge
     int mincapacity = 1E9;
     for(int v = tml; v != src; v = predecessor[v]) {
       int u = predecessor[v];
       mincapacity = min(graphResidual[u][v], mincapacity);
     }
 
+    // updating the maximun flow
     maxFlow += mincapacity;
 
+    // updating residual graph
     for(int v = tml; v != src; v = predecessor[v]) {
       int u = predecessor[v];
       graphResidual[u][v] -= mincapacity;
@@ -72,6 +77,8 @@ bool GraphFlowNetWork::BFSfindExistingPath(vii graphResidual, vi &predecessor, i
         visited[v] = 1;
         predecessor[v] = u;
 
+        // If we find a connection to the sink node,
+        // then there is no point in BFS anymore
         if(v == t)
           return true;
       }
@@ -93,3 +100,10 @@ int main() {
 
   return 0;
 }
+
+/*
+reference:
+  http://alrightchiu.github.io/SecondRound/flow-networksmaximum-flow-ford-fulkerson-algorithm.html
+  https://www.geeksforgeeks.org/ford-fulkerson-algorithm-for-maximum-flow-problem/?ref=rp
+  https://www.geeksforgeeks.org/max-flow-problem-introduction/
+*/
