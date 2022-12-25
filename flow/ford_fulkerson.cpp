@@ -26,7 +26,7 @@ public:
 
 
 void GraphFlowNetWork::addEdge(int u, int v, int capacity) {
-  adj[u][v] = capacity;
+  adj[u][v] = capacity;     // dericted graph
 }
 
 int GraphFlowNetWork::FordFulkerson(int src, int tml) {
