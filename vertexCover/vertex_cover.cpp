@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <list>
+#include <iterator>
 using namespace std;
 
 class Graph {
@@ -24,10 +25,31 @@ void Graph::addEdge(int u, int v) {
 
 void Graph::getVertexCover() {
   bool visited[V] = {false};
+  int apr_min = 0;
 
   for(int u = 0; u < v; u++) {
 
+    if(visited[u] == false) {
+
+      for(int it = adj[u].begin(), it != adj[u].end(); it++) {
+        int v = *it;
+        if(visited[v] == false) {
+          visited[v] = true;
+          visited[u] = true;
+          apr_min++;
+          break;
+        }
+      }
+    }
   }
+
+  // Print the vertex cover
+   for (int i=0; i<V; i++)
+       if (visited[i])
+         cout << i << " ";
+  cout << endl;
+
+  return apr_min;
 }
 
 int main() {
