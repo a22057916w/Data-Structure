@@ -5,6 +5,8 @@ using namespace std;
 
 typedef vector<vector<int>> vii;
 
+
+// fill the dp diagonally
 int matrixChain(int x, int y, vector<int> arr) {
   int n = arr.size();
   vii dp(n + 1, vector<int>(n + 1, INT_MAX / 2));
