@@ -3,6 +3,7 @@
 #include <algorithm>
 using namespace std;
 
+// 每一輪把最小值跟初始值(i)交換
 void selectionsort(vector<int> &v) {
   for(int i = 0; i < v.size(); i++)
     for(int j = i + 1; j < v.size(); j++)
@@ -26,3 +27,8 @@ int main(int argc, char **argv) {
     cout << e << " ";
   return 0;
 }
+
+/*
+reference:
+  https://ithelp.ithome.com.tw/articles/10218442
+*/
