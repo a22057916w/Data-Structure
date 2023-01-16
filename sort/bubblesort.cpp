@@ -6,6 +6,7 @@ using std::vector;
 using std::cout;
 using std::endl;
 
+// move the largest number to the last in each round of i
 void bubblesort(vector<int> &v) {
   for(int i = 0; i < v.size(); i++)
     for(int j = 0; j < v.size() - 1; j++)
@@ -29,3 +30,7 @@ int main(int argc, char **argv) {
     cout << e << " ";
   return 0;
 }
+
+/*
+https://ithelp.ithome.com.tw/articles/10276184
+*/
