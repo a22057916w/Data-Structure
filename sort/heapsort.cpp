@@ -4,6 +4,7 @@
 using namespace std;
 
 // 「由上而下」地，以Max Heap的規則(root的數值「大於」兩個child的數值)，調整矩陣。
+// takes O(logN)
 void MaxHeapify(vector<int> &arr, int root, int size) {
   int left = root * 2, right = root * 2 + 1;
   int largest = -1;       // record the index of the largest key of the three nodes
@@ -30,6 +31,7 @@ void BuildMaxHeap(vector<int> &arr) {
 
 // 將最大值(index(1))換到陣列最後一個位置, 然後不管它, 再對陣列進行 MaxHeapify 回復成 Max Heap.
 // 重複上述步驟直到剩兩個node可以交換
+// takes O(nlogn)
 void HeapSort(vector<int> &arr) {
   arr.insert(arr.begin(), 0);       // 把index(0)空出來以建立heap
 
