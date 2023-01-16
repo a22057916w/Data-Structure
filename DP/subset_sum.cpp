@@ -20,8 +20,8 @@ bool isSubsetSum(vector<int> &set, int sum) {
     Case j < ai:
      the sum is less than the ai, so we definitely not choosing it
     Case j >= ai:
-     Option 1: Don't pick ai.
-     Option 2: Pick ai, j - ai;
+     Option 1: Don't pick ai.   (ai is not in the solution set)
+     Option 2: Pick ai, j - ai; (ai is in the solution set)
   */
   for(int i = 1; i <= n; i++)
     for(int j = 1; j <= sum; j++) {
@@ -54,3 +54,8 @@ int main() {
 
   return 0;
 }
+
+/*
+reference:
+  https://www.geeksforgeeks.org/subset-sum-problem-dp-25/
+*/
