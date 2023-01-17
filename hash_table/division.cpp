@@ -22,6 +22,7 @@ public:
   friend class HashChain;
 };
 
+// HashChain == HashTable with linked-list
 class HashChain {
 private:
     int size;     // size of table
