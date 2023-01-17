@@ -75,6 +75,7 @@ void HashOpenAddress::deleteKey(int key) {
   }
 }
 
+// 利用二次式增加提高尋找下一個slot的隨機性
 int HashOpenAddress::quadraticProbing(int key, int i) {
    double c1 = 0.5, c2 = 0.5;
 
