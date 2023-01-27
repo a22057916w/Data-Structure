@@ -54,6 +54,7 @@ public:
         continue;
 
       // mrege two tree by assign them to the same root
+      // merge b's parent to a's
       p[find(a)] = find(b);
 
       cost += edge[i].dist;
@@ -63,7 +64,14 @@ public:
   }
 
   int find(int x) {
+    // root's parent is itself, therefore we seek x == p[x]
     // p[x] = find(p[x]): assign new parent while searching to imporve efficiency
     return x == p[x] ? x : p[x] = find(p[x]);
   }
 };
+
+/*
+Reference:
+  https://web.ntnu.edu.tw/~algo/SpanningTree.html#2
+  https://ithelp.ithome.com.tw/articles/10277930
+*/
