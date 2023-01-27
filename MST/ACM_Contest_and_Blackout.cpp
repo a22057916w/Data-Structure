@@ -28,8 +28,8 @@ int prim(int v, vector<vector<int>> &edges) {
 
   int cost = 0;
   pq.push({0, 0});    // given a initial value (0-dist, node-start-point)
-  while(!pq.empty()) {
-    auto p = pq.top();  // the top of pq is the most lishtwage edge
+  while(!pq.empty()) {  // O(V)
+    auto p = pq.top();  // the top of pq is the most lishtwage edge, O(VlogV)
     pq.pop();
     int weight = p.first;
     int vertex = p.second;
@@ -40,11 +40,13 @@ int prim(int v, vector<vector<int>> &edges) {
       vis[vertex] = true;
 
       // find the adjcent node for vertex then add the {dist, node} to pq
-      for(auto e: adj[vertex])
+      for(auto e: adj[vertex]) // O(n) <= O(deg(v)) <= O(2E) = O(E), regardless the while loop
         if(!vis[e.first])
-          pq.push({e.second, e.first});
+          pq.push({e.second, e.first}); // O(VlogV)
     }
   }
+
+  // O(n) = O(VlogV + E)
   return cost;
 }
 
@@ -68,3 +70,9 @@ int main() {
 
   return 0;
 }
+
+/*
+Reference:
+  https://web.ntnu.edu.tw/~algo/SpanningTree.html#3
+  https://ithelp.ithome.com.tw/articles/10277930
+*/
