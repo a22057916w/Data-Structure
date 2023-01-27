@@ -50,3 +50,8 @@ int main() {
   cout << matrixChain(1, 3, arr) << endl;
   return 0;
 }
+
+/*
+Reference:
+  https://www.youtube.com/watch?v=GMzVeWpyTN0
+*/
