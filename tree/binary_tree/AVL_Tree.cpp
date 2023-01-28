@@ -349,3 +349,10 @@ int main() {
 
   return 0;
 }
+
+/*
+Reference:
+  https://hackmd.io/@Zero871015/rJksqh83X?type=view
+  https://hackmd.io/@Zero871015/rJksqh83X?type=view
+  https://hackmd.io/@Zero871015/rJksqh83X?type=view
+*/

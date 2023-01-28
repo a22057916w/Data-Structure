@@ -259,22 +259,22 @@ void RBT::deleteNode(int key) {
     return;
   }
 
-  TreeNode *y;  // node to be delete
+  TreeNode *y;  // node to be delete, key to be swap to delNode
   TreeNode *x;  // child of the node that about to be delete
 
-  // y has at most y child afther the if-else opration
+  // y has at most 1 child afther the if-else opration
   if(delNode->left == NULL || delNode->right == NULL)
     y = delNode;
   else
     y = getSuccessor(delNode->right);
 
-  // x might be a child of y or x = neel(null) if y has no child
+  // assign x as y's child,
   if(y->left)
     x = y->left;
   else if(y->right)
     x = y->right;
+  // if x is NULL (y has no child)
   else {
-
     // new a temp node as NULL
     x = new TreeNode(INT_MIN);
     x->color = BLACK;
@@ -367,7 +367,7 @@ void RBT::FixDeletion(TreeNode *curr) {
       }
     }
     else {
-      TreeNode *sibling = curr->parent->right;
+      TreeNode *sibling = curr->parent->left;
 
       // Case 1: sibling is RED
       if(sibling->color == RED) {
@@ -535,3 +535,9 @@ int main() {
 
   return 0;
 }
+
+/*
+Reference:
+  https://www.geeksforgeeks.org/insertion-in-an-avl-tree/
+  https://hackmd.io/@Zero871015/rJksqh83X?type=view
+*/
