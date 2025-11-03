@@ -206,6 +206,28 @@ bool deque_is_full(Deque* dq) {
     return dq->size == dq->capacity;
 }   
 
+void deque_resize(Deque* dq) {
+    int newCapacity = dq->capacity * 2;
+    int *newData = (int*)malloc(sizeof(int) * newCapacity);
+    if(!newData) {
+        fprintf(stderr, "Memory reallocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // 將原本環狀資料重新「攤平」成線性順序
+    for(int i = 0; i < dq->size; i++) 
+        newData[i] = dq->data[(dq->front + i) % dq->capacity];
+
+    free(dq->data);
+
+    dq->data = newData;
+    dq->capacity = newCapacity;
+    dq->front = 0;
+    dq->back = dq->size;
+
+    printf("Deque resized: new capacity = %d\n", dq->capacity);
+}
+
 void deque_push_back(Deque* dq, int val) {
     if(deque_is_full(dq)) {
         printf("Deque is full.\n");
@@ -353,17 +375,22 @@ int main() {
     printf("Front=%d, Back=%d, Size=%d\n\n",
            deque_get_front(dq), deque_get_back(dq), deque_get_size(dq));
 
-    printf("=== Test 6: Pop Until Empty ===\n");
-    while(!deque_is_empty(dq))
-        deque_pop_front(dq);
+#ifdef USE_CIRCULAR_DEQUE
+    printf("=== Test 6: Manual Resize ===\n");
+    printf("Before resize: capacity = %d, size = %d\n", dq->capacity, dq->size);
+
+    // 手動呼叫擴張
+    deque_resize(dq);
+
+    deque_push_back(dq, 600);
+    deque_push_front(dq, 700);
+
+    printf("After resize: capacity = %d, size = %d\n", dq->capacity, dq->size);
     deque_print(dq);
     deque_print_reverse(dq);
     printf("Front=%d, Back=%d, Size=%d\n\n",
-           deque_get_front(dq), deque_get_back(dq), deque_get_size(dq));
-
-    printf("=== Test 7: Pop From Empty ===\n");
-    deque_pop_front(dq); // should print empty
-    deque_pop_back(dq);  // should print empty
+        deque_get_front(dq), deque_get_back(dq), deque_get_size(dq));  
+#endif
 
     deque_free(dq);
     printf("\nAll tests completed.\n");
