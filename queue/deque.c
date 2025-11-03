@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+// #define USE_LINKED_DEQUE
+#define USE_CIRCULAR_DEQUE
+
+#ifdef USE_LINKED_DEQUE
+// Linked deque implementation
+
 typedef struct Node {
     int data;
     struct Node *next, *prev;
@@ -159,9 +165,151 @@ void deque_free(Deque* dq) {
     free(dq);
 }
 
+#endif // USE_LINKED_DEQUE
+
+#ifdef USE_CIRCULAR_DEQUE
+// Circular deque implementation would go here
+
+typedef struct Deque {
+    int *data;
+    int front, back;
+    int capacity, size;
+} Deque;
+
+Deque* deque_create(int capacity) {
+    Deque *dq = (Deque*)malloc(sizeof(Deque));
+    if(!dq) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    dq->data = (int*)malloc(sizeof(int) * capacity);
+    if(!dq->data) {
+        fprintf(stderr, "Memory allocation for data failed\n");
+        free(dq);
+        exit(EXIT_FAILURE);
+    }
+
+    dq->front = 0;
+    dq->back = 0;
+    dq->capacity = capacity;
+    dq->size = 0;
+
+    return dq;
+}
+
+bool deque_is_empty(Deque* dq) {
+    return dq->size == 0;
+}
+
+bool deque_is_full(Deque* dq) {
+    return dq->size == dq->capacity;
+}   
+
+void deque_push_back(Deque* dq, int val) {
+    if(deque_is_full(dq)) {
+        printf("Deque is full.\n");
+        return;
+    }
+
+    dq->data[dq->back] = val;
+    dq->back = (dq->back + 1) % dq->capacity;  
+    dq->size++;
+}
+
+void deque_pop_back(Deque* dq) {
+    if(deque_is_empty(dq)) {
+        printf("The deque is empty.\n");
+        return;
+    }
+
+    dq->back = (dq->back - 1 + dq->capacity) % dq->capacity;
+    dq->size--;
+}
+
+int deque_get_back(Deque* dq) {
+    if(deque_is_empty(dq)) {
+        printf("The deque is empty.\n");
+        return -1;
+    }
+    int index = (dq->back - 1 + dq->capacity) % dq->capacity;
+    return dq->data[index];
+}
+
+void deque_push_front(Deque* dq, int val) {
+    if(deque_is_full(dq)) {
+        printf("Deque is full.\n");
+        return;
+    }
+
+    dq->front = (dq->front - 1 + dq->capacity) % dq->capacity;
+    dq->data[dq->front] = val;
+    dq->size++;
+}
+
+void deque_pop_front(Deque* dq) {
+    if(deque_is_empty(dq)) {
+        printf("The deque is empty.\n");
+        return;
+    }
+
+    dq->front = (dq->front + 1) % dq->capacity;
+    dq->size--;
+}
+
+int deque_get_front(Deque* dq) {
+    if(deque_is_empty(dq)) {
+        printf("The deque is empty.\n");
+        return -1;
+    }
+    return dq->data[dq->front];
+}
+
+int deque_get_size(Deque* dq) {
+    return dq->size;
+}
+
+void deque_print(Deque* dq) {
+    if(deque_is_empty(dq)) {
+        printf("The deque is empty.\n");
+        return;
+    }
+
+    printf("Deque (front to back): ");
+    for(int i = 0; i < dq->size; i++) {
+        int index = (dq->front + i) % dq->capacity;
+        printf("%d ", dq->data[index]);
+    }
+    printf("\n");
+}
+
+void deque_print_reverse(Deque* dq) {
+    if(deque_is_empty(dq)) {
+        printf("The deque is empty.\n");
+        return;
+    }
+
+    printf("Deque (back to front): ");
+    for(int i = 0; i < dq->size; i++) {
+        int index = ((dq->back - 1) - i + dq->capacity) % dq->capacity;
+        printf("%d ", dq->data[index]);
+    }
+    printf("\n");
+}
+
+void deque_free(Deque* dq) {
+    free(dq->data);
+    free(dq);
+}
+
+#endif // USE_CIRCULAR_DEQUE
 
 int main() {
+#ifdef USE_LINKED_DEQUE
    Deque* dq = deque_create();
+#else 
+    Deque* dq = deque_create(5);    // USE_CIRCULAR_DEQUE
+#endif
 
     printf("=== Test 1: Push Back ===\n");
     deque_push_back(dq, 10);
@@ -219,6 +367,6 @@ int main() {
 
     deque_free(dq);
     printf("\nAll tests completed.\n");
-    
+
     return 0;
 }
