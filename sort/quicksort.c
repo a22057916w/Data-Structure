@@ -8,6 +8,18 @@ void swap(int* a, int* b) {
     *b = temp;
 }
 
+int median(int* arr, int l, int r) {
+    int m = l + (r - l) / 2;
+
+    if(arr[l] > arr[m])
+        swap(&arr[l], &arr[m]);
+    if(arr[m] > arr[r])
+        swap(&arr[m], &arr[r]);
+    if(arr[l] > arr[m])
+        swap(&arr[l], &arr[m]);
+
+    return arr[m];
+}
 
 int lomuto_partition(int* arr, int front, int end) {
     // choose a random pivot and move it to the end
@@ -32,7 +44,7 @@ int lomuto_partition(int* arr, int front, int end) {
 }
 
 int hoare_patition(int* arr, int front, int end) {
-    int pivot = arr[front];
+    int pivot = median(arr, front, end);
     int i = front - 1;
     int j = end + 1;
 
