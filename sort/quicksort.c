@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void swap(int* a, int* b) {
     int temp = *a;
@@ -6,8 +7,13 @@ void swap(int* a, int* b) {
     *b = temp;
 }
 
+// Lomuto partition scheme with random pivot selection
 int partition(int* arr, int front, int end) {
-    int pivot = arr[end]; // always choose the rightmost element as pivot
+    // choose a random pivot and move it to the end
+    int pivotIndex = front + (rand() % (end - front + 1)); 
+    swap(&arr[pivotIndex], &arr[end]); 
+
+    int pivot = arr[end];
     int i = front - 1;    // index of current smaller element
 
     // move elements smaller than pivot to the left
