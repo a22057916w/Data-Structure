@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 void swap(int* a, int* b) {
     int temp = *a;
@@ -7,8 +8,8 @@ void swap(int* a, int* b) {
     *b = temp;
 }
 
-// Lomuto partition scheme with random pivot selection
-int partition(int* arr, int front, int end) {
+
+int lomuto_partition(int* arr, int front, int end) {
     // choose a random pivot and move it to the end
     int pivotIndex = front + (rand() % (end - front + 1)); 
     swap(&arr[pivotIndex], &arr[end]); 
@@ -30,14 +31,37 @@ int partition(int* arr, int front, int end) {
     return i;   
 }
 
+int hoare_patition(int* arr, int front, int end) {
+    int pivot = arr[front];
+    int i = front - 1;
+    int j = end + 1;
+
+    while(true) {
+        do {
+            i++;
+        } while(arr[i] < pivot);
+
+        do {
+            j--;
+        } while(arr[j] > pivot);
+
+        if(i >= j)
+            return j;
+
+        swap(&arr[i], &arr[j]);
+    }
+
+    return j;
+}
+
 
 void quicksort(int* arr, int front, int end) {
     if(front >= end)
         return;
     
-    int pivot = partition(arr, front, end);
+    int pivot = hoare_patition(arr, front, end);
 
-    quicksort(arr, front, pivot - 1);
+    quicksort(arr, front, pivot);
     quicksort(arr, pivot + 1, end);
 }
 
