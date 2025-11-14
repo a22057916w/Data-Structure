@@ -2,10 +2,25 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define INSERTION_SORT_THRESHOLD 16
+
 void swap(int* a, int* b) {
     int temp = *a;
     *a = *b;
     *b = temp;
+}
+
+void insertionsort(int* arr, int front, int end) {
+    for(int i = front + 1; i < end; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while(arr[j] > key && j >= front) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
 }
 
 int median(int* arr, int l, int r) {
@@ -70,6 +85,11 @@ int hoare_patition(int* arr, int front, int end) {
 void quicksort(int* arr, int front, int end) {
     if(front >= end)
         return;
+    
+    if(end - front + 1 <= INSERTION_SORT_THRESHOLD) {
+        insertionsort(arr, front, end + 1);
+        return;
+    }
     
     int pivot = hoare_patition(arr, front, end);
 
