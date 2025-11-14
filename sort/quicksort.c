@@ -11,11 +11,11 @@ void swap(int* a, int* b) {
 }
 
 void insertionsort(int* arr, int front, int end) {
-    for(int i = front + 1; i < end; i++) {
+    for(int i = front + 1; i <= end; i++) {
         int key = arr[i];
         int j = i - 1;
 
-        while(arr[j] > key && j >= front) {
+        while(j >= front && arr[j] > key) {
             arr[j + 1] = arr[j];
             j--;
         }
@@ -87,7 +87,7 @@ void quicksort(int* arr, int front, int end) {
         return;
     
     if(end - front + 1 <= INSERTION_SORT_THRESHOLD) {
-        insertionsort(arr, front, end + 1);
+        insertionsort(arr, front, end);
         return;
     }
     
