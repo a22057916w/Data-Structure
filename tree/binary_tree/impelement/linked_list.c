@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "queue.h"
 
 // ==== Function Interfaces (Prototypes) ====
 typedef struct Node {
@@ -108,28 +109,72 @@ void postorder(Node* root) {
     }
 }
 
+void levelorder(Node* root) {
+    if(root) {
+        Queue* q = queue_create();
+        queue_push(q, root);
+
+        while(!queue_isEmpty(q)) {
+            Node* curr = (Node*)queue_front(q);
+            queue_pop(q);
+
+            printf("%d ", curr->val);
+
+            if(curr->left)
+                queue_push(q, curr->left);
+            if(curr->right)
+                queue_push(q, curr->right);
+        }
+
+        queue_free(q);
+        printf("\n");
+    }
+}
+
 int main() {
     Node* root = NULL;
 
     int arr[] = {8, 3, 10, 1, 6, 14};
-    int arrSize = sizeof(arr) / sizeof(arr[0]);
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    // insert nodes
-    for (int i = 0; i < arrSize; i++) {
+    // 插入
+    for (int i = 0; i < n; i++)
         root = insert(root, arr[i]);
-    }
 
+    printf("=== Testing BST ===\n");
+
+    // 搜尋
+    printf("Search 6: %s\n", search(root, 6) ? "FOUND" : "NOT FOUND");
+    printf("Search 99: %s\n", search(root, 99) ? "FOUND" : "NOT FOUND");
+
+    // Traversals
     printf("Inorder: ");
     inorder(root);
     printf("\n");
 
-    // delete node
+    printf("Preorder: ");
+    preorder(root);
+    printf("\n");
+
+    printf("Postorder: ");
+    postorder(root);
+    printf("\n");
+
+    printf("Level Order: ");
+    levelorder(root);
+
+    // Delete
     printf("Deleting 8...\n");
     root = delete(root, 8);
 
     printf("Inorder after delete: ");
     inorder(root);
     printf("\n");
+
+    printf("Level Order after delete: ");
+    levelorder(root);
+
+    printf("=== All tests completed ===\n");
 
     return 0;
 }
