@@ -20,6 +20,21 @@ static inline int right(int i) {
     return (i * 2) + 2;
 }
 
+static void heapify(MaxHeap* h, int index) {
+    int l = left(index);
+    int r = right(index);
+
+    int greatest = index;
+    if(l < h->size && h->data[l] > h->data[index])
+        greatest = l;
+    if(r < h->size && h->data[r] > h->data[greatest])
+        greatest = r;
+    if(greatest != index) {
+        swap(&h->data[index], &h->data[greatest]);
+        heapify(h, greatest);
+    }
+}
+
 // Heap functions
 MaxHeap* heap_create(int capacity) {
     MaxHeap* h = malloc(sizeof(MaxHeap));
@@ -67,4 +82,43 @@ void heap_insert(MaxHeap* h, int key) {
     }
 
     h->size++;
+}
+
+bool heap_peak(MaxHeap* h, int* out) {
+    if(heap_is_empty(h)) 
+        return false;
+    
+    *out = h->data[0];
+    return true;
+}
+
+bool heap_extract(MaxHeap* h, int* out) {
+    if(heap_is_empty(h)) {
+        fprintf(stderr, "Heap underflow: could not extract key\n");
+        return false;
+    }
+
+    *out = h->data[0];
+
+    // replace root with last element
+    h->data[0] = h->data[h->size - 1];
+    h->size--;
+
+    // recursively heapify the root and subtrees
+    heapify(h, 0);
+
+    return true;
+}
+
+void heap_print(MaxHeap* h) {
+    if(heap_is_empty(h)) {
+        printf("Heap is empty\n");
+        return;
+    }
+
+    printf("Heap elements: ");
+    for(int i = 0; i < h->size; i++) {
+        printf("%d ", h->data[i]);
+    }
+    printf("\n");
 }
